@@ -15,4 +15,4 @@
 * Blockchain
 
 ## Schema:
-![alt text](https://ibb.co/vPVQjWV)
+![alt text](https://imgur.com/RsBeHe7)
