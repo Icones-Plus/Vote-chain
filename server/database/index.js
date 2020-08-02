@@ -8,16 +8,24 @@ let connection = mongoose
     console.log(err);
   });
 
-let schema = mongoose.Schema({
+let userSchema = mongoose.Schema({
   mobile: Number,
   motherName: String,
   id: Number,
   Email: String,
   password: String,
-  data: String,
-  voted: String,
+  dateOfBirth: Number,
+  voted: Boolean,
 });
 
-let votingModel = mongoose.model("newVoting", schema);
+let cndidateSchema = mongoose.Schema({
+  name: String,
+  info: String,
+});
 
-module.exports.votingModel = votingModel;
+let userModel = mongoose.model("newUser", userSchema);
+
+let candidateModel = mongoose.model("newCandidate", cndidateSchema);
+
+module.exports.userModel = userModel;
+module.exports.candidateModel = candidateModel;
