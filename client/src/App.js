@@ -1,3 +1,4 @@
+
 import React from 'react';
 import './App.css';
 import SignUp from './components/signup/index'
@@ -8,7 +9,7 @@ function App() {
       {/* <SignUp/> */}
       {/* <LogIn /> */}
     </div>
-  );
+  )
 }
 
 export default App;
