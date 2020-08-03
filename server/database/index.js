@@ -9,13 +9,16 @@ let connection = mongoose
   });
 
 let userSchema = mongoose.Schema({
-  mobile: Number,
-  motherName: String,
   id: Number,
-  Email: String,
-  password: String,
-  dateOfBirth: Number,
+  mother_name: String,
+  mobile: Number,
+  email: String,
+  gender: String,
   voted: Boolean,
+  dateOfBirth: Date,
+  password: String,
+  first_name: String,
+  last_name: String,
 });
 
 let cndidateSchema = mongoose.Schema({
