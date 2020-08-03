@@ -1,9 +1,15 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
 
+import React from 'react';
+import './App.css';
+import SignUp from './components/signup/index'
+import LogIn from './components/logIn/index'
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      {/* <SignUp/> */}
+      {/* <LogIn /> */}
+    </div>
+  )
 }
 
 export default App;
