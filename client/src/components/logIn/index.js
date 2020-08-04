@@ -15,7 +15,7 @@ class LogIn extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="login">
                 <h1>
                     Log in
                 </h1>

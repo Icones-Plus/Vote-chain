@@ -1,10 +1,30 @@
-body {
+/* body {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-}
+} */
 .App {
   text-align: center;
 }
 
 input {
   margin-left: 10px;
+}
+
+ h1 {
+   margin-top: 0;
+  color: white;
+  background-color: rgb(62, 164, 204);
+}
+
+form {
+  margin-top: 20vh;
+  padding: 20px;
+
+}
+
+.signup {
+  background-color: rgba(62, 164, 204, 0.2);
+}
+
+.login {
+  background-color: rgba(62, 164, 204, 0.2);
 }
