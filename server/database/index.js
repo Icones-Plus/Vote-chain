@@ -9,6 +9,7 @@ let connection = mongoose
     console.log(err);
   });
 
+
 let userSchema = new mongoose.Schema({
   mobile: Number,
   mother_name: String,
@@ -20,6 +21,8 @@ let userSchema = new mongoose.Schema({
   password: String,
   dateOfBirth: Date,
   voted: Boolean,
+  password: String,
+ 
 });
 
 userSchema.methods.generateHash = function(password){
