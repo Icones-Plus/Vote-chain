@@ -1,12 +1,8 @@
 import React, {Component} from "react";
 import Navigation from "../../components/navigation";
 import Header from "../../components/header";
-import Features from "../../components/features";
 import LogIn from "../../components/logIn/index"
 import About from "../../components/about";
-// import Services from "../../components/services";
-// import Gallery from "../../components/gallery";
-// import Testimonials from "../../components/testimonials";
 import Team from "../../components/Team";
 import Contact from "../../components/contact";
 import JsonData from "../../data/data.json";
