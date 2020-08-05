@@ -220,6 +220,8 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	line-height: 30px;
 	margin: 0 auto;
 	margin-bottom: 60px;
+	    opacity: 0.85;
+	 background-image: radial-gradient(black 78%,#00BCD4);
 }
 header .intro-text {
 	padding-top: 350px;
