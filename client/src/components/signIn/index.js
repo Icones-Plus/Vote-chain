@@ -1,6 +1,6 @@
 import React from 'react';
 
-class LogIn extends React.Component {
+class SignIn extends React.Component {
     state = { id: '', password: '' };
     handleChange = this.handleChange.bind(this);
     handleSubmit = this.handleSubmit.bind(this);
@@ -15,38 +15,38 @@ class LogIn extends React.Component {
 
     render() {
         return (
-          <div id="LogIn">
-            <h1>Log in</h1>
+          <div id="SignIn">
             <form onSubmit={this.handleSubmit}>
-              <label>
+              <h1>Sign in</h1>
+              <label id="id">
                 ID­­­
-                <input
-                  type="number"
-                  name="id"
-                  placeholder=" e.g. 403328682"
-                  value={this.state.id}
-                  onChange={this.handleChange}
-                />
               </label>
-              <label>
+              <input
+                type="number"
+                name="id"
+                placeholder=" e.g. 403328682"
+                value={this.state.id}
+                onChange={this.handleChange}
+              />
+              <label id="password">
                 <br />
                 <br />
                 Password­­
-                <input
-                  type="password"
-                  name="password"
-                  placeholder=""
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                />
               </label>
+              <input
+                type="password"
+                name="password"
+                placeholder=""
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
               <br />
               <br />
-              <input type="submit" value="Log in" />
+              <button type="submit" value="Log in" className="btn-custom"> Sign In </button>
             </form>
           </div>
         );
     }
 }
 
-export default LogIn;
+export default SignIn;

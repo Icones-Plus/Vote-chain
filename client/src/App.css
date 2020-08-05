@@ -36,3 +36,47 @@
     transform: rotate(360deg);
   }
 }
+
+#SignIn form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#SignIn input {
+  margin-left: 15px;
+  border: 2px solid rgba(97, 8, 170, 0.5);
+  border-radius: 4px;
+  font-size: large;
+  height: 60px;
+  width: 500px;
+  color: black;
+}
+#SignIn label {
+  color: black;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#SignIn h1 {
+  padding: 20px;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  margin: 0 0 20px 0;
+  font-weight: 800;
+  font-size: 36px;
+  color: #333;
+}
+#SignIn #id {
+    margin-right: 450px;
+}
+#SignIn #password {
+    margin-right: 385px;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
