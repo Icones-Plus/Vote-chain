@@ -23,28 +23,23 @@ let userSchema = new mongoose.Schema({
   password: String,
 });
 
-
-
-userSchema.methods.comparePassword = function(password){
-  return bcrypt.compareSync(password, this.password)
-}
-
-userSchema.methods.generateHash = function (password) {
-  console.log("here");
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-};
-
-
-
 let cndidateSchema = mongoose.Schema({
   name: String,
   info: String,
 });
 
-
 let userModel = mongoose.model("newUser", userSchema);
-
 let candidateModel = mongoose.model("newCandidate", cndidateSchema);
+
+userSchema.methods.comparePassword = function(password){
+  return bcrypt.compareSync(password, this.password)
+}
+
+userSchema.methods.generateHash = function(password){
+  console.log('here');
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+}
+
 
 module.exports.userModel = userModel;
 module.exports.candidateModel = candidateModel;
