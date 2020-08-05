@@ -206,7 +206,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	font-size: 82px;
 	font-weight: 700;
 	text-transform: uppercase;
-	margin-top: 0;
+    margin-top: -130px;
 	margin-bottom: 10px;
 }
 .intro h1 span {
@@ -220,8 +220,8 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	line-height: 30px;
 	margin: 0 auto;
 	margin-bottom: 60px;
-	    opacity: 0.85;
-	 background-image: radial-gradient(black 78%,#00BCD4);
+	background-image: radial-gradient(#0000004f 78%,transparent);
+    border-radius: 30px;
 }
 header .intro-text {
 	padding-top: 350px;
