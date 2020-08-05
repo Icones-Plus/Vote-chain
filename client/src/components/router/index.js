@@ -5,7 +5,7 @@ import {
     Route
 } from "react-router-dom";
 import SignUp from '../signup/index';
-import LogIn from '../logIn/index';
+import SignIn from '../signIn/index';
 
 function Routing() {
     return (
@@ -21,8 +21,8 @@ function Routing() {
                     <Route path="/signup">
                         <SignUp />
                     </Route>
-                    <Route path="/login">
-                        <LogIn />
+                    <Route path="/signin">
+                        <SignIn />
                     </Route>
                 </Switch>
             </div>
