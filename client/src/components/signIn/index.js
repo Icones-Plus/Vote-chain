@@ -15,7 +15,7 @@ class SignIn extends React.Component {
 
     render() {
         return (
-          <div id="SignIn">
+          <div className="component">
             <form onSubmit={this.handleSubmit}>
               <h1>Sign in</h1>
               <label id="id">

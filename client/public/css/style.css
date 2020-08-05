@@ -156,6 +156,7 @@ width: 70px;
 	font-size: 18px;
 }
 .btn-custom {
+	Outline: none;
 	font-family: 'Raleway', sans-serif;
 	text-transform: uppercase;
 	color: #fff;

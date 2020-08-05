@@ -15,11 +15,10 @@ class SignUp extends React.Component {
 
     render() {
         return (
-            <div className="signup">
-                <h1>
-                    Sign Up
-                </h1>
+            <div className="component">
+                <h1></h1>
                 <form onSubmit={this.handleSubmit}>
+                    <h1>Sign Up</h1>
                     <label>
                         ID
                     <input type="number" name='id' placeholder=' e.g. 403328682' value={this.state.id} onChange={this.handleChange} />

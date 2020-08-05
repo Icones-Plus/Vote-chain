@@ -37,13 +37,13 @@
   }
 }
 
-#SignIn form {
+.component form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#SignIn input {
+.component input {
   margin-left: 15px;
   border: 2px solid rgba(97, 8, 170, 0.5);
   border-radius: 4px;
@@ -52,14 +52,14 @@
   width: 500px;
   color: black;
 }
-#SignIn label {
+.component label {
   color: black;
   font-size: 20px;
   font-weight: 500;
 }
 
-#SignIn h1 {
-  padding: 20px;
+.component h1 {
+  padding: 30px;
   color: rgb(0, 0, 0);
   text-transform: uppercase;
   margin: 0 0 20px 0;
@@ -67,10 +67,10 @@
   font-size: 36px;
   color: #333;
 }
-#SignIn #id {
+.component #id {
     margin-right: 450px;
 }
-#SignIn #password {
+.component #password {
     margin-right: 385px;
 }
 input[type="number"]::-webkit-inner-spin-button,
