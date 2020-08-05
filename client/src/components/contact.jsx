@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 
 export class Contact extends Component {
   render() {
@@ -117,10 +117,8 @@ export class Contact extends Component {
         <div id="footer">
           <div className="container text-center">
             <p>
-              &copy; 2020 Issaaf Kattan React Land Page Template. Design by{" "}
-              <a href="http://www.templatewire.com" rel="nofollow">
-                TemplateWire
-              </a>
+              &copy; 2020 ElecChian Design by Icones Team
+              <a href="https://github.com/Icones-Plus"> Icones</a>
             </p>
           </div>
         </div>

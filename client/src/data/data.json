@@ -1,55 +1,46 @@
 {
-    "Header": {
-
-        "title": "We make the INTEGRITY",
-        "paragraph": "Election app for the specific country. Like everyone over the legal age for election can get to the site and vote for voters. All our ideas are about making an integrity election and no one can change the votes. We will do that by using blockchain."
-
-    },
-    "About": {
-        "paragraph": "Election app for the specific country. Like everyone over the legal age for election can get to the site and vote for voters. All our ideas are about making an integrity election and no one can change the votes. We will do that by using blockchain.",
-        "Why": [
-            "We guarantee integrity.",
-            "Your vote in a safe chain.",
-            "Nobody can use you."
-        ],
-        "Why2": [
-           "You have the right to decide.",
-           "The election will come to you."
-        ]
-    },
-  
-    "Team": [{
-            "img": "img/team/01.jpg",
-            "name": "Ayman Manasra",
-            "job": "Director"
-        },
-        {
-            "img": "img/team/02.jpg",
-            "name": "Ahmed Taybe",
-            "job": "Senior Designer"
-        }, {
-            "img": "img/team/03.jpg",
-            "name": "Karam Qauod",
-            "job": "Senior Designer"
-        },
-        {
-            "img": "img/team/04.jpg",
-            "name": "Mohammed Shikh Ali",
-            "job": "Project Manager"
-        },
-         {
-           "img": "img/team/05.jpg",
-           "name": "Yasmin Hilles",
-           "job": "Project Manager"
-         }
+  "Header": {
+    "title": "We make the INTEGRITY",
+    "paragraph": "Election app for the specific country. Like everyone over the legal age for election can get to the site and vote for voters. All our ideas are about making an integrity election and no one can change the votes. We will do that by using blockchain."
+  },
+  "About": {
+    "paragraph": "Election app for the specific country. Like everyone over the legal age for election can get to the site and vote for voters. All our ideas are about making an integrity election and no one can change the votes. We will do that by using blockchain.",
+    "Why": [
+      "We guarantee integrity.",
+      "Your vote in a safe chain.",
+      "Nobody can use you."
     ],
-    "Contact": {
-        "address": "4321 California St, San Francisco, CA 12345 ",
-        "phone": "+1 123 456 1234",
-        "email": "info@company.com",
-        "facebook": "fb.com",
-        "twitter": "twitter.com",
-        "youtube": "youtube.com"
+    "Why2": ["You have the right to decide.", "The election will come to you."]
+  },
+
+  "Team": [
+    {
+      "img": "img/team/01.jpg",
+      "name": "Ayman Manasra",
+      "job": "Director"
+    },
+    {
+      "img": "img/team/03.jpg",
+      "name": "Karam Qauod",
+      "job": "Senior Designer"
+    },
+    {
+      "img": "img/team/04.jpg",
+      "name": "Mohammed Shikh Ali",
+      "job": "Project Manager"
+    },
+    {
+      "img": "img/team/05.jpg",
+      "name": "Yasmin Hilles",
+      "job": "Project Manager"
     }
-  
+  ],
+  "Contact": {
+    "address": "Gaza, Palstine",
+    "phone": "+972599000000",
+    "email": "info@icones.com",
+    "facebook": "fb.com",
+    "twitter": "twitter.com",
+    "youtube": "youtube.com"
+  }
 }
