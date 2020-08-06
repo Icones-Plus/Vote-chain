@@ -68,10 +68,10 @@
   color: #333;
 }
 .component #id {
-    margin-right: 450px;
+  margin-right: 450px;
 }
 .component #password {
-    margin-right: 385px;
+  margin-right: 385px;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -80,7 +80,6 @@ input[type="number"]::-webkit-outer-spin-button {
   appearance: none;
   margin: 0;
 }
-
 
 .button {
   background-color: rgba(39, 37, 119, 0.658);
@@ -93,6 +92,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .button:hover {
-  background-color:#4c49e0;
+  background-color: #4c49e0;
   color: white;
 }
