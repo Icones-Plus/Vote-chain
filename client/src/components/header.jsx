@@ -21,7 +21,7 @@ export class Header extends Component {
                     className="btn btn-custom btn-lg page-scroll"
                   >
                     Sign in
-                  </a>{" "}
+                  </a>
                 </div>
               </div>
             </div>

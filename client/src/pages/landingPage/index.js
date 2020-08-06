@@ -1,7 +1,7 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Navigation from "../../components/navigation";
 import Header from "../../components/header";
-import SignIn from "../../components/signIn/index"
+import SignIn from "../../components/registeration/index"
 import About from "../../components/about";
 import Team from "../../components/Team";
 import Contact from "../../components/contact";
@@ -12,7 +12,7 @@ export class LandingPage extends Component {
     landingPageData: {},
   };
   getlandingPageData() {
-    this.setState({landingPageData: JsonData});
+    this.setState({ landingPageData: JsonData });
   }
 
   componentDidMount() {
