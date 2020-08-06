@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
+
 let connection = mongoose
   .connect("mongodb://localhost:27017/votedb", { useNewUrlParser: true })
   .then(() => {
@@ -9,14 +10,18 @@ let connection = mongoose
     console.log(err);
   });
 
-let userSchema = mongoose.Schema({
+let userSchema = new mongoose.Schema({
   mobile: Number,
-  motherName: String,
+  mother_name: String,
+  gender: String,
   id: Number,
-  Email: String,
+  email: String,
+  first_name: String,
+  last_name: String,
   password: String,
-  dateOfBirth: Number,
+  dateOfBirth: Date,
   voted: Boolean,
+  password: String,
 });
 
 userSchema.methods.comparePassword = function(password){
@@ -30,8 +35,11 @@ let cndidateSchema = mongoose.Schema({
   info: String,
 });
 
-
 let candidateModel = mongoose.model("newCandidate", cndidateSchema);
+
+userSchema.methods.comparePassword = function (password) {
+  return bcrypt.compareSync(password, this.password);
+};
 
 module.exports.userModel = userModel;
 module.exports.candidateModel = candidateModel;
