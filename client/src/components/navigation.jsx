@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 
 export class Navigation extends Component {
   render() {
@@ -19,7 +19,7 @@ export class Navigation extends Component {
               <span className="icon-bar"></span>{" "}
             </button>
             <a className="navbar-brand page-scroll" href="#page-top">
-              <span className="icon-bar"></span> EleChain{" "}
+              <span className="icon-bar"></span> ElecChain{" "}
               {/* <img className="navbar-brand1" src="./img/logo.png"></img> */}
             </a>{" "}
           </div>
@@ -30,16 +30,16 @@ export class Navigation extends Component {
           >
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <a href="#LogIn" className="page-scroll">
-              Sign in 
+                <a href="#SignIn" className="page-scroll">
+                  Sign in
                 </a>
               </li>
               <li>
                 <a href="#about" className="page-scroll">
                   About
                 </a>
-              </li>           
-                <li>
+              </li>
+              <li>
                 <a href="#team" className="page-scroll">
                   Team
                 </a>
