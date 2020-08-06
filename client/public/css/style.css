@@ -167,7 +167,6 @@ hr {
   font-size: 18px;
 }
 .btn-custom {
-<<<<<<< HEAD
 	Outline: none;
 	font-family: 'Raleway', sans-serif;
 	text-transform: uppercase;
@@ -181,7 +180,7 @@ hr {
 	font-weight: 500;
 	border-radius: 25px;
 	transition: all 0.5s linear;
-	border: 0;
+  border: 0;
 }
 .btn-custom:hover, .btn-custom:focus, .btn-custom.focus, .btn-custom:active, .btn-custom.active {
 	color: #fff;
@@ -197,47 +196,6 @@ hr {
 a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
 	outline: none;
 	outline-offset: none;
-=======
-  font-family: "Raleway", sans-serif;
-  text-transform: uppercase;
-  color: #fff;
-  background-color: #5ca9fb;
-  background-image: linear-gradient(to right, #5ca9fb 0%, #6372ff 100%);
-  padding: 14px 34px;
-  letter-spacing: 1px;
-  margin: 0;
-  font-size: 15px;
-  font-weight: 500;
-  border-radius: 25px;
-  transition: all 0.5s linear;
-  border: 0;
-}
-.btn-custom:hover,
-.btn-custom:focus,
-.btn-custom.focus,
-.btn-custom:active,
-.btn-custom.active {
-  color: #fff;
-  background-image: none;
-  background-color: #6372ff;
-}
-.btn:active,
-.btn.active {
-  background-image: none;
-  outline: 0;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-a:focus,
-.btn:focus,
-.btn:active:focus,
-.btn.active:focus,
-.btn.focus,
-.btn:active.focus,
-.btn.active.focus {
-  outline: none;
-  outline-offset: none;
->>>>>>> a0e74621340ccf1ecf769c172f18ad3ec1297370
 }
 /* Header Section */
 .intro {

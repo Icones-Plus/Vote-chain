@@ -79,7 +79,8 @@ class SignUp extends React.Component {
   render() {
     return (
       this.state.signIn == null ?
-        <div className="component">
+        <div id="SignIn">
+          <div className="component">
           <h1></h1>
           <form onSubmit={this.handleSubmit}>
             <h1>Sign Up</h1>
@@ -107,6 +108,8 @@ class SignUp extends React.Component {
             <p>Go bak to </p> <button className="button" onClick={this.showSignin.bind(this)}>Sign in</button>
           </form>
         </div>
+        </div>
+        
         : this.state.signIn
     );
   }
