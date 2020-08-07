@@ -1,25 +1,29 @@
 var TeleSignSDK = require("telesignsdk");
 var bcrypt = require("bcryptjs");
-const model = require("../database");
+var jwt_decode = require("jwt-decode");
+// const model = require("../database");
 
 // bcrypt.compare("ahmad", incoded, function (err, res) {
 //   console.log("decoded.....", res);
 // });
+
 exports.verfiy = function (req, res) {
-  var { id } = req.headers.cookie.token;
-  const customerId = "120B17B4-DDCA-4D5F-AF61-1D3257D02FD4";
-  const apiKey =
-    "Evu3o78MyT2zXDwH6c0PcCL7Zdn4hqQGIJACK1URC/6MpIUSlVNWagkJGikd1XO8o/0Tr7tO2aXw9kwbDRtOEA==";
+  console.log("\x1b[31m", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+  var jwt = req.header;
+
+  console.log(jwt);
   const rest_endpoint = "https://rest-api.telesign.com";
   const timeout = 10 * 1000;
-
-  const client = new TeleSignSDK(customerId, apiKey, rest_endpoint, timeout);
-
-  const phoneNumber = "970599089478";
+  const saltRounds = 10;
   const message = "you code is: ";
   const messageType = "ARN";
 
-  console.log("## MessagingClient.message ##");
+  const client = new TeleSignSDK(
+    process.env.customerId,
+    process.env.apiKey,
+    rest_endpoint,
+    timeout
+  );
 
   function messageCallback(error, responseBody) {
     if (error === null) {
@@ -32,19 +36,28 @@ exports.verfiy = function (req, res) {
       console.error("Unable to send message. " + error);
     }
   }
-  client.sms.message(messageCallback, phoneNumber, message, messageType);
-
-  const saltRounds = 10;
+  // client.sms.message(messageCallback, phoneNumber, message, messageType);
 
   bcrypt.genSalt(saltRounds, function (err, salt) {
-    bcrypt.hash(id, salt, function (err, hash) {
+    bcrypt.hash("111", salt, function (err, hash) {
+      if (err) {
+        throw new Error(err);
+      }
+      console.log("my hash....................................", hash);
+      bcrypt.compare("111", hash, function (err, res) {
+        if (err) {
+          throw new Error(err);
+        }
+        console.log("decoded result ===========>", res);
+      });
+
       var code = hash.slice(hash.length - 5, hash.length);
-      client.sms.message(
-        messageCallback,
-        phoneNumber,
-        message + code,
-        messageType
-      );
+      // client.sms.message(
+      //   messageCallback,
+      //   process.env.phoneNumber,
+      //   message + code,
+      //   messageType
+      // );
     });
   });
 };

@@ -1,50 +1,54 @@
-const model = require('../../database/index');
+const model = require("../../database/index");
 const UserModel = model.userModel;
 const UserSessionModel = model.UserSessionModel;
-const { sign } = require('jsonwebtoken')
-exports.login = function(req, res){
+const { sign } = require("jsonwebtoken");
+exports.login = function (req, res) {
   let { body } = req;
   let { id, password } = body;
 
-  if(!id){
+  if (!id) {
     return res.send({
       success: false,
-      message: 'id cannot be blank'
-    })
+      message: "id cannot be blank",
+    });
   }
 
-  if(!password){
+  if (!password) {
     return res.send({
       success: false,
-      message: 'password cannot be blank'
-    })
+      message: "password cannot be blank",
+    });
   }
 
-  UserModel.find({ id: id }).then(
-    result => {
+  UserModel.find({
+    id: id,
+  })
+    .then((result) => {
+      console.log(result, "result");
       let user = result[0];
-      if(!user.comparePassword(password)){
+      if (!user.comparePassword(password)) {
         return res.send({
           success: false,
-          message: 'Error: password is incorrect'
-        })
+          message: "Error: password is incorrect",
+        });
       }
       var payload = {
         id: result.id,
         email: result.email,
-        password: result.password
-      }
-      // const newSession = new UserSessionModel();
-      // newSession.userId = user._id;
+        password: result.password,
+      };
       sign(payload, process.env.SECRET, (err, token) => {
-        if(err){
-          res.status(401).json('Error: server error')
+        if (err) {
+          res.status(401).json("Error: server error");
         } else {
-          res.cookie('jwt', token, { maxAge: 6048000000 });
-          res.send('login cookie set')
+          res.cookie("jwt", token, {
+            maxAge: 6048000000,
+          });
+          res.send("login cookie set");
         }
-      })}
-  ).catch(err => {
-    console.log('Err: ', err);
-  })
-}
+      });
+    })
+    .catch((err) => {
+      console.log("Err: ", err);
+    });
+};
