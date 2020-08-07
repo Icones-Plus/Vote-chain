@@ -6,12 +6,11 @@ var jwt_decode = require("jwt-decode");
 // bcrypt.compare("ahmad", incoded, function (err, res) {
 //   console.log("decoded.....", res);
 // });
-
 exports.verfiy = function (req, res) {
   console.log("\x1b[31m", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-  var jwt = req.header;
+  var { jwt } = req.headers.cookie;
 
-  console.log(jwt);
+  // console.log(jwt_decode(jwt));
   const rest_endpoint = "https://rest-api.telesign.com";
   const timeout = 10 * 1000;
   const saltRounds = 10;
@@ -39,25 +38,33 @@ exports.verfiy = function (req, res) {
   // client.sms.message(messageCallback, phoneNumber, message, messageType);
 
   bcrypt.genSalt(saltRounds, function (err, salt) {
-    bcrypt.hash("111", salt, function (err, hash) {
-      if (err) {
-        throw new Error(err);
-      }
-      console.log("my hash....................................", hash);
-      bcrypt.compare("111", hash, function (err, res) {
+    bcrypt.hash(
+      JSON.stringify({
+        sub: "1234567890",
+        name: "John Doe",
+        iat: 1516239022,
+      }),
+      salt,
+      function (err, hash) {
         if (err) {
           throw new Error(err);
         }
-        console.log("decoded result ===========>", res);
-      });
 
-      var code = hash.slice(hash.length - 5, hash.length);
-      // client.sms.message(
-      //   messageCallback,
-      //   process.env.phoneNumber,
-      //   message + code,
-      //   messageType
-      // );
-    });
+        // bcrypt.compare("111", hash, function (err, res) {
+        //   if (err) {
+        //     throw new Error(err);
+        //   }
+        //   console.log("decoded result ===========>", res);
+        // });
+
+        var code = hash.slice(hash.length - 5, hash.length);
+        // client.sms.message(
+        //   messageCallback,
+        //   process.env.phoneNumber,
+        //   message + code,
+        //   messageType
+        // );
+      }
+    );
   });
 };
