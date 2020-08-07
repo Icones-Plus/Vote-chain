@@ -9,8 +9,20 @@ class SignIn extends React.Component {
   };
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({ id: '', password: '' })
     //Axios request goes here
+    axios.get('/', {
+      params: {
+        id: this.state.id,
+        password: this.state.password
+      }
+    })
+      .then(function (response) {
+        console.log("Success  sign in", response.data);
+      })
+      .catch(function (error) {
+        console.log("Error Get request on sign in compoenet", error);
+      });
+    this.setState({ id: '', password: '' })
   };
   showSignupForm() {
     this.setState({
@@ -61,7 +73,7 @@ class SignIn extends React.Component {
 
 
 class SignUp extends React.Component {
-  state = { id: '', first_name: '', last_name:'', email: '', phoneNumber: '', dateOfBirth: '', gender: '', motherName: '', signIn: null };
+  state = { id: '', first_name: '', last_name: '', email: '', phoneNumber: '', dateOfBirth: '', gender: '', motherName: '', signIn: null };
   handleChange = this.handleChange.bind(this);
   handleSubmit = this.handleSubmit.bind(this);
   handleChange(event) {
@@ -69,9 +81,8 @@ class SignUp extends React.Component {
   };
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({ id: '', first_name: '', last_name: '', email: '', phoneNumber: '', dateOfBirth: '', gender: '', motherName: '' })
     //Axios request goes here
-    axios.post('/', {
+    axios.post('/signup', {
       mobile: this.state.phoneNumber,
       mother_name: this.state.motherName,
       gender: this.state.gender,
@@ -81,12 +92,13 @@ class SignUp extends React.Component {
       last_name: this.state.last_name,
       dateOfBirth: this.state.dateOfBirth
     })
-    .then(function (response) {
-      console.log("Sign up data got sent", response);
-    })
-    .catch(function (error) {
-      console.log("Failed to send sign up data", error);
-    });
+      .then(function (response) {
+        console.log("Sign up data got sent", response);
+      })
+      .catch(function (error) {
+        console.log("Failed to send sign up data", error);
+      });
+    this.setState({ id: '', first_name: '', last_name: '', email: '', phoneNumber: '', dateOfBirth: '', gender: '', motherName: '' })
   };
   showSignin() {
     this.setState({
@@ -98,11 +110,11 @@ class SignUp extends React.Component {
       this.state.signIn == null ?
         <div id="SignIn">
           <div className="component">
-          <h1></h1>
-          <form onSubmit={this.handleSubmit}>
-            <h1>Sign Up</h1>
-            <label>
-              ID
+            <h1></h1>
+            <form onSubmit={this.handleSubmit}>
+              <h1>Sign Up</h1>
+              <label>
+                ID
             <input type="number" name="id" placeholder=' e.g. 403328682' value={this.state.id} onChange={this.handleChange} />
               </label><br /><br />
               <label>
@@ -113,16 +125,16 @@ class SignUp extends React.Component {
                 Last Name
             <input type="text" name="last_name" placeholder=' Smith ' value={this.state.last_name} onChange={this.handleChange} />
               </label>
-            <label><br /><br />
+              <label><br /><br />
             Email
           <input type="email" name='email' placeholder=' e.g. jsmith@gmail.com' value={this.state.email} onChange={this.handleChange} />
-            </label><br /><br />
-            <label>
-              Phone Number
+              </label><br /><br />
+              <label>
+                Phone Number
             <input type="number" name='phoneNumber' placeholder=' 05********' value={this.state.phoneNumber} onChange={this.handleChange} />
-            </label> <br /> <br />
-            <label>
-              Date Of Birth
+              </label> <br /> <br />
+              <label>
+                Date Of Birth
             <input type="date" name='dateOfBirth' value={this.state.dateOfBirth} onChange={this.handleChange} />
               </label> <br /><br />
               <label>
@@ -133,16 +145,16 @@ class SignUp extends React.Component {
                   <option value="female"> Female </option>
                 </select>
               </label> <br /><br />
-            <label>
-              Mother Name
+              <label>
+                Mother Name
             <input type="text" name='motherName' placeholder=' e.g. Huda' value={this.state.motherName} onChange={this.handleChange} />
-            </label><br /><br />
+              </label><br /><br />
               <input type="submit" value="Sign up" /><br /><br />
-            <p>Go bak to <button className="button" onClick={this.showSignin.bind(this)}>Sign in</button></p> 
-          </form>
+              <p>Go bak to <button className="button" onClick={this.showSignin.bind(this)}>Sign in</button></p>
+            </form>
+          </div>
         </div>
-        </div>
-        
+
         : this.state.signIn
     );
   }
