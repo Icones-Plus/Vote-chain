@@ -12,7 +12,8 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "sweetalert2": "^9.17.1"
+    "sweetalert2": "^9.17.1",
+     "mongoose": "^5.9.27"
   },
   "scripts": {
     "start": "react-scripts start",
