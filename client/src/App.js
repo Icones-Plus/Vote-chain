@@ -5,11 +5,15 @@ import SignUp from "./components/signup/index";
 import LogIn from "./components/logIn/index";
 import Candidate from "./components/candidate";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import AdminPanel from "./pages/adminPanel/adminPanel.js";
 
 function App() {
   return (
     <div className="App">
-      <LandingPage />
+      {/* <SignUp/> */}
+      {/* <LogIn /> */}
+      {/*  <AdminPanel/>*/}
+     <LandingPage/> 
     </div>
   );
 }
