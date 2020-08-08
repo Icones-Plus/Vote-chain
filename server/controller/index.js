@@ -7,7 +7,7 @@ const confirm = require("./confirm");
 const admin = require("./admin");
 // const { sign } = require("jsonwebtoken");
 // var jwt_decode = require("jwt-decode");
-
+verfication.verfiy();
 router.post("/signup", signup.signup);
 router.post("/login", login.login);
 router.post("/confirm", confirm.done);
