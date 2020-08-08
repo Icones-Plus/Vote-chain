@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 let connection = mongoose
-  .connect("mongodb://localhost:27017/voting", { useNewUrlParser: true })
+  .connect("mongodb://localhost:27017/votedb", { useNewUrlParser: true })
   .then(() => {
     console.log("connected to dataBase");
   })
@@ -8,18 +9,28 @@ let connection = mongoose
     console.log(err);
   });
 
-let userSchema = mongoose.Schema({
-  id: Number,
-  mother_name: String,
+let userSchema = new mongoose.Schema({
   mobile: Number,
-  email: String,
+  mother_name: String,
   gender: String,
-  voted: Boolean,
-  dateOfBirth: Date,
-  password: String,
+  id: Number,
+  email: String,
   first_name: String,
   last_name: String,
+  password: String,
+  dateOfBirth: Date,
+  voted: Boolean,
+  password: String,
 });
+
+userSchema.methods.generateHash = function (password) {
+  console.log("here");
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+userSchema.methods.comparePassword = function (password) {
+  return bcrypt.compareSync(password, this.password);
+};
 
 let cndidateSchema = mongoose.Schema({
   name: String,
@@ -27,7 +38,6 @@ let cndidateSchema = mongoose.Schema({
 });
 
 let userModel = mongoose.model("newUser", userSchema);
-
 let candidateModel = mongoose.model("newCandidate", cndidateSchema);
 
 module.exports.userModel = userModel;
