@@ -28,7 +28,6 @@ export class LandingPage extends Component {
         <About data={this.state.landingPageData.About} />
         <Team data={this.state.landingPageData.Team} />
         <Contact data={this.state.landingPageData.Contact} />
-        <AdminPanel/>
       </div>
     );
   }
