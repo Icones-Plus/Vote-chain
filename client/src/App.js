@@ -9,15 +9,6 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      {/* <SignUp/> */}
-      {/* <LogIn /> */}
-      <Router>
-        <Switch>
-          <LandingPage path="/" exact />
-          <Candidate path="/candidate" />
-        </Switch>
-      </Router>
-      {/* <LandingPage /> */}
     </div>
   );
 }
