@@ -14,15 +14,14 @@ function Candidate() {
     }
   };
   const sendCodeToMobile = () => {
-    // return axios
-    //   .get("/verify")
-    //   .then(() => {
-    //     console.log("code is sent");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-    console.log("hii");
+    return axios
+      .get("http://localhost:4000/verfiy")
+      .then((res) => {
+        console.log("code is sent", res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const confirm = () => {
@@ -37,11 +36,15 @@ function Candidate() {
       showLoaderOnConfirm: true,
       preConfirm: (code) => {
         setCode(code);
-        return axios
-          .post("/confirm", {code})
+        axios({
+          method: "post",
+          url: "http://localhost:4000/confirm",
+          data: {
+            code,
+          },
+        })
           .then((response) => {
-            console.log(code);
-            if (response.succses) {
+            if (response.data.succses) {
               isVoted();
             }
             // return response.json();

@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
 let connection = mongoose
-  .connect("mongodb://localhost:27017/votedb", { useNewUrlParser: true })
+  .connect("mongodb://localhost:27017/votedb", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("connected to dataBase");
   })
@@ -22,20 +25,21 @@ let userSchema = new mongoose.Schema({
   dateOfBirth: Date,
   voted: Boolean,
   password: String,
+  admin: Boolean,
 });
 
-userSchema.methods.comparePassword = function(password){
-  return bcrypt.compareSync(password, this.password)
-}
+userSchema.methods.comparePassword = function (password) {
+  return bcrypt.compareSync(password, this.password);
+};
 let userModel = mongoose.model("newUser", userSchema);
 
-
-let cndidateSchema = mongoose.Schema({
+let candidateSchema = mongoose.Schema({
   name: String,
-  info: String,
+  description: String,
+  img: String,
 });
 
-let candidateModel = mongoose.model("newCandidate", cndidateSchema);
+let candidateModel = mongoose.model("newCandidate", candidateSchema);
 
 userSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.password);
