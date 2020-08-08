@@ -1,9 +1,7 @@
 const model = require('../../database/index');
 const UserModel = model.userModel;
 const UserSessionModel = model.UserSessionModel;
-const {
-	sign
-} = require('jsonwebtoken')
+const { sign } = require('jsonwebtoken')
 exports.login = function (req, res) {
 	let { body } = req;
 	let { id, password } = body;

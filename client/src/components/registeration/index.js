@@ -1,5 +1,7 @@
 import React from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import CreatePassword from '../createPassword';
+// import { createPassword } from '../../../../server/middlewares/createPassword.js';
 class SignIn extends React.Component {
   state = { id: '', password: '', component: null };
   handleChange = this.handleChange.bind(this);
@@ -10,7 +12,7 @@ class SignIn extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     //Axios request goes here
-    axios.get('/', {
+    axios.get('/login', {
       params: {
         id: this.state.id,
         password: this.state.password
@@ -78,22 +80,29 @@ class SignUp extends React.Component {
   handleSubmit = this.handleSubmit.bind(this);
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
+    // <CreatePassword idd={this.state.id} />
   };
   handleSubmit(event) {
     event.preventDefault();
+    const idd = this.state.id;
     //Axios request goes here
     axios.post('/signup', {
-      mobile: this.state.phoneNumber,
-      mother_name: this.state.motherName,
-      gender: this.state.gender,
-      id: this.state.id,
-      email: this.state.email,
-      first_name: this.state.first_name,
-      last_name: this.state.last_name,
-      dateOfBirth: this.state.dateOfBirth
+      // mobile: this.state.phoneNumber,
+      // mother_name: this.state.motherName,
+      id: this.state.id
+      // email: this.state.email,
+      // dateOfBirth: this.state.dateOfBirth
     })
-      .then(function (response) {
-        console.log("Sign up data got sent", response);
+      .then((response) => {
+        console.log('Data of sign up request nfdfd ', response.data);
+
+        if (response.data.success) {
+          this.setState({
+            signIn: <CreatePassword id={idd} />
+          })
+        } else {
+          console.log("Can't redierect to create password");
+        }
       })
       .catch(function (error) {
         console.log("Failed to send sign up data", error);

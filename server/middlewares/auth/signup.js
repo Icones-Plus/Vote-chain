@@ -5,16 +5,18 @@ const { sign } = require('jsonwebtoken');
 
 const UserModel = model.userModel;
 exports.signup = function (req, res) {
+
 	const { body } = req;
 
-	let { id, password } = body;
-
-	if (!password) {
-		return res.send({
-			success: false,
-			message: 'password cannot be blank'
-		})
-	}
+	let { id } = body;
+	const jwt = req.headers;
+	console.log('d', id);
+	// if (!password) {
+	// 	return res.send({
+	// 		success: false,
+	// 		message: 'password cannot be blank'
+	// 	})
+	// }
 
 	if (!id) {
 		return res.send({
@@ -22,6 +24,14 @@ exports.signup = function (req, res) {
 			message: 'id cannot be blank'
 		})
 	}
+	else if (id) {
+		res.send({
+			success: true,
+			message: 'id is here'
+
+		})
+	}
+
 
 	function generateHash(password) {
 		return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
@@ -32,6 +42,7 @@ exports.signup = function (req, res) {
 	}, {
 		password: newPassword
 	}).then(result => {
+		console.log(';nside th fin');
 		var payload = {
 			id: result._id
 		}
@@ -39,6 +50,7 @@ exports.signup = function (req, res) {
 			if (err) {
 				console.log('Err: ', err);
 			} else {
+				console.log('kjjjj');
 				res.cookie('jwt', token, {
 					maxAge: 6048000000
 				})
