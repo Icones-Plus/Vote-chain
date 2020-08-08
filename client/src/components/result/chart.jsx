@@ -5,7 +5,7 @@ class Chart extends React.Component {
         super(props);
         this.state = {
             chartData: {
-                labels: ['Ayman', 'karam', 'Moh', 'Ahmed', 'Yasmin'],
+                labels: ['Ayman', 'Karam', 'Moh', 'Ahmed', 'Yasmin'],
                 datasets: [
                     {
                         // label: 'Number of voters ',
