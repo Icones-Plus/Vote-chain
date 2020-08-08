@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Navigation from "../../components/navigation";
 import Header from "../../components/header";
 import LogIn from "../../components/logIn/index";
@@ -6,14 +6,14 @@ import About from "../../components/about";
 import Team from "../../components/Team";
 import Contact from "../../components/contact";
 import JsonData from "../../data/data.json";
-import AdminPanel from  "../adminPanel/adminPanel.js"
+import AdminPanel from "../adminPanel/adminPanel.js"
 
 export class LandingPage extends Component {
   state = {
     landingPageData: {},
   };
   getlandingPageData() {
-    this.setState({landingPageData: JsonData});
+    this.setState({ landingPageData: JsonData });
   }
 
   componentDidMount() {
@@ -28,7 +28,7 @@ export class LandingPage extends Component {
         <About data={this.state.landingPageData.About} />
         <Team data={this.state.landingPageData.Team} />
         <Contact data={this.state.landingPageData.Contact} />
-        <AdminPanel/>
+        <AdminPanel />
       </div>
     );
   }

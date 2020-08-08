@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import Result from "./pages/result/index"
 import LandingPage from "./pages/landingPage/index"
 import SignUp from "./components/signup/index";
 import LogIn from "./components/logIn/index";
@@ -9,8 +10,8 @@ function App() {
     <div className="App">
       {/* <SignUp/> */}
       {/* <LogIn /> */}
-      <AdminPanel/>
-      {/* <LandingPage/> */}
+      {/* <AdminPanel/> */}
+      <Result/>
     </div>
   );
 }
