@@ -15,9 +15,9 @@ function Candidate() {
   };
   const sendCodeToMobile = () => {
     return axios
-      .get("/verfiy")
-      .then(() => {
-        console.log("code is sent");
+      .get("http://localhost:4000/verfiy")
+      .then((res) => {
+        console.log("code is sent", res);
       })
       .catch((err) => {
         console.log(err);
@@ -36,11 +36,15 @@ function Candidate() {
       showLoaderOnConfirm: true,
       preConfirm: (code) => {
         setCode(code);
-        return axios
-          .post("/confirm", {code})
+        axios({
+          method: "post",
+          url: "http://localhost:4000/confirm",
+          data: {
+            code,
+          },
+        })
           .then((response) => {
-            console.log(code);
-            if (response.succses) {
+            if (response.data.succses) {
               isVoted();
             }
             // return response.json();

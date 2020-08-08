@@ -5,14 +5,15 @@ const verfication = require("./verificationCode");
 const auth = require("../middlewares/auth/auth");
 const confirm = require("./confirm");
 const admin = require("./admin");
+
 // const { sign } = require("jsonwebtoken");
 // var jwt_decode = require("jwt-decode");
-verfication.verfiy();
 router.post("/signup", signup.signup);
 router.post("/login", login.login);
 router.post("/confirm", confirm.done);
 router.post("/login", login.login);
 router.post("/admin", admin.add);
+router.get("/verfiy", verfication.verfiy);
 // router.use((req, response, next) => {
 //   req.headers.cookie = {
 //     jwt:
@@ -35,5 +36,4 @@ router.post("/admin", admin.add);
 //   next();
 // });
 // router.use(auth);
-router.post("/verfiy", verfication.verfiy);
 module.exports = router;
