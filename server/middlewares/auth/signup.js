@@ -7,12 +7,40 @@ const UserModel = model.userModel;
 exports.signup = function (req, res) {
 	const { body } = req;
 
-	let { id, password } = body;
+	let {
+				id,
+				password,
+				email,
+				mobile,
+				dateOfBirth,
+				mother_name
+			 } = body;
 
 	if (!password) {
 		return res.send({
 			success: false,
 			message: 'password cannot be blank'
+		})
+	}
+
+	if (!mobile) {
+		return res.send({
+			success: false,
+			message: 'mobile cannot be blank'
+		})
+	}
+
+	if (!dateOfBirth) {
+		return res.send({
+			success: false,
+			message: 'dateOfBirth cannot be blank'
+		})
+	}
+
+	if (!mother_name) {
+		return res.send({
+			success: false,
+			message: 'mother_name cannot be blank'
 		})
 	}
 
