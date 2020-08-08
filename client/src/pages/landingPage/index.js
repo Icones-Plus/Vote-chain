@@ -6,7 +6,6 @@ import About from "../../components/about";
 import Team from "../../components/Team";
 import Contact from "../../components/contact";
 import JsonData from "../../data/data.json";
-import AdminPanel from  "../adminPanel/adminPanel.js"
 
 export class LandingPage extends Component {
   state = {
