@@ -11,10 +11,10 @@ class Chart extends React.Component {
                         // label: 'Number of voters ',
                         data: [
                             100,
-                            200,
+                            150,
                             210,
-                            218,
-                            300,
+                            220,
+                            280,
                             ],
                         backgroundColor: [
                             "#57C5C8",
