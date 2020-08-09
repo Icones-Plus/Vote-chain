@@ -1,24 +1,24 @@
 const model = require("../../database/index");
 const UserModel = model.userModel;
 const UserSessionModel = model.UserSessionModel;
-const { sign } = require('jsonwebtoken')
+const { sign } = require("jsonwebtoken");
 exports.login = function (req, res) {
   let { body } = req;
   let { id, password } = body;
 
-	if (!id && !password) {
-		return res.send({
-			success: false,
-			message: 'can not be blank'
-		})
-	}
+  if (!id && !password) {
+    return res.send({
+      success: false,
+      message: "can not be blank",
+    });
+  }
 
-	// if (!password) {
-	// 	return res.send({
-	// 		success: false,
-	// 		message: 'password cannot be blank'
-	// 	})
-	// }
+  // if (!password) {
+  // 	return res.send({
+  // 		success: false,
+  // 		message: 'password cannot be blank'
+  // 	})
+  // }
 
   UserModel.find({
     id: id,
