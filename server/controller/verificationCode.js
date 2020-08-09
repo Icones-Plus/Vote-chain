@@ -28,7 +28,7 @@ exports.verfiy = function (req, res) {
       console.log(
         `Messaging response for messaging phone number: ${process.env.phoneNumber}` +
           ` => code: ${responseBody["status"]["code"]}` +
-          `, description: ${responseBody["status"]["des   cription"]}`
+          `, description: ${responseBody["status"]["des  cription"]}`
       );
     } else {
       console.error("Unable to send message. " + error);
