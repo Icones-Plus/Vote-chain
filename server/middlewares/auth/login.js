@@ -6,19 +6,19 @@ exports.login = function (req, res) {
   let { body } = req;
   let { id, password } = body;
 
-  if (!id) {
-    return res.send({
-      success: false,
-      message: "id cannot be blank",
-    });
-  }
+	if (!id && !password) {
+		return res.send({
+			success: false,
+			message: 'can not be blank'
+		})
+	}
 
-  if (!password) {
-    return res.send({
-      success: false,
-      message: "password cannot be blank",
-    });
-  }
+	// if (!password) {
+	// 	return res.send({
+	// 		success: false,
+	// 		message: 'password cannot be blank'
+	// 	})
+	// }
 
   UserModel.find({
     id: id,

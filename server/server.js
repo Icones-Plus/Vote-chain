@@ -1,6 +1,6 @@
 var express = require("express");
 var path = require("path");
-const db = require("./database/index");
+var cors = require("cors")
 const routes = require("./controller/index");
 const bodyParser = require("body-parser");
 var cors = require("cors");
