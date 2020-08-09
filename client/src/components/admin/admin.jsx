@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 
 export class NavAdmin extends Component {
+  handleClick(e) {
+    this.props.handleToggle(e.target.name);
+  }
   render() {
     return (
       <nav id="menu" className="navbar navbar-default navbar-fixed-top">
@@ -30,13 +33,27 @@ export class NavAdmin extends Component {
           >
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <a href="#addCandidate" className="page-scroll">
+                <a
+                  href="#addCandidate"
+                  className="page-scroll"
+                  name="cand"
+                  onClick={(e) => {
+                    this.handleClick(e);
+                  }}
+                >
                   Add candidate{" "}
                 </a>
               </li>
               <li>
-                <a href="#setting" className="page-scroll">
-                  setting{" "}
+                <a
+                  href="#feedback"
+                  className="page-scroll"
+                  name="feed"
+                  onClick={(e) => {
+                    this.handleClick(e);
+                  }}
+                >
+                  feedback{" "}
                 </a>
               </li>
             </ul>

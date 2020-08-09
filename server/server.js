@@ -1,6 +1,6 @@
 var express = require("express");
 var path = require("path");
-var cors = require("cors")
+var cors = require("cors");
 const routes = require("./controller/index");
 const bodyParser = require("body-parser");
 var cors = require("cors");
@@ -10,7 +10,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 // app.use(express.json());
-
 app.use("/", routes);
 app.use(express.static(path.join(__dirname, "../client/build")));
 

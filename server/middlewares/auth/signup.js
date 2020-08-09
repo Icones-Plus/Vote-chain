@@ -4,30 +4,29 @@ const { sign } = require("jsonwebtoken");
 
 const UserModel = model.userModel;
 exports.signup = function (req, res) {
+  const { body } = req;
 
-	const { body } = req;
-
-	let { id, password } = body;
-	// const jwt = req.headers;
-	// console.log('d', id);
-	if (!id) {
-		return res.send({
-			success: false,
-			message: 'id cannot be blank'
-		})
-	} else if(id){
-		return res.send({
-			success: true,
-			message: 'id here'
-		})
-	}
-	//
-	// if (!password) {
-	// 	return res.send({
-	// 		success: false,
-	// 		message: 'password cannot be blank'
-	// 	})
-	// }
+  let { id, password } = body;
+  // const jwt = req.headers;
+  // console.log('d', id);
+  if (!id) {
+    return res.send({
+      success: false,
+      message: "id cannot be blank",
+    });
+  } else if (id) {
+    return res.send({
+      success: true,
+      message: "id here",
+    });
+  }
+  //
+  // if (!password) {
+  // 	return res.send({
+  // 		success: false,
+  // 		message: 'password cannot be blank'
+  // 	})
+  // }
 
   // function generateHash(password) {
   //   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
