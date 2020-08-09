@@ -7,10 +7,7 @@ exports.login = function (req, res) {
   let { id, password } = body;
 
   if (!id && !password) {
-    return res.send({
-      success: false,
-      message: "can not be blank",
-    });
+    return res.status("401");
   }
 
   // if (!password) {
@@ -24,7 +21,6 @@ exports.login = function (req, res) {
     id: id,
   })
     .then((result) => {
-      console.log(result, "result");
       let user = result[0];
       if (!user.comparePassword(password)) {
         return res.send({
@@ -44,7 +40,10 @@ exports.login = function (req, res) {
           res.cookie("jwt", token, {
             maxAge: 6048000000,
           });
-          res.send("login cookie set");
+          res.send({
+            success: true,
+            message: "done",
+          });
         }
       });
     })

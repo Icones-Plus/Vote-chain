@@ -37,27 +37,27 @@ let candidateSchema = mongoose.Schema({
   description: String,
   img: String,
 });
-const newUser = new userModel({
-  id: "5773380633",
-  mother_name: "Lucias",
-  mobile: 655513768,
-  email: "obarracks1d@prnewswire.com",
-  gender: "Male",
-  voted: false,
-  dateOfBirth: "2/6/2020",
-  password: null,
-  first_name: "Olivier",
-  last_name: "Barracks",
-});
+// const newUser = new userModel({
+//   id: "5773380633",
+//   mother_name: "Lucias",
+//   mobile: 655513768,
+//   email: "obarracks1d@prnewswire.com",
+//   gender: "Male",
+//   voted: false,
+//   dateOfBirth: "2/6/2020",
+//   password: null,
+//   first_name: "Olivier",
+//   last_name: "Barracks",
+// });
 
-newUser
-  .save()
-  .then((result) => {
-    console.log("saved", result);
-  })
-  .catch((err) => {
-    console.log(err, "err in save");
-  });
+// newUser
+//   .save()
+//   .then((result) => {
+//     console.log("saved", result);
+//   })
+//   .catch((err) => {
+//     console.log(err, "err in save");
+//   });
 
 let candidateModel = mongoose.model("newCandidate", candidateSchema);
 
