@@ -8,7 +8,6 @@ class AdminPanel extends Component {
     toggle: true,
   };
   handleToggle(val) {
-    console.log("lllkkk.............................", val);
     this.setState({
       toggle: val,
     });
