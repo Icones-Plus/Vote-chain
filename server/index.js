@@ -1,9 +1,11 @@
 const app = require("./server.js");
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
+// const build = require("./database/build");
 const db = require("./database/index");
 const signup = require('./middlewares/auth/signup');
 dotenv.config();
 const createPassword = require('./middlewares/createPassword');
+
 
 const port = process.env.PORT || 4000;
 

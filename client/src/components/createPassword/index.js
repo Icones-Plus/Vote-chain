@@ -28,6 +28,7 @@ function CreatePassword(props) {
         if(password === password2){
         axios.post(`/createPassword/${id}`, { password }).then(res => {
             console.log("response hereeeeeee", res);
+          window.location.href = "/candidates"
         }).catch(err => {
             console.log(err, "err hereeeeeeee")
         })}

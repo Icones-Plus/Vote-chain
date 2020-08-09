@@ -19,6 +19,7 @@ class SignIn extends React.Component {
     axios.post('/login', user )
       .then(function (response) {
         console.log("Success  sign in", response);
+        window.location.href = "/candidates"
       })
       .catch(function (error) {
         console.log("Error Get request on sign in compoenet", error);
