@@ -82,7 +82,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .button {
-  background-color: rgba(39, 37, 119, 0.658);
+  background-color: rgba(10, 125, 255, 0.659);
   color: rgb(255, 255, 255);
   font-size: 16px;
   border: none;
@@ -92,6 +92,13 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .button:hover {
-  background-color: #4c49e0;
+  background-color: rgba(10, 125, 255, 0.9);
   color: white;
+}
+
+
+#specialHeader {
+  color: rgb(10, 125, 255);
+  font-family: cursive;
+  font-size: 35px;
 }

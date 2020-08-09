@@ -19,7 +19,7 @@ export class Navigation extends Component {
               <span className="icon-bar"></span>{" "}
             </button>
             <a className="navbar-brand page-scroll" href="#page-top">
-              <span className="icon-bar"></span> EleCChain{" "}
+              <span className="icon-bar"></span> Ele<span id= "specialHeader">CC</span>hain{" "}
               {/* <img className="navbar-brand1" src="./img/logo.png"></img> */}
             </a>{" "}
           </div>
