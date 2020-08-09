@@ -1,6 +1,6 @@
 var jwt_decode = require("jwt-decode");
 const { sign } = require("jsonwebtoken");
-const usermodel = require("../database/index");
+const userModel = require("../database/index");
 exports.done = (request, response) => {
   console.log(request.body);
   var incomingCode = request.body.code;
@@ -14,8 +14,12 @@ exports.done = (request, response) => {
     } else {
       var originalCode = token.slice(29, 36);
       if (originalCode === incomingCode) {
-        var result = { succses: true };
-        response.send(result);
+        UserModel.findOneAndUpdate({ id: id }, { voted: true }).then(
+          (result) => {
+            var result = { succses: true };
+            response.send(result);
+          }
+        );
       } else {
         var result = { succses: false };
         response.send(result);
