@@ -5,6 +5,5 @@ mockData.map((e) => {
   var newEntity = new db.userModel(e);
   newEntity.save(function (err) {
     if (err) throw new Error(err);
-    console.log("done");
   });
 });

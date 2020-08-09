@@ -1,7 +1,6 @@
-const model = require('../../database/index.js');
-const bcrypt = require('bcrypt');
-
-const { sign } = require('jsonwebtoken');
+const model = require("../../database/index.js");
+const bcrypt = require("bcrypt");
+const { sign } = require("jsonwebtoken");
 
 const UserModel = model.userModel;
 exports.signup = function (req, res) {
