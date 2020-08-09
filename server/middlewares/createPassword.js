@@ -6,19 +6,26 @@ const UserModel = model.userModel;
 const { sign } = require('jsonwebtoken');
 
 exports.createPassword = function (req, res) {
-    const jwt = req.headers;
-    console.log(jwt, 'jwt hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
+    // const jwt = req.headers;
+    // console.log(jwt, 'jwt hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
     let { body } = req;
-    let { password, id } = body;
+    const { params } = req;
+    console.log(params, 'params');
+    const { id } = params;
+    console.log(id, 'idfromparams555');
+    let { password } = body;
+    // console.log(id, 'iddddddddddddddyyyyyyy');
     function generateHash(password) {
         return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
     }
     newPassword = generateHash(password);
+    console.log(id, 'checkId');
     UserModel.findOneAndUpdate({
         id: id
     }, {
         password: newPassword
     }).then(result => {
+      console.log(result, 'result555555');
         var payload = {
             id: result._id
         }
