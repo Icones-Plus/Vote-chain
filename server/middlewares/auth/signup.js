@@ -8,9 +8,9 @@ exports.signup = function (req, res) {
 
 	const { body } = req;
 
-	let { id } = body;
-	const jwt = req.headers;
-	console.log('d', id);
+	let { id, password } = body;
+	// const jwt = req.headers;
+	// console.log('d', id);
 	// if (!password) {
 	// 	return res.send({
 	// 		success: false,
