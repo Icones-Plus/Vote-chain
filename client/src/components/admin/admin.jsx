@@ -2,11 +2,6 @@ import React, {Component} from "react";
 
 export class NavAdmin extends Component {
   handleClick(e) {
-    console.log(
-      "ffff>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",
-      this.props.data,
-      e.target.name
-    );
     this.props.handleToggle(e.target.name);
   }
   render() {
