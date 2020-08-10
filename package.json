@@ -31,7 +31,8 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "mongoose": "^5.9.27",
-    "telesignsdk": "^2.2.1"
+    "telesignsdk": "^2.2.1",
+    "web3": "^1.2.11"
   },
   "devDependencies": {
     "prettier": "^2.0.5"

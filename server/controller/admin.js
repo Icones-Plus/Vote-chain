@@ -1,6 +1,5 @@
 var model = require("../database/index");
 exports.add = function (req, res) {
-  console.log("hello>>>>>>>>>>>>>");
   var candidate = req.body;
   var newEntity = new model.candidateModel(candidate);
   newEntity.save(function (err) {
@@ -9,4 +8,8 @@ exports.add = function (req, res) {
       res.redirect("/admin");
     }
   });
+};
+
+exports.get = function (req, res) {
+  res.redirect("/admin");
 };

@@ -8,7 +8,6 @@ export class AddCandidate extends Component {
     description: "",
   };
   handleChange = (event) => {
-    console.log(event.target.name, ":", event.target.value);
     this.setState({[event.target.name]: event.target.value});
   };
 
@@ -20,13 +19,12 @@ export class AddCandidate extends Component {
     };
 
     axios
-      .post("http://localhost:4000/admin", {candidate})
+      .post("/admn", {candidate})
       .then((res) => {
-        console.log(res);
         alert("success");
       })
       .catch((err) => {
-        console.log(">>>====================================>>>", err);
+        console.log(("Error", err));
       });
   };
 

@@ -1,7 +1,7 @@
 const model = require("../../database/index");
 const UserModel = model.userModel;
 const UserSessionModel = model.UserSessionModel;
-const { sign } = require("jsonwebtoken");
+const { sign, decode } = require("jsonwebtoken");
 exports.login = function (req, res) {
   let { body } = req;
   let { id, password } = body;
@@ -29,9 +29,9 @@ exports.login = function (req, res) {
         });
       }
       var payload = {
-        id: result.id,
-        email: result.email,
-        password: result.password,
+        id: result[0].id,
+        email: result[0].email,
+        password: result[0].password,
       };
       sign(payload, process.env.SECRET, (err, token) => {
         if (err) {
