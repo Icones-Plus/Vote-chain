@@ -1,6 +1,31 @@
 import React, {Component} from "react";
+import axios from "axios";
 
 export class Contact extends Component {
+  state = {
+    name: "",
+    email: "",
+    message: "",
+  };
+  handleChange = (e) => {
+    this.setState({[e.target.id]: e.target.value});
+  };
+  handleSubmit = (e) => {
+    //some kind of functionality
+    e.preventDefault();
+    axios.post("/contact", this.state)
+    .then((result) => {
+      console.log("Success in sending contact form", result);
+    })
+    .catch((err) => {
+      console.log("Error on the post request of contact", err);
+    });
+    this.setState({
+      name: "",
+      email: "",
+      message: "",
+    });
+  };
   render() {
     return (
       <div>
@@ -15,7 +40,11 @@ export class Contact extends Component {
                     will get back to you as soon as possible.
                   </p>
                 </div>
-                <form name="sentMessage" id="contactForm" noValidate>
+                <form
+                  name="sentMessage"
+                  id="contactForm"
+                  onSubmit={this.handleSubmit.bind(this)}
+                >
                   <div className="row">
                     <div className="col-md-6">
                       <div className="form-group">
@@ -25,6 +54,8 @@ export class Contact extends Component {
                           className="form-control"
                           placeholder="Name"
                           required="required"
+                          value={this.state.name}
+                          onChange={this.handleChange.bind(this)}
                         />
                         <p className="help-block text-danger"></p>
                       </div>
@@ -37,6 +68,8 @@ export class Contact extends Component {
                           className="form-control"
                           placeholder="Email"
                           required="required"
+                          value={this.state.email}
+                          onChange={this.handleChange.bind(this)}
                         />
                         <p className="help-block text-danger"></p>
                       </div>
@@ -50,6 +83,8 @@ export class Contact extends Component {
                       rows="4"
                       placeholder="Message"
                       required
+                      value={this.state.message}
+                      onChange={this.handleChange.bind(this)}
                     ></textarea>
                     <p className="help-block text-danger"></p>
                   </div>

@@ -102,3 +102,34 @@ input[type="number"]::-webkit-outer-spin-button {
   font-family: cursive;
   font-size: 35px;
 }
+
+
+
+table,
+th,
+td {
+  color: black;
+  padding: 10px;
+  border: 2px solid #1c87c9;
+  border-radius: 5px;
+  background-color: transparent;
+  text-align: center;
+}
+
+td:hover {
+  background-color: rgba(14, 152, 238, 0.1);
+}
+
+table, td {
+  font-weight: 400;
+}
+
+table {
+  margin-top: 50px;
+}
+th {
+  border: 2px solid white;
+  font-weight: 500; 
+  color: white;
+  background-color: #1c87c9;
+}
