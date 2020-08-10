@@ -7,7 +7,9 @@ const confirm = require("./confirm");
 const admin = require("./admin");
 const createPassword = require('../middlewares/createPassword');
 const { feedbackModel } = require('./../database/index');
-
+const candidates = require("./candidates");
+const result = require("./result");
+const logout = require("./logout");
 
 // const { sign } = require("jsonwebtoken");
 // var jwt_decode = require("jwt-decode");
@@ -17,7 +19,6 @@ router.post("/confirm", confirm.done);
 router.post("/login", login.login);
 router.post("/admin", admin.add);
 router.get("/verfiy", verfication.verfiy);
-router.post('/createPassword/:id', createPassword.createPassword);
 router.post("/contact", function (req, res) {
     const feedback = new feedbackModel({
         name: req.body.name,
@@ -46,6 +47,12 @@ router.get("/contact", function (req, res) {
             res.send("Something went wrong")
         })
 });
+router.post("/createPassword/:id", createPassword.createPassword);
+router.get("/logout", logout.get);
+router.use(auth);
+router.get("/cand", candidates.get);
+router.get("/res", result.get);
+router.get("/admn", admin.get);
 // router.use((req, response, next) => {
 //   req.headers.cookie = {
 //     jwt:
@@ -67,5 +74,4 @@ router.get("/contact", function (req, res) {
 //   });
 //   next();
 // });
-// router.use(auth);
 module.exports = router;

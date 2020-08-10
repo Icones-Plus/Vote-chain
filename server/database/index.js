@@ -67,7 +67,6 @@ let feedbackModel = mongoose.model("feedback", feedbackSchema);
 //   .catch((err) => {
 //     console.log(err, "err in save");
 //   });
-
 let candidateModel = mongoose.model("newCandidate", candidateSchema);
 
 // userSchema.methods.comparePassword = function (password) {

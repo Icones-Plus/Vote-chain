@@ -9,7 +9,7 @@ const { sign } = require("jsonwebtoken");
 //   console.log("decoded.....", res);
 // });
 exports.verfiy = function (req, res) {
-  // var { jwt } = req.headers.cookie;
+  var jwt = req.headers.cookie.split("=")[1];
   const rest_endpoint = "https://rest-api.telesign.com";
   const timeout = 10 * 1000;
   const saltRounds = 10;
@@ -34,13 +34,14 @@ exports.verfiy = function (req, res) {
       console.error("Unable to send message. " + error);
     }
   }
-  // var { id } = jwt_decode(jwt);
-
-  sign("123", process.env.SECRET, (err, token) => {
+  console.log("tmam ,,,,,,,,,,", jwt_decode(jwt));
+  var { id } = jwt_decode(jwt);
+  sign(id, process.env.SECRET, (err, token) => {
     if (err) {
       res.status(401).json("Error: server error");
     } else {
       var code = token.slice(29, 36);
+      console.log("hello....", code);
       client.sms.message(
         messageCallback,
         process.env.phoneNumber,

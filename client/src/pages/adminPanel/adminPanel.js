@@ -5,7 +5,7 @@ import Feedback from "../../components/admin/feedback";
 
 class AdminPanel extends Component {
   state = {
-    toggle: true,
+    toggle: "cand",
   };
   handleToggle(val) {
     this.setState({
