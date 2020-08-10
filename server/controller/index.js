@@ -6,7 +6,7 @@ const auth = require("../middlewares/auth/auth");
 const confirm = require("./confirm");
 const admin = require("./admin");
 const createPassword = require('../middlewares/createPassword');
-const {feedbackModel} = require('./../database/index');
+const { feedbackModel } = require('./../database/index');
 
 
 // const { sign } = require("jsonwebtoken");
@@ -26,14 +26,14 @@ router.post("/contact", function (req, res) {
     })
     console.log(req.body);
     feedback.save()
-    .then((result) => {
-        console.log("Feedback saved to database", result);
-        res.send("RECIEVED");
-    })
-    .catch((err) => {
-        console.log("ERROR in saving feedback to database", err);
-        res.send("Not recieved")
-    });
+        .then((result) => {
+            console.log("Feedback saved to database", result);
+            res.send("RECIEVED");
+        })
+        .catch((err) => {
+            console.log("ERROR in saving feedback to database", err);
+            res.send("Not recieved")
+        });
 });
 
 router.get("/contact", function (req, res) {
@@ -44,7 +44,7 @@ router.get("/contact", function (req, res) {
         .catch(error => {
             console.log("Not well", error)
             res.send("Something went wrong")
-    })
+        })
 });
 // router.use((req, response, next) => {
 //   req.headers.cookie = {

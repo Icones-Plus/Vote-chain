@@ -128,7 +128,7 @@ table {
   margin-top: 50px;
 }
 th {
-  border: 2px solid white;
+  border: 2px solid rgba(219, 202, 213, 0.111);;
   font-weight: 500;
   color: white;
   background-color: #1c87c9;
@@ -136,4 +136,24 @@ th {
 
 #feedback {
   padding: 20px
+}
+
+.count {
+  background-color: rgba(165, 42, 42, 0.4);
+}
+
+.name {
+  background-color: rgba(97, 10, 212, 0.4);
+}
+
+.email {
+  background-color: rgba(80, 185, 39, 0.4);
+}
+
+.count {
+  background-color: rgba(165, 42, 42, 0.4);
+}
+
+.msg {
+  background-color: rgba(235, 202, 15, 0.4);
 }

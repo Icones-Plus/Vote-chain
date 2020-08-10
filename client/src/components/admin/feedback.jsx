@@ -22,7 +22,7 @@ class Feedback extends React.Component {
     var data = this.state.data || [];
     return (
       <div id="feedback">
-        <h1> Feedback</h1>
+        <h1 style={{color:"black"}}> Feedback</h1>
         <table style={{width: "100%"}}>
           <tr>
             <th style={{padding: "0px"}}>number</th>
@@ -34,10 +34,10 @@ class Feedback extends React.Component {
             this.state.count++;
             return (
               <tr>
-                <td>{this.state.count}</td>
-                <td>{elem.name}</td>
-                <td>{elem.email}</td>
-                <td>{elem.message}</td>
+                <td className="count">{this.state.count}</td>
+                <td className="name">{elem.name}</td>
+                <td className="email">{elem.email}</td>
+                <td className="msg">{elem.message}</td>
               </tr>
             );
           })}

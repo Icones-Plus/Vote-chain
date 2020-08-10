@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
+
 
 export class Contact extends Component {
          state = {
@@ -16,10 +18,19 @@ export class Contact extends Component {
            axios
              .post("/contact", this.state)
              .then((result) => {
-               console.log("Success in sending contact form", result);
+               Swal.fire(
+                 "Done!",
+                 "Thank you for your feedback and honesty. We will make sure to take your opinion into consideration!",
+                 "success"
+               );
              })
              .catch((err) => {
                console.log("Error on the post request of contact", err);
+               Swal.fire({
+                 icon: "error",
+                 title: "Oops...",
+                 text: "Something went wrong!"
+               });
              });
            this.setState({
              name: "",
