@@ -1,6 +1,5 @@
 const model = require("../../database/index.js");
 const bcrypt = require("bcrypt");
-
 const { sign } = require("jsonwebtoken");
 
 const UserModel = model.userModel;
@@ -9,22 +8,17 @@ exports.signup = function (req, res) {
 
   let { id, password } = body;
 
-  // if (!password) {
-  // 	return res.send({
-  // 		success: false,
-  // 		message: 'password cannot be blank'
-  // 	})
-  // }
+  if (!password) {
+    return res.send({
+      success: false,
+      message: "password cannot be blank",
+    });
+  }
 
   if (!id) {
     return res.send({
       success: false,
       message: "id cannot be blank",
-    });
-  } else {
-    return res.send({
-      success: true,
-      message: "id cannot true",
     });
   }
 
