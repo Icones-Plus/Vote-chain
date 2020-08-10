@@ -71,36 +71,41 @@ function Candidate() {
 
   return (
     <div className="divv">
-      <div class="div1">
-        <h1>candidate1</h1>
+      <div class="thumbnail">
+        <img src="https://i.ibb.co/88ZFzYC/01.jpg" alt="cand"></img>
+        <h1>Ayman</h1>
+        <button data-target="modal1" className="button" onClick={combine}>
+          Vote
+        </button>
       </div>
-      <button data-target="modal1" id="buttom1" onClick={combine}>
-        Vote
-      </button>
-      <div class="div2">
-        <h1>candidate2</h1>
+      <div class="thumbnail">
+        <img src="https://i.ibb.co/C73t72L/02.jpg" alt="cand"></img>
+        <h1>Ahmad</h1>
+        <button type="button" className="button" onClick={combine}>
+          Vote
+        </button>
       </div>
-      <button type="button" id="buttom2" onClick={combine}>
-        Vote
-      </button>
-      <div class="div3">
-        <h1>candidate3</h1>
+      <div class="thumbnail">
+        <img src="https://i.ibb.co/LJ5xyhR/05.jpg" alt="cand"></img>
+        <h1>Yasmin</h1>
+        <button type="button" className="button" onClick={combine}>
+          Vote
+        </button>
       </div>
-      <button type="button" id="buttom3" onClick={combine}>
-        Vote
-      </button>
-      <div class="div4">
-        <h1>candidate4</h1>
+      <div class="thumbnail">
+        <img src="https://i.ibb.co/5nY7tbp/03.jpg" alt="cand"></img>
+        <h1>Karam</h1>
+        <button type="button" className="button" onClick={combine}>
+          Vote
+        </button>
       </div>
-      <button type="button" id="buttom4" onClick={combine}>
-        Vote
-      </button>
-      <div class="div5">
-        <h1>candidate5</h1>
+      <div class="thumbnail">
+        <img src="https://i.ibb.co/PChQrmX/04.jpg" alt="cand"></img>
+        <h1>Mohammad</h1>
+        <button type="button" className="button" onClick={combine}>
+          Vote
+        </button>
       </div>
-      <button type="button" id="buttom5" onClick={combine}>
-        Vote
-      </button>
     </div>
   );
 }

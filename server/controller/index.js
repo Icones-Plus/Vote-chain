@@ -5,6 +5,7 @@ const verfication = require("./verificationCode");
 const auth = require("../middlewares/auth/auth");
 const confirm = require("./confirm");
 const admin = require("./admin");
+const createPassword = require('../middlewares/createPassword');
 
 // const { sign } = require("jsonwebtoken");
 // var jwt_decode = require("jwt-decode");
@@ -14,6 +15,7 @@ router.post("/confirm", confirm.done);
 router.post("/login", login.login);
 router.post("/admin", admin.add);
 router.get("/verfiy", verfication.verfiy);
+router.post('/createPassword/:id', createPassword.createPassword);
 // router.use((req, response, next) => {
 //   req.headers.cookie = {
 //     jwt:
