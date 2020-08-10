@@ -10,7 +10,6 @@ exports.done = (request, response) => {
       res.status(401).json("Error: server error");
     } else {
       var originalCode = token.slice(29, 36);
-      console.log(";;;;;;;", incomingCode, originalCode);
       if (originalCode === incomingCode) {
         UserModel.findOneAndUpdate({ id: id }, { voted: true }).then(
           (result) => {
