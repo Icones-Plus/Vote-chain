@@ -43,7 +43,8 @@
   align-items: center;
 }
 
-.component input, select {
+.component input,
+select {
   margin-left: 15px;
   border: 2px solid rgba(97, 8, 170, 0.5);
   border-radius: 4px;
@@ -96,14 +97,11 @@ input[type="number"]::-webkit-outer-spin-button {
   color: white;
 }
 
-
 #specialHeader {
   color: rgba(10, 125, 255, 0.7);
   font-family: cursive;
   font-size: 35px;
 }
-
-
 
 table,
 th,
@@ -114,13 +112,15 @@ td {
   border-radius: 5px;
   background-color: transparent;
   text-align: center;
+  transition: background 200ms linear;
 }
 
 td:hover {
-  background-color: rgba(14, 152, 238, 0.1);
+  background-color: rgba(14, 152, 238, 0.1111);
 }
 
-table, td {
+table,
+td {
   font-weight: 400;
 }
 
@@ -129,7 +129,11 @@ table {
 }
 th {
   border: 2px solid white;
-  font-weight: 500; 
+  font-weight: 500;
   color: white;
   background-color: #1c87c9;
+}
+
+#feedback {
+  padding: 20px
 }

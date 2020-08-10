@@ -6,6 +6,8 @@ const auth = require("../middlewares/auth/auth");
 const confirm = require("./confirm");
 const admin = require("./admin");
 const createPassword = require('../middlewares/createPassword');
+const {feedbackModel} = require('./../database/index');
+
 
 // const { sign } = require("jsonwebtoken");
 // var jwt_decode = require("jwt-decode");
@@ -16,6 +18,34 @@ router.post("/login", login.login);
 router.post("/admin", admin.add);
 router.get("/verfiy", verfication.verfiy);
 router.post('/createPassword/:id', createPassword.createPassword);
+router.post("/contact", function (req, res) {
+    const feedback = new feedbackModel({
+        name: req.body.name,
+        email: req.body.email,
+        message: req.body.message
+    })
+    console.log(req.body);
+    feedback.save()
+    .then((result) => {
+        console.log("Feedback saved to database", result);
+        res.send("RECIEVED");
+    })
+    .catch((err) => {
+        console.log("ERROR in saving feedback to database", err);
+        res.send("Not recieved")
+    });
+});
+
+router.get("/contact", function (req, res) {
+    feedbackModel.find({}).then(output => {
+        console.log("Here goes your data", output)
+        res.send(output)
+    })
+        .catch(error => {
+            console.log("Not well", error)
+            res.send("Something went wrong")
+    })
+});
 // router.use((req, response, next) => {
 //   req.headers.cookie = {
 //     jwt:

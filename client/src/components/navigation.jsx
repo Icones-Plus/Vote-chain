@@ -3,7 +3,7 @@ import React, {Component} from "react";
 export class Navigation extends Component {
   render() {
     return (
-      <nav id="menu" className="navbar navbar-default navbar-fixed-top">
+      <nav id="menu" className="navbar navbar-default">
         <div className="container">
           <div className="navbar-header">
             <button
@@ -19,7 +19,8 @@ export class Navigation extends Component {
               <span className="icon-bar"></span>{" "}
             </button>
             <a className="navbar-brand page-scroll" href="#page-top">
-              <span className="icon-bar"></span> Ele<span id= "specialHeader">CC</span>hain{" "}
+              <span className="icon-bar"></span> Ele
+              <span id="specialHeader">CC</span>hain{" "}
               {/* <img className="navbar-brand1" src="./img/logo.png"></img> */}
             </a>{" "}
           </div>
