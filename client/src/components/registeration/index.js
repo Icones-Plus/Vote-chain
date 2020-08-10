@@ -19,8 +19,9 @@ class SignIn extends React.Component {
     axios
       .post("/login", user)
       .then(function (response) {
-        console.log("Success  sign in", response);
-        window.location.href = "/candidates";
+        if (response.data.success) {
+          window.location.href = "/cand";
+        }
       })
       .catch(function (error) {
         console.log("Error Get request on sign in compoenet", error);
@@ -91,7 +92,6 @@ class SignUp extends React.Component {
   // handleChange = this.handleChange.bind(this);
   handleSubmit = this.handleSubmit.bind(this);
   handleChange(event) {
-    console.log(this.state.id, "hiii mooooooooo");
     this.setState({[event.target.name]: event.target.value});
 
     // <CreatePassword idd={this.state.id} />
@@ -116,7 +116,6 @@ class SignUp extends React.Component {
           this.setState({
             signIn: <CreatePassword id={idd} />,
           });
-          console.log(idd, "hello yasmiiin");
         } else {
           console.log("Can't redierect to create password");
         }
