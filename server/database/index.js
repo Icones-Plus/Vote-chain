@@ -37,6 +37,15 @@ let candidateSchema = mongoose.Schema({
   description: String,
   img: String,
 });
+
+
+let feedbackSchema = mongoose.Schema({
+  name: String,
+  email: String,
+  message: String,
+});
+
+let feedbackModel = mongoose.model("feedback", feedbackSchema);
 // const newUser = new userModel({
 //   id: "5773380633",
 //   mother_name: "Lucias",
@@ -66,3 +75,4 @@ let candidateModel = mongoose.model("newCandidate", candidateSchema);
 
 module.exports.userModel = userModel;
 module.exports.candidateModel = candidateModel;
+module.exports.feedbackModel = feedbackModel;

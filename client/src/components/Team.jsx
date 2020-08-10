@@ -8,8 +8,7 @@ export class Team extends Component {
           <div className="col-md-8 col-md-offset-2 section-title">
             <h2>Meet the Team</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed
-              dapibus leonec.
+              We the software engineers of eleCChain are pleased to answer any questions or concerns you may have.
             </p>
           </div>
           <div id="row">

@@ -39,23 +39,28 @@ function CreatePassword(props) {
     // }
   };
   return (
-    <div>
-      <form onSubmit={onSubmit.bind(this)}>
+    <div style={{
+      padding: "20px",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center"}}>
+      <form className="component" onSubmit={onSubmit.bind(this)}>
         <div className="col-md-6">
           <label>Enter your password</label>{" "}
-          <div className="form-group">
+          <div className="form-group" >
+            <br /> <br />
             <input
               className="form-control"
               type="password"
               onChange={onChange}
-            />
-            <label>Confirm password</label>
+            /><br /> <br />
+            <label>Confirm password</label><br /> <br />
             <input
               type="password"
               onChange={onChange}
               className="form-control"
-            />
-            <button className="button">submit</button>
+            /><br /> <br />
+            <button className="btn-custom">submit</button>
           </div>
         </div>
       </form>

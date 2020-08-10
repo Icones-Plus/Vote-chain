@@ -43,7 +43,8 @@
   align-items: center;
 }
 
-.component input, select {
+.component input,
+select {
   margin-left: 15px;
   border: 2px solid rgba(97, 8, 170, 0.5);
   border-radius: 4px;
@@ -82,7 +83,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .button {
-  background-color: rgba(39, 37, 119, 0.658);
+  background-color: rgba(10, 125, 255, 0.659);
   color: rgb(255, 255, 255);
   font-size: 16px;
   border: none;
@@ -92,6 +93,67 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .button:hover {
-  background-color: #4c49e0;
+  background-color: rgba(10, 125, 255, 0.9);
   color: white;
+}
+
+#specialHeader {
+  color: rgba(10, 125, 255, 0.7);
+  font-family: cursive;
+  font-size: 35px;
+}
+
+table,
+th,
+td {
+  color: black;
+  padding: 10px;
+  border: 2px solid #1c87c9;
+  border-radius: 5px;
+  background-color: transparent;
+  text-align: center;
+  transition: background 200ms linear;
+}
+
+td:hover {
+  background-color: rgba(14, 152, 238, 0.1111);
+}
+
+table,
+td {
+  font-weight: 400;
+}
+
+table {
+  margin-top: 50px;
+}
+th {
+  border: 2px solid rgba(219, 202, 213, 0.111);;
+  font-weight: 500;
+  color: white;
+  background-color: #1c87c9;
+}
+
+#feedback {
+  padding: 20px
+}
+
+.count {
+  background-color: rgba(165, 42, 42, 0.4);
+}
+
+.name {
+  background-color: rgba(97, 10, 212, 0.4);
+}
+
+.email {
+  background-color: rgba(80, 185, 39, 0.4);
+}
+
+.count {
+  background-color: rgba(165, 42, 42, 0.4);
+}
+
+.msg {
+  background-color: rgba(235, 202, 15, 0.4);
 }
