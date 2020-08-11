@@ -8,12 +8,12 @@ exports.signup = function (req, res) {
   let { id, mobile, mother_name } = body;
   // const jwt = req.headers;
   // console.log('d', id);
-  if (!id) {
+  if (!id || !mobile || !mother_name) {
     return res.send({
       success: false,
       message: "id cannot be blank",
     });
-  } else if (id) {
+  } else if (id && mother_name && mobile) {
     return res.send({
       success: true,
       message: "id here",
@@ -22,7 +22,7 @@ exports.signup = function (req, res) {
   //
   // if (!password) {
   // 	return res.send({
-  // 		success: false,
+  // 		success: false,.,c..,.,
   // 		message: 'password cannot be blank'
   // 	})
   // }
