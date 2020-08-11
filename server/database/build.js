@@ -23,10 +23,11 @@ for (let i = 0; i < 10; i++) {
     password: null,
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
+    admin: false,
   });
 
   user.save().then((userRef) => {
-    console.log(`${userRef.name} saved successfully`);
+    console.log(`${userRef.admin} saved successfully`);
     const candidate = new candidateModel({
       name: faker.name.findName(),
       description: faker.lorem.paragraph(),
@@ -34,7 +35,7 @@ for (let i = 0; i < 10; i++) {
     });
 
     candidate.save().then((addressRef) => {
-      console.log(`${userRef.name} lives in ........`);
+      console.log(`${addressRef.name} saved successfully`);
     });
   });
 }

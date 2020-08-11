@@ -23,8 +23,11 @@ exports.createPassword = function (req, res) {
     }
   )
     .then((result) => {
+      console.log(result);
       var payload = {
         id: result.id,
+        firstName: result.first_name,
+        admin: result.admin,
       };
       var token = sign(payload, process.env.SECRET, (err, token) => {
         if (err) {
