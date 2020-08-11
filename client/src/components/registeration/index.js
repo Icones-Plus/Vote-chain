@@ -87,7 +87,7 @@ class SignIn extends React.Component {
 }
 
 class SignUp extends React.Component {
-  state = {id: '', signIn: null};
+  state = {id: "", signIn: null};
   // , first_name: '', last_name: '', email: '', phoneNumber: '', dateOfBirth: '', gender: '', motherName: '', signIn: null };
   // handleChange = this.handleChange.bind(this);
   handleSubmit = this.handleSubmit.bind(this);
