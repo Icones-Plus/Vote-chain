@@ -37,17 +37,26 @@ let candidateSchema = mongoose.Schema({
   description: String,
   img: String,
 });
+
+
+let feedbackSchema = mongoose.Schema({
+  name: String,
+  email: String,
+  message: String,
+});
+
+let feedbackModel = mongoose.model("feedback", feedbackSchema);
 // const newUser = new userModel({
-//   id: "5773380633",
-//   mother_name: "Lucias",
-//   mobile: 655513768,
-//   email: "obarracks1d@prnewswire.com",
-//   gender: "Male",
-//   voted: false,
-//   dateOfBirth: "2/6/2020",
-//   password: null,
-//   first_name: "Olivier",
-//   last_name: "Barracks",
+// id: "5773380633",
+// mother_name: "Lucias",
+// mobile: 655513768,
+// email: "obarracks1d@prnewswire.com",
+// gender: "Male",
+// voted: false,
+// dateOfBirth: "2/6/2020",
+// password: null,
+// first_name: "Olivier",
+// last_name: "Barracks",
 // });
 
 // newUser
@@ -58,7 +67,6 @@ let candidateSchema = mongoose.Schema({
 //   .catch((err) => {
 //     console.log(err, "err in save");
 //   });
-
 let candidateModel = mongoose.model("newCandidate", candidateSchema);
 
 // userSchema.methods.comparePassword = function (password) {
@@ -67,3 +75,4 @@ let candidateModel = mongoose.model("newCandidate", candidateSchema);
 
 module.exports.userModel = userModel;
 module.exports.candidateModel = candidateModel;
+module.exports.feedbackModel = feedbackModel;

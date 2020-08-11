@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 // import React, {Component} from "react";
 import "./style.css";
 import Swal from "sweetalert2";
@@ -15,7 +15,7 @@ function Candidate() {
   };
   const sendCodeToMobile = () => {
     return axios
-      .get("http://localhost:4000/verfiy")
+      .get("/verfiy")
       .then((res) => {
         console.log("code is sent", res);
       })
@@ -38,7 +38,7 @@ function Candidate() {
         setCode(code);
         axios({
           method: "post",
-          url: "http://localhost:4000/confirm",
+          url: "/confirm",
           data: {
             code,
           },
@@ -68,43 +68,58 @@ function Candidate() {
     sendCodeToMobile();
     setTimeout(confirm(), 1000);
   };
-
+  const handlleClick = () => {
+    axios
+      .get("/logout")
+      .then(() => {
+        window.location.href = "/";
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
-    <div className="divv">
-      <div class="thumbnail">
-        <img src="https://i.ibb.co/88ZFzYC/01.jpg" alt="cand"></img>
-        <h1>Ayman</h1>
-        <button data-target="modal1" className="button" onClick={combine}>
-          Vote
-        </button>
-      </div>
-      <div class="thumbnail">
-        <img src="https://i.ibb.co/C73t72L/02.jpg" alt="cand"></img>
-        <h1>Ahmad</h1>
-        <button type="button" className="button" onClick={combine}>
-          Vote
-        </button>
-      </div>
-      <div class="thumbnail">
-        <img src="https://i.ibb.co/LJ5xyhR/05.jpg" alt="cand"></img>
-        <h1>Yasmin</h1>
-        <button type="button" className="button" onClick={combine}>
-          Vote
-        </button>
-      </div>
-      <div class="thumbnail">
-        <img src="https://i.ibb.co/5nY7tbp/03.jpg" alt="cand"></img>
-        <h1>Karam</h1>
-        <button type="button" className="button" onClick={combine}>
-          Vote
-        </button>
-      </div>
-      <div class="thumbnail">
-        <img src="https://i.ibb.co/PChQrmX/04.jpg" alt="cand"></img>
-        <h1>Mohammad</h1>
-        <button type="button" className="button" onClick={combine}>
-          Vote
-        </button>
+    <div>
+      <button type="submit" className="btn-custom" onClick={handlleClick}>
+        Log out
+      </button>
+      <h1 style={{ color: "black", textAlign: "left" }}> Hello, there!</h1>
+      <div className="divv">
+        <div class="thumbnail">
+          <img src="https://i.ibb.co/88ZFzYC/01.jpg" alt="cand"></img>
+          <h1>Ayman</h1>
+          <button data-target="modal1" className="button" onClick={combine}>
+            Vote
+          </button>
+        </div>
+        <div class="thumbnail">
+          <img src="https://i.ibb.co/C73t72L/02.jpg" alt="cand"></img>
+          <h1>Ahmad</h1>
+          <button type="button" className="button" onClick={combine}>
+            Vote
+          </button>
+        </div>
+        <div class="thumbnail">
+          <img src="https://i.ibb.co/LJ5xyhR/05.jpg" alt="cand"></img>
+          <h1>Yasmin</h1>
+          <button type="button" className="button" onClick={combine}>
+            Vote
+          </button>
+        </div>
+        <div class="thumbnail">
+          <img src="https://i.ibb.co/5nY7tbp/03.jpg" alt="cand"></img>
+          <h1>Karam</h1>
+          <button type="button" className="button" onClick={combine}>
+            Vote
+          </button>
+        </div>
+        <div class="thumbnail">
+          <img src="https://i.ibb.co/PChQrmX/04.jpg" alt="cand"></img>
+          <h1>Mohammad</h1>
+          <button type="button" className="button" onClick={combine}>
+            Vote
+          </button>
+        </div>
       </div>
     </div>
   );

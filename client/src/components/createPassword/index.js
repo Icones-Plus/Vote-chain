@@ -9,27 +9,18 @@ function CreatePassword(props) {
   const [password2, setPassword2] = useState("");
 
   const onChange = function (e) {
-    // console.log(idd, 'id mohkrgnjghggjjgndfsjvb');
     setPassword(e.target.value);
     setPassword2(e.target.value);
-    console.log(password);
-    console.log(password2);
   };
 
   const onSubmit = (e) => {
-    console.log(password, "password");
-    console.log(password2, "password2");
-    // console.log('here666');
     e.preventDefault();
-    console.log(id, "idyasmin");
-    // console.log(useState(''), 'useState4444444444444');
-    // console.log(this.props.id, 'this.props.id');
+
     if (password === password2) {
       axios
         .post(`/createPassword/${id}`, {password})
         .then((res) => {
-          console.log("response hereeeeeee", res);
-          window.location.href = "/candidates";
+          window.location.href = "/cand";
         })
         .catch((err) => {
           console.log(err, "err hereeeeeeee");
@@ -48,23 +39,28 @@ function CreatePassword(props) {
     // }
   };
   return (
-    <div>
-      <form onSubmit={onSubmit.bind(this)}>
+    <div style={{
+      padding: "20px",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center"}}>
+      <form className="component" onSubmit={onSubmit.bind(this)}>
         <div className="col-md-6">
           <label>Enter your password</label>{" "}
-          <div className="form-group">
+          <div className="form-group" >
+            <br /> <br />
             <input
               className="form-control"
               type="password"
               onChange={onChange}
-            />
-            <label>Confirm password</label>
+            /><br /> <br />
+            <label>Confirm password</label><br /> <br />
             <input
               type="password"
               onChange={onChange}
               className="form-control"
-            />
-            <button className="button">submit</button>
+            /><br /> <br />
+            <button className="btn-custom">submit</button>
           </div>
         </div>
       </form>

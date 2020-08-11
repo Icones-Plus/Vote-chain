@@ -2,13 +2,10 @@ var jwt_decode = require("jwt-decode");
 const { sign } = require("jsonwebtoken");
 const userModel = require("../database/index");
 exports.done = (request, response) => {
-  console.log(request.body);
   var incomingCode = request.body.code;
-  console.log("heloo  frim  thr other side", incomingCode);
-  // var jwt = request.headers.cookie;
-  // var { id } = jwt_decode(jwt);
-
-  sign("123", process.env.SECRET, (err, token) => {
+  var jwt = request.headers.cookie;
+  var { id } = jwt_decode(jwt);
+  sign(id, process.env.SECRET, (err, token) => {
     if (err) {
       res.status(401).json("Error: server error");
     } else {
