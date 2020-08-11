@@ -1,3 +1,4 @@
+var { decode } = require("jsonwebtoken");
 var model = require("../database/index");
 exports.add = function (req, res) {
   var candidate = req.body;
@@ -11,5 +12,12 @@ exports.add = function (req, res) {
 };
 
 exports.get = function (req, res) {
-  res.redirect("/admin");
+  var jwt = req.headers.cookie ? req.headers.cookie.split("=")[1] : undefined;
+  var { admin } = decode(jwt);
+  console.log("sssss0", admin);
+  if (admin) {
+    res.redirect("/admin");
+  } else {
+    res.status(401).send("<h1>come on youe not admin!</h1>");
+  }
 };
