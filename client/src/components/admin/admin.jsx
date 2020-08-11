@@ -1,8 +1,18 @@
 import React, {Component} from "react";
-
+import axios from "axios";
 export class NavAdmin extends Component {
   handleClick(e) {
     this.props.handleToggle(e.target.name);
+  }
+  handleLogOut() {
+    axios
+      .get("/logout")
+      .then(() => {
+        window.location.href = "/";
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   render() {
     return (
@@ -54,6 +64,18 @@ export class NavAdmin extends Component {
                   }}
                 >
                   feedback{" "}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#addCandidate"
+                  className="page-scroll"
+                  name="cand"
+                  onClick={(e) => {
+                    this.handleLogOut();
+                  }}
+                >
+                  logout{" "}
                 </a>
               </li>
             </ul>

@@ -30,8 +30,8 @@ exports.login = function (req, res) {
       }
       var payload = {
         id: result[0].id,
-        email: result[0].email,
-        password: result[0].password,
+        firstName: result[0].first_name,
+        admin: result[0].admin,
       };
       sign(payload, process.env.SECRET, (err, token) => {
         if (err) {
