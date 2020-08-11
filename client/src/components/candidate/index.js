@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 // import React, {Component} from "react";
 import "./style.css";
 import Swal from "sweetalert2";
@@ -83,7 +83,7 @@ function Candidate() {
       <button type="submit" className="btn-custom" onClick={handlleClick}>
         Log out
       </button>
-      <h1 style={{ color: "black", textAlign: "left" }}> Hello, there!</h1>
+      <h1 style={{color: "black", textAlign: "left"}}> Hello, there!</h1>
       <div className="divv">
         <div class="thumbnail">
           <img src="https://i.ibb.co/88ZFzYC/01.jpg" alt="cand"></img>

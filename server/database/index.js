@@ -38,7 +38,6 @@ let candidateSchema = mongoose.Schema({
   img: String,
 });
 
-
 let feedbackSchema = mongoose.Schema({
   name: String,
   email: String,
@@ -57,6 +56,7 @@ let feedbackModel = mongoose.model("feedback", feedbackSchema);
 //   password: null,
 //   first_name: "Olivier",
 //   last_name: "Barracks",
+//   admin: true,
 // });
 
 // newUser

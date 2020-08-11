@@ -5,8 +5,8 @@ const verfication = require("./verificationCode");
 const auth = require("../middlewares/auth/auth");
 const confirm = require("./confirm");
 const admin = require("./admin");
-const createPassword = require('../middlewares/createPassword');
-const { feedbackModel } = require('./../database/index');
+const createPassword = require("../middlewares/createPassword");
+const { feedbackModel } = require("./../database/index");
 const candidates = require("./candidates");
 const result = require("./result");
 const logout = require("./logout");
@@ -17,35 +17,38 @@ router.post("/signup", signup.signup);
 router.post("/login", login.login);
 router.post("/confirm", confirm.done);
 router.post("/login", login.login);
-router.post("/admin", admin.add);
+router.post("/admn", admin.add);
 router.get("/verfiy", verfication.verfiy);
 router.post("/contact", function (req, res) {
-    const feedback = new feedbackModel({
-        name: req.body.name,
-        email: req.body.email,
-        message: req.body.message
+  const feedback = new feedbackModel({
+    name: req.body.name,
+    email: req.body.email,
+    message: req.body.message,
+  });
+  console.log(req.body);
+  feedback
+    .save()
+    .then((result) => {
+      console.log("Feedback saved to database", result);
+      res.send("RECIEVED");
     })
-    console.log(req.body);
-    feedback.save()
-        .then((result) => {
-            console.log("Feedback saved to database", result);
-            res.send("RECIEVED");
-        })
-        .catch((err) => {
-            console.log("ERROR in saving feedback to database", err);
-            res.send("Not recieved")
-        });
+    .catch((err) => {
+      console.log("ERROR in saving feedback to database", err);
+      res.send("Not recieved");
+    });
 });
 
 router.get("/contact", function (req, res) {
-    feedbackModel.find({}).then(output => {
-        console.log("Here goes your data", output)
-        res.send(output)
+  feedbackModel
+    .find({})
+    .then((output) => {
+      console.log("Here goes your data", output);
+      res.send(output);
     })
-        .catch(error => {
-            console.log("Not well", error)
-            res.send("Something went wrong")
-        })
+    .catch((error) => {
+      console.log("Not well", error);
+      res.send("Something went wrong");
+    });
 });
 router.post("/delete", function (req, res) {
     feedbackModel.deleteOne({ message: req.body.message }).then(success => {
@@ -59,9 +62,9 @@ router.post("/delete", function (req, res) {
 router.post("/createPassword/:id", createPassword.createPassword);
 router.get("/logout", logout.get);
 router.use(auth);
+router.get("/admn", admin.get);
 router.get("/cand", candidates.get);
 router.get("/res", result.get);
-router.get("/admn", admin.get);
 // router.use((req, response, next) => {
 //   req.headers.cookie = {
 //     jwt:
