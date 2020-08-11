@@ -38,16 +38,16 @@ let candidateSchema = mongoose.Schema({
   img: String,
 });
 // const newUser = new userModel({
-//   id: "5773380633",
-//   mother_name: "Lucias",
-//   mobile: 655513768,
-//   email: "obarracks1d@prnewswire.com",
-//   gender: "Male",
-//   voted: false,
-//   dateOfBirth: "2/6/2020",
-//   password: null,
-//   first_name: "Olivier",
-//   last_name: "Barracks",
+// id: "5773380633",
+// mother_name: "Lucias",
+// mobile: 655513768,
+// email: "obarracks1d@prnewswire.com",
+// gender: "Male",
+// voted: false,
+// dateOfBirth: "2/6/2020",
+// password: null,
+// first_name: "Olivier",
+// last_name: "Barracks",
 // });
 
 // newUser

@@ -11,22 +11,20 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Switch>
-          {!document.cookie ? (
-            <Fragment>
-              <Route path="/" component={LandingPage} />
-              <Route path="" component={NotFound} />
-            </Fragment>
-          ) : (
-            <>
-              <Route exact path="/home" render={() => <LandingPage />} />
-              <Route path="/admin" component={AdminPanel} />
-              <Route path="/result" component={Result} />
-              <Route path="/candidates" component={Candidate} />
-              <Route path="" component={NotFound} />
-            </>
-          )}
-        </Switch>
+        {!document.cookie ? (
+          <Switch>
+            <Route path="/" component={LandingPage} />
+            <Route path="*" exact={true} component={NotFound} />
+          </Switch>
+        ) : (
+          <Switch>
+            <Route exact path="/" render={() => <LandingPage />} />
+            <Route path="/admin" component={AdminPanel} />
+            <Route path="/result" component={Result} />
+            <Route path="/candidates" component={Candidate} />
+            <Route path="*" exact={true} component={NotFound} />
+          </Switch>
+        )}
       </BrowserRouter>
     </div>
   );
