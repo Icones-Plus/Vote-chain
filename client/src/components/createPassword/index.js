@@ -25,6 +25,8 @@ function CreatePassword(props) {
         .catch((err) => {
           console.log(err, "err hereeeeeeee");
         });
+    } else {
+      alert("the password not matched");
     }
 
     // if (password === password2) {
@@ -39,27 +41,35 @@ function CreatePassword(props) {
     // }
   };
   return (
-    <div style={{
-      padding: "20px",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center"}}>
+    <div
+      style={{
+        padding: "20px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <form className="component" onSubmit={onSubmit.bind(this)}>
         <div className="col-md-6">
           <label>Enter your password</label>{" "}
-          <div className="form-group" >
+          <div className="form-group">
             <br /> <br />
             <input
               className="form-control"
               type="password"
+              value="pass"
               onChange={onChange}
-            /><br /> <br />
-            <label>Confirm password</label><br /> <br />
+            />
+            <br /> <br />
+            <label>Confirm password</label>
+            <br /> <br />
             <input
               type="password"
+              value="pass1"
               onChange={onChange}
               className="form-control"
-            /><br /> <br />
+            />
+            <br /> <br />
             <button className="btn-custom">submit</button>
           </div>
         </div>

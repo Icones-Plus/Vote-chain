@@ -5,7 +5,7 @@ const { sign } = require("jsonwebtoken");
 const UserModel = model.userModel;
 exports.signup = function (req, res) {
   const { body } = req;
-  let { id, password } = body;
+  let { id, mobile, mother_name } = body;
   // const jwt = req.headers;
   // console.log('d', id);
   if (!id) {

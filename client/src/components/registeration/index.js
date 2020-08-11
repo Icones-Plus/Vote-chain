@@ -87,27 +87,34 @@ class SignIn extends React.Component {
 }
 
 class SignUp extends React.Component {
-  state = {id: '', signIn: null};
-  // , first_name: '', last_name: '', email: '', phoneNumber: '', dateOfBirth: '', gender: '', motherName: '', signIn: null };
-  // handleChange = this.handleChange.bind(this);
+  state = {
+    id: "",
+    signIn: null,
+    first_name: "",
+    last_name: "",
+    email: "",
+    phoneNumber: "",
+    dateOfBirth: "",
+    gender: "",
+    motherName: "",
+    signIn: null,
+  };
+  handleChange = this.handleChange.bind(this);
   handleSubmit = this.handleSubmit.bind(this);
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
-
-    // <CreatePassword idd={this.state.id} />
   }
-  // console.log('id line 88 ', this.state.id)
   handleSubmit(event) {
     event.preventDefault();
     const idd = this.state.id;
     //Axios request goes here
     axios
       .post("/signup", {
-        // mobile: this.state.phoneNumber,
-        // mother_name: this.state.motherName,
+        mobile: this.state.phoneNumber,
+        mother_name: this.state.motherName,
         id: this.state.id,
-        // email: this.state.email,
-        // dateOfBirth: this.state.dateOfBirth
+        email: this.state.email,
+        dateOfBirth: this.state.dateOfBirth,
       })
       .then((response) => {
         console.log("Data of sign up request nfdfd ", response.data);
