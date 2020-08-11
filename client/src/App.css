@@ -115,7 +115,7 @@ td {
   transition: background 200ms linear;
 }
 
-td:hover {
+.finish:hover {
   background-color: rgba(14, 152, 238, 0.1111);
 }
 
@@ -156,4 +156,9 @@ th {
 
 .msg {
   background-color: rgba(235, 202, 15, 0.4);
+  text-align: left;
+}
+
+.finish{
+  background-color: rgba(235, 15, 180, 0.4);
 }

@@ -47,6 +47,15 @@ router.get("/contact", function (req, res) {
             res.send("Something went wrong")
         })
 });
+router.post("/delete", function (req, res) {
+    feedbackModel.deleteOne({ message: req.body.message }).then(success => {
+        console.log("Succesfully deleted", success)
+        res.send(success)
+    }).catch(error => {
+        console.log("Error in deleting from feedback!", error)
+        res.send(error)
+    })
+})
 router.post("/createPassword/:id", createPassword.createPassword);
 router.get("/logout", logout.get);
 router.use(auth);
