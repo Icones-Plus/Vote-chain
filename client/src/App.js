@@ -2,7 +2,6 @@ import React, {Fragment} from "react";
 import "./App.css";
 import Result from "./pages/result/index";
 import LandingPage from "./pages/landingPage/index";
-// import Candidate from "./components/candidate/index";
 import Candidates from "./pages/candidates/candidates";
 import {BrowserRouter, Router, Switch, Route} from "react-router-dom";
 import AdminPanel from "./pages/adminPanel/adminPanel.js";
