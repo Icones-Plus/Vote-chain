@@ -7,6 +7,7 @@ const confirm = require("./confirm");
 const admin = require("./admin");
 const createPassword = require("../middlewares/createPassword");
 const { feedbackModel } = require("./../database/index");
+const { candidateModel } = require("./../database/index");
 const candidates = require("./candidates");
 const result = require("./result");
 const logout = require("./logout");
@@ -65,6 +66,16 @@ router.use(auth);
 router.get("/admn", admin.get);
 router.get("/cand", candidates.get);
 router.get("/res", result.get);
+router.get("/getCands", function (req, res) {
+  candidateModel.find({})
+    .then(success => {
+      console.log("Here are your candidates", success)
+    res.status(200).send(success)
+  })
+  .catch (error => {
+      console.log("Error in retrieving data from database", error)
+    })
+})
 // router.use((req, response, next) => {
 //   req.headers.cookie = {
 //     jwt:

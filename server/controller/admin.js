@@ -14,7 +14,6 @@ exports.add = function (req, res) {
 exports.get = function (req, res) {
   var jwt = req.headers.cookie ? req.headers.cookie.split("=")[1] : undefined;
   var { admin } = decode(jwt);
-  console.log("sssss0", admin);
   if (admin) {
     res.redirect("/admin");
   } else {
