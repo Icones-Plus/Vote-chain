@@ -23,7 +23,6 @@ function App() {
           <Switch>
             <Route exact path="/" render={() => <LandingPage />} />
             <Route path="/result" component={Result} />
-                {/* <Route path="/candidates" component={Candidate} /> */}
                 <Route path="/candidates" component={Candidates} />
             <Route path="*" exact={true} component={NotFound} />
           </Switch>
