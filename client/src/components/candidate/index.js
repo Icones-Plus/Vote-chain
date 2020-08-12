@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import "./style.css";
 import Swal from "sweetalert2";
 import axios from "axios";
-import Footer from './../footer'
 
 function Candidate(props) {
   const [value, setValue] = useState(false);
@@ -89,7 +88,6 @@ function Candidate(props) {
           })
         }
       </div>
-      <Footer />
     </div>
   );
 }

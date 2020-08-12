@@ -2,6 +2,7 @@ import React from 'react';
 import JwtDecode from "jwt-decode";
 import Candidate from '../../components/candidate/index'
 import axios from 'axios'
+import Footer from './../../components/footer'
 
 
 class Candidates extends React.Component {
@@ -42,6 +43,14 @@ class Candidates extends React.Component {
                 </div>
                 <div>
                     <Candidate data={this.state.data} />
+                </div>
+                <div style={{ backgroundColor: "white", padding: "13px" }}>
+                    <div className="container text-center">
+                        <p>
+                            &copy; 2020 ElecChian Design by Icones Team
+                            <a href="https://github.com/Icones-Plus"> Icones</a>
+                        </p>
+                    </div>
                 </div>
             </div >
         )
