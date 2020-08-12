@@ -2,7 +2,7 @@ import React, {Fragment} from "react";
 import "./App.css";
 import Result from "./pages/result/index";
 import LandingPage from "./pages/landingPage/index";
-import Candidate from "./components/candidate/index";
+import Candidates from "./pages/candidates/candidates";
 import {BrowserRouter, Router, Switch, Route} from "react-router-dom";
 import AdminPanel from "./pages/adminPanel/adminPanel.js";
 import NotFound from "./pages/error/error";
@@ -22,7 +22,7 @@ function App() {
           <Switch>
             <Route exact path="/" render={() => <LandingPage />} />
             <Route path="/result" component={Result} />
-            <Route path="/candidates" component={Candidate} />
+                <Route path="/candidates" component={Candidates} />
             <Route path="*" exact={true} component={NotFound} />
           </Switch>
         )}

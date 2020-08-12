@@ -32,19 +32,7 @@ userSchema.methods.comparePassword = function (password) {
 };
 let userModel = mongoose.model("newUser", userSchema);
 
-let candidateSchema = mongoose.Schema({
-  name: String,
-  description: String,
-  img: String,
-});
 
-let feedbackSchema = mongoose.Schema({
-  name: String,
-  email: String,
-  message: String,
-});
-
-let feedbackModel = mongoose.model("feedback", feedbackSchema);
 // const newUser = new userModel({
 //   id: "5773380633",
 //   mother_name: "Lucias",
@@ -67,11 +55,42 @@ let feedbackModel = mongoose.model("feedback", feedbackSchema);
 //   .catch((err) => {
 //     console.log(err, "err in save");
 //   });
-let candidateModel = mongoose.model("newCandidate", candidateSchema);
 
 // userSchema.methods.comparePassword = function (password) {
 //   return bcrypt.compareSync(password, this.password);
 // };
+
+
+let candidateSchema = mongoose.Schema({
+  name: String,
+  description: String,
+  img: String,
+});
+
+let candidateModel = mongoose.model("Candidate", candidateSchema);
+
+// let cand = new candidateModel({
+//   name: "Karam",
+//   description: "Cool guy",
+//   img: "https://i.ibb.co/C73t72L/02.jpg"
+// })
+
+// cand.save()
+//   .then(success => {
+//   console.log("success", success)
+//   })
+//   .catch(err => {
+//   console.log("Error in saving cand", err)
+// })
+
+let feedbackSchema = mongoose.Schema({
+  name: String,
+  email: String,
+  message: String,
+});
+
+let feedbackModel = mongoose.model("feedback", feedbackSchema);
+
 
 module.exports.userModel = userModel;
 module.exports.candidateModel = candidateModel;
