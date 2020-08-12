@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
 let connection = mongoose
-  .connect("mongodb://localhost:27017/votedb", { useNewUrlParser: true })
+  .connect("mongodb://localhost:27017/votedb", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("connected to dataBase");
   })
@@ -22,8 +25,11 @@ let userSchema = new mongoose.Schema({
   dateOfBirth: Date,
   voted: Boolean,
   password: String,
+  admin: Boolean,
 });
-
+userSchema.methods.comparePassword = function (password) {
+  return bcrypt.compareSync(password, this.password);
+};
 let userModel = mongoose.model("newUser", userSchema);
 const newUser = new userModel({
   id: "5773380633",
@@ -47,16 +53,65 @@ userSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.password)
 }
 
-let cndidateSchema = mongoose.Schema({
+// const newUser = new userModel({
+//   id: "5773380633",
+//   mother_name: "Lucias",
+//   mobile: 655513768,
+//   email: "obarracks1d@prnewswire.com",
+//   gender: "Male",
+//   voted: false,
+//   dateOfBirth: "2/6/2020",
+//   password: null,
+//   first_name: "Olivier",
+//   last_name: "Barracks",
+//   admin: true,
+// });
+
+// newUser
+//   .save()
+//   .then((result) => {
+//     console.log("saved", result);
+//   })
+//   .catch((err) => {
+//     console.log(err, "err in save");
+//   });
+
+// userSchema.methods.comparePassword = function (password) {
+//   return bcrypt.compareSync(password, this.password);
+// };
+
+
+let candidateSchema = mongoose.Schema({
   name: String,
-  info: String,
+  description: String,
+  img: String,
 });
 
-let candidateModel = mongoose.model("newCandidate", cndidateSchema);
+let candidateModel = mongoose.model("Candidate", candidateSchema);
 
-userSchema.methods.comparePassword = function (password) {
-  return bcrypt.compareSync(password, this.password);
-};
+// let cand = new candidateModel({
+//   name: "Karam",
+//   description: "Cool guy",
+//   img: "https://i.ibb.co/C73t72L/02.jpg"
+// })
+
+// cand.save()
+//   .then(success => {
+//   console.log("success", success)
+//   })
+//   .catch(err => {
+//   console.log("Error in saving cand", err)
+// })
+
+let feedbackSchema = mongoose.Schema({
+  name: String,
+  email: String,
+  message: String,
+});
+
+let feedbackModel = mongoose.model("feedback", feedbackSchema);
+
 
 module.exports.userModel = userModel;
 module.exports.candidateModel = candidateModel;
+module.exports.feedbackModel = feedbackModel;
