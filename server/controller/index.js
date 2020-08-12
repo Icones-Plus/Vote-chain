@@ -52,13 +52,13 @@ router.get("/contact", function (req, res) {
     });
 });
 router.post("/delete", function (req, res) {
-    feedbackModel.deleteOne({ message: req.body.message }).then(success => {
-        console.log("Succesfully deleted", success)
-        res.send(success)
-    }).catch(error => {
-        console.log("Error in deleting from feedback!", error)
-        res.send(error)
-    })
+  feedbackModel.deleteOne({ message: req.body.message }).then(success => {
+    console.log("Succesfully deleted", success)
+    res.send(success)
+  }).catch(error => {
+    console.log("Error in deleting from feedback!", error)
+    res.send(error)
+  })
 })
 router.post("/createPassword/:id", createPassword.createPassword);
 router.get("/logout", logout.get);
@@ -70,9 +70,9 @@ router.get("/getCands", function (req, res) {
   candidateModel.find({})
     .then(success => {
       console.log("Here are your candidates", success)
-    res.status(200).send(success)
-  })
-  .catch (error => {
+      res.status(200).send(success)
+    })
+    .catch(error => {
       console.log("Error in retrieving data from database", error)
     })
 })

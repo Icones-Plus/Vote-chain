@@ -33,8 +33,8 @@ class Candidates extends React.Component {
     }
     render() {
         return (
-            <div>
-                <div style={{ display: "flex", justifyContent: "space-between", boxShadow: "0px 3px 10px #888888" }}>
+            <div style={{ backgroundColor: "rgba(10, 125, 255, 0.7)" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", boxShadow: "0px 3px 10px rgb(135, 206, 250)", background: "white" }}>
                     <h1 style={{ fontFamily: "Roboto Condensed", color: "black", textAlign: "left", padding: "5px" }}><span style={{ fontSize: "30px" }} id="specialHeader">CC </span> Hello, {JwtDecode(document.cookie).firstName} !</h1>
                     <button style={{ margin: "15px" }} type="submit" className="btn-custom" onClick={this.handlleClick}>
                         Log out

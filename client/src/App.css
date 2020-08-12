@@ -128,14 +128,14 @@ table {
   margin-top: 50px;
 }
 th {
-  border: 2px solid rgba(219, 202, 213, 0.111);;
+  border: 2px solid rgba(219, 202, 213, 0.111);
   font-weight: 500;
   color: white;
   background-color: #1c87c9;
 }
 
 #feedback {
-  padding: 20px
+  padding: 20px;
 }
 
 .count {
@@ -159,6 +159,6 @@ th {
   text-align: left;
 }
 
-.finish{
+.finish {
   background-color: rgba(235, 15, 180, 0.4);
 }
