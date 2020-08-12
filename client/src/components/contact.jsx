@@ -161,7 +161,14 @@ export class Contact extends Component {
             </div>
           </div>
         </div>
-        <Footer />
+        <div>
+          <div className="container text-center" style={{padding:"15px"}}>
+            <p>
+              &copy; 2020 ElecChian Design by Icones Team
+              <a href="https://github.com/Icones-Plus"> Icones</a>
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
