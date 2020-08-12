@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
-
+import Footer from "../footer.jsx"
 export class AddCandidate extends Component {
   state = {
     name: "",
@@ -30,7 +30,9 @@ export class AddCandidate extends Component {
 
   render() {
     return (
-      <div>
+      <div
+        style={{backgroundColor: "rgba(10, 125, 255, 0.659)", padding: "100px"}}
+      >
         <div id="addCandidate">
           <div className="container">
             <div className="col-md-8">
@@ -95,6 +97,7 @@ export class AddCandidate extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
