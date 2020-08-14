@@ -101,17 +101,24 @@ exports.signup = function (req, res) {
                           success: false,
                           message: 'mobile does not match with id'
                         })
-                      } else if(result[0].dateOfBirth.toISOString().substring(0,10)) {
-                        // UserModel.find({first_name: first_name, last_name: last_name, email: email, mobile: mobile }).then(result => {
-                          // console.log(result[0].dateOfBirth.toISOString().substring(0,10), 'date');
+                      } else {
+                        UserModel.find({first_name: first_name, last_name: last_name, email: email, mobile: mobile }).then(result => {
+
                           // console.log(result[0].dateOfBirth, 'dateOfBirth');
                           // if(result.length === 0){
                           //   return res.send({
                           //     success: false,
                           //     message: 'dateOfBirth does not match with id'
                           //   })
-                          // }
-                        // {
+                          // console.log(dateOfBirth);
+                          // console.log(result[0].dateOfBirth.toISOString().substring(0,10), 'dateeeeeeyasm');
+                          if(dateOfBirth !== result[0].dateOfBirth.toISOString().substring(0,10)) {
+
+                            return res.send({
+                            success: false,
+                            message: 'date of birth does not match with id'
+                            })
+                          } else {
                             UserModel.find({first_name: first_name, last_name: last_name, email: email, mobile: mobile, gender: gender}).then(result => {
                               if(result.length === 0){
                                 return res.send({
@@ -139,11 +146,10 @@ exports.signup = function (req, res) {
                               console.log(err, 'err in finding user in db');
                             })
                           }
-                        // })
-                        // .catch(err => {
-                        //   console.log(err, 'err in finding user in db');
-                        // })
-                      // }
+                        }).catch(err => {
+                          console.log(err, 'err in finding user in db');
+                        })
+                      }
                     }).catch(err => {
                       console.log(err, 'err in finding user in db');
                     })

@@ -175,7 +175,7 @@ class SignUp extends React.Component {
             Swal.fire("mobile does not match with id");
         }
 
-        if(response.data.message === "dateOfBirth does not match with id"){
+        if(response.data.message === "date of birth does not match with id"){
             Swal.fire("date of birth does not match with id");
         }
 
