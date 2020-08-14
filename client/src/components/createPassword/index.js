@@ -6,21 +6,28 @@ function CreatePassword(props) {
   console.log(id, "id mohkrgnjghggjjgndfsjvb555555555testtesttest");
   console.log("heyhey");
   const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const onChange = function (e) {
+    console.log('this is another log');
+    console.log(123 === 543, 'eval');
+    // console.log(password === password2);
+    console.log(password, 'password');
+    console.log(confirmPassword, 'confirmPassword');
     setPassword(e.target.value);
-    setPassword2(e.target.value);
+    setConfirmPassword(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    if (password === password2) {
+    // console.log('this is another log');
+    // console.log(password, 'password yasmin');
+    // console.log(password2, 'password2');
+    if (password === confirmPassword) {
       axios
         .post(`/createPassword/${id}`, {password})
         .then((res) => {
-          window.location.href = "/cand";
+          window.location.href = "/candidates";
         })
         .catch((err) => {
           console.log(err, "err hereeeeeeee");

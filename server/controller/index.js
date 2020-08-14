@@ -10,6 +10,8 @@ const { feedbackModel } = require("./../database/index");
 const { candidateModel } = require("./../database/index");
 const candidates = require("./candidates");
 const result = require("./result");
+const getAnalyst = require('./getAnalyst.js');
+const postAnalyst = require('./postAnalyst.js');
 const logout = require("./logout");
 
 // const { sign } = require("jsonwebtoken");
@@ -76,6 +78,9 @@ router.get("/getCands", function (req, res) {
       console.log("Error in retrieving data from database", error)
     })
 })
+
+router.get('/analyst', getAnalyst.getAnalyst)
+router.post('/analyst', postAnalyst.postAnalyst)
 // router.use((req, response, next) => {
 //   req.headers.cookie = {
 //     jwt:

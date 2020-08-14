@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
+require('mongoose-type-url')
 const bcrypt = require("bcrypt");
+
 
 let connection = mongoose
   .connect("mongodb://localhost:27017/votedb", {
@@ -24,7 +26,6 @@ let userSchema = new mongoose.Schema({
   password: String,
   dateOfBirth: Date,
   voted: Boolean,
-  password: String,
   admin: Boolean,
 });
 userSchema.methods.comparePassword = function (password) {
@@ -94,7 +95,7 @@ let candidateModel = mongoose.model("Candidate", candidateSchema);
 //   description: "Cool guy",
 //   img: "https://i.ibb.co/C73t72L/02.jpg"
 // })
-
+//
 // cand.save()
 //   .then(success => {
 //   console.log("success", success)
@@ -111,7 +112,38 @@ let feedbackSchema = mongoose.Schema({
 
 let feedbackModel = mongoose.model("feedback", feedbackSchema);
 
+let analystSchema = mongoose.Schema({
+  first_Name: {
+    type: String
+  },
+  last_Name: {
+    type: String
+  },
+  picture: {
+    type: String
+  },
+  cv: {
+    type: String
+  },
+  linkedIn: {
+    type: String
+  },
+  bio: {
+    type: String
+  },
+  articles: {
+    type: Array
+  },
+  id: {
+    type: Number
+  }
+
+})
+
+let analystModel = mongoose.model('analyst', analystSchema)
+
 
 module.exports.userModel = userModel;
 module.exports.candidateModel = candidateModel;
 module.exports.feedbackModel = feedbackModel;
+module.exports.analystModel = analystModel;

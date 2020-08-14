@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import CreatePassword from "../createPassword";
+import Swal from "sweetalert2";
 //mport { createPassword } from '../../../../server/middlewares/createPassword.js';
 class SignIn extends React.Component {
   state = {id: "", password: "", component: null};
@@ -20,7 +21,7 @@ class SignIn extends React.Component {
       .post("/login", user)
       .then(function (response) {
         if (response.data.success) {
-          window.location.href = "/cand";
+          window.location.href = "/candidates";
         }
       })
       .catch(function (error) {
@@ -73,7 +74,7 @@ class SignIn extends React.Component {
                 className="button"
                 onClick={this.showSignupForm.bind(this)}
               >
-                Sign up
+                Sign up888888888888888
               </button>
             </p>
             ;
@@ -87,11 +88,22 @@ class SignIn extends React.Component {
 }
 
 class SignUp extends React.Component {
-  state = {id: "", signIn: null};
-  // , first_name: '', last_name: '', email: '', phoneNumber: '', dateOfBirth: '', gender: '', motherName: '', signIn: null };
+  state = {
+          id: "",
+          first_name: '',
+          last_name: '',
+          email: '',
+          mobile: '',
+          dateOfBirth: '',
+          gender: '',
+          motherName: '',
+          signIn: null
+        };
+
   // handleChange = this.handleChange.bind(this);
   handleSubmit = this.handleSubmit.bind(this);
   handleChange(event) {
+    console.log(this.state);
     this.setState({[event.target.name]: event.target.value});
 
     // <CreatePassword idd={this.state.id} />
@@ -103,19 +115,83 @@ class SignUp extends React.Component {
     //Axios request goes here
     axios
       .post("/signup", {
-        // mobile: this.state.phoneNumber,
-        // mother_name: this.state.motherName,
+        mobile: this.state.mobile,
+        mother_name: this.state.motherName,
         id: this.state.id,
-        // email: this.state.email,
-        // dateOfBirth: this.state.dateOfBirth
+        email: this.state.email,
+        dateOfBirth: this.state.dateOfBirth,
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        gender: this.state.gender,
       })
       .then((response) => {
         console.log("Data of sign up request nfdfd ", response.data);
+        if(response.data.message === "id cannot be blank"){
+            Swal.fire("id cannot be blank");
+        }
 
-        if (response.data.success) {
-          this.setState({
-            signIn: <CreatePassword id={idd} />,
-          });
+        if(response.data.message === "first name cannot be blank"){
+            Swal.fire("first name cannot be blank");
+        }
+
+        if(response.data.message === "last name cannot be blank"){
+            Swal.fire("last name cannot be blank");
+        }
+
+        if(response.data.message === "email cannot be blank"){
+            Swal.fire("email cannot be blank");
+        }
+
+        if(response.data.message === "mobile cannot be blank"){
+            Swal.fire("mobile cannot be blank");
+        }
+
+        if(response.data.message === "date Of birth cannot be blank"){
+            Swal.fire("date Of birth cannot be blank");
+        }
+
+        if(response.data.message === "gender cannot be blank"){
+            Swal.fire("gender cannot be blank");
+        }
+
+        if(response.data.message === "mother name cannot be blank"){
+            Swal.fire("mother name cannot be blank");
+        }
+
+        if(response.data.message === "user does not exist"){
+            Swal.fire("user does not exist");
+        }
+        if(response.data.message === "first name does not match with id"){
+            Swal.fire("first name does not match with id");
+        }
+        if(response.data.message === "last name does not match with id"){
+            Swal.fire("last name does not match with id");
+        }
+        if(response.data.message === "email does not match with id"){
+            Swal.fire("email does not match with id");
+        }
+
+        if(response.data.message === "mobile does not match with id"){
+            Swal.fire("mobile does not match with id");
+        }
+
+        if(response.data.message === "dateOfBirth does not match with id"){
+            Swal.fire("date of birth does not match with id");
+        }
+
+        if(response.data.message === "mother name does not match with id"){
+            Swal.fire("mother name does not match with id");
+        }
+
+        if(response.data.message === "gender does not match with id"){
+            Swal.fire("gender does not match with id");
+        }
+
+        if(response.data.success && response.data.message === "you successfully signed up. set a password to continue"){
+            Swal.fire("you successfully signed up. set a password to continue");
+            this.setState({
+              signIn: <CreatePassword id={idd} />,
+            });
         } else {
           console.log("Can't redierect to create password");
         }
@@ -128,7 +204,7 @@ class SignUp extends React.Component {
       first_name: "",
       last_name: "",
       email: "",
-      phoneNumber: "",
+      mobile: "",
       dateOfBirth: "",
       gender: "",
       motherName: "",
@@ -164,7 +240,7 @@ class SignUp extends React.Component {
                 name="first_name"
                 placeholder=" John "
                 value={this.state.first_name}
-                onChange={this.handleChange}
+                onChange={this.handleChange.bind(this)}
               />{" "}
             </label>
             <br />
@@ -176,7 +252,7 @@ class SignUp extends React.Component {
                 name="last_name"
                 placeholder=" Smith "
                 value={this.state.last_name}
-                onChange={this.handleChange}
+                onChange={this.handleChange.bind(this)}
               />{" "}
             </label>{" "}
             <label>
@@ -188,7 +264,7 @@ class SignUp extends React.Component {
                 name="email"
                 placeholder=" e.g. jsmith@gmail.com"
                 value={this.state.email}
-                onChange={this.handleChange}
+                onChange={this.handleChange.bind(this)}
               />{" "}
             </label>
             <br />
@@ -197,10 +273,10 @@ class SignUp extends React.Component {
               Phone Number{" "}
               <input
                 type="number"
-                name="phoneNumber"
+                name="mobile"
                 placeholder=" 05********"
-                value={this.state.phoneNumber}
-                onChange={this.handleChange}
+                value={this.state.mobile}
+                onChange={this.handleChange.bind(this)}
               />{" "}
             </label>{" "}
             <br /> <br />{" "}
@@ -210,7 +286,7 @@ class SignUp extends React.Component {
                 type="date"
                 name="dateOfBirth"
                 value={this.state.dateOfBirth}
-                onChange={this.handleChange}
+                onChange={this.handleChange.bind(this)}
               />{" "}
             </label>{" "}
             <br />
@@ -220,7 +296,7 @@ class SignUp extends React.Component {
               <select
                 name="gender"
                 value={this.state.gender}
-                onChange={this.handleChange}
+                onChange={this.handleChange.bind(this)}
               >
                 <option value="none"> </option>
                 <option value="male"> Male </option>
@@ -234,9 +310,9 @@ class SignUp extends React.Component {
               <input
                 type="text"
                 name="motherName"
-                placeholder=" e.g. Huda"
+                placeholder=" e.g. Liza"
                 value={this.state.motherName}
-                onChange={this.handleChange}
+                onChange={this.handleChange.bind(this)}
               />
             </label>
             <br />

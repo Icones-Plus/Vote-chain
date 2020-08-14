@@ -19,7 +19,7 @@ for (let i = 0; i < 10; i++) {
     email: faker.internet.email(),
     gender: faker.random.arrayElement(genders),
     voted: false,
-    dateOfBirth: faker.date.between("1940-01-01", "2002-12-31"),
+    dateOfBirth: faker.date.between("1940-01-01", "2002-12-31")->format('Y-m-d H:i:s'),
     password: null,
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
