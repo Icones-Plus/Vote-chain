@@ -10,6 +10,7 @@ const { feedbackModel } = require("./../database/index");
 const candidates = require("./candidates");
 const result = require("./result");
 const logout = require("./logout");
+const forCandidate = require("./forCandidate");
 
 // const { sign } = require("jsonwebtoken");
 // var jwt_decode = require("jwt-decode");
@@ -56,6 +57,7 @@ router.use(auth);
 router.get("/admn", admin.get);
 router.get("/cand", candidates.get);
 router.get("/res", result.get);
+router.post("/forCandidate", forCandidate.forCandidate);
 // router.use((req, response, next) => {
 //   req.headers.cookie = {
 //     jwt:

@@ -6,6 +6,7 @@ export class AddCandidate extends Component {
     name: "",
     img: "",
     description: "",
+    id: "",
   };
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value});
@@ -16,6 +17,7 @@ export class AddCandidate extends Component {
       name: this.state.name,
       img: this.state.img,
       description: this.state.description,
+      id: this.state.id,
     };
 
     axios
@@ -85,6 +87,21 @@ export class AddCandidate extends Component {
                       onChange={this.handleChange}
                     ></textarea>
                     <p className="help-block text-danger"></p>
+                  </div>
+
+                  <div className="col-md-6">
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        id="idOfCan"
+                        className="form-control"
+                        placeholder="id of candidate"
+                        required="required"
+                        name="id"
+                        onChange={this.handleChange}
+                      />
+                      <p className="help-block text-danger"></p>
+                    </div>
                   </div>
                   <div id="success"></div>
                   <button type="submit" className="btn btn-custom btn-lg">

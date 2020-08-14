@@ -7,7 +7,10 @@ import {BrowserRouter, Router, Switch, Route} from "react-router-dom";
 import AdminPanel from "./pages/adminPanel/adminPanel.js";
 import NotFound from "./pages/error/error";
 import jwtDecode from "jwt-decode";
+import CandidateProfile from "./components/CandidateProfile/index";
+import ForCandidate from "./components/forCandidate/index";
 function App() {
+  // console.log(jwtDecode(document.cookie).admin, "admin hereeeeeeeee");
   return (
     <div className="App">
       <BrowserRouter>
@@ -23,6 +26,8 @@ function App() {
             <Route exact path="/" render={() => <LandingPage />} />
             <Route path="/result" component={Result} />
             <Route path="/candidates" component={Candidate} />
+            <CandidateProfile path="/CandidateProfile" />
+            <ForCandidate path="/forCandidate" />
             <Route path="*" exact={true} component={NotFound} />
           </Switch>
         )}

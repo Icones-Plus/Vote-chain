@@ -1,7 +1,7 @@
 var { decode } = require("jsonwebtoken");
 var model = require("../database/index");
 exports.add = function (req, res) {
-  var candidate = req.body;
+  var { candidate } = req.body;
   var newEntity = new model.candidateModel(candidate);
   newEntity.save(function (err) {
     if (err) throw new Error(err);

@@ -57,7 +57,7 @@ function CreatePassword(props) {
             <input
               className="form-control"
               type="password"
-              value="pass"
+              name="pass"
               onChange={onChange}
             />
             <br /> <br />
@@ -65,7 +65,7 @@ function CreatePassword(props) {
             <br /> <br />
             <input
               type="password"
-              value="pass1"
+              name="pass1"
               onChange={onChange}
               className="form-control"
             />

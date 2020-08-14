@@ -22,7 +22,7 @@ exports.signup = function (req, res) {
   //
   // if (!password) {
   // 	return res.send({
-  // 		success: false,.,c..,.,
+  // 		success: false,
   // 		message: 'password cannot be blank'
   // 	})
   // }
