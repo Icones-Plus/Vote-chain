@@ -1,13 +1,14 @@
 import React from "react";
 import axios from "axios";
 import CreatePassword from "../createPassword";
-//mport { createPassword } from '../../../../server/middlewares/createPassword.js';
+import Swal from 'sweetalert2';
+
 class SignIn extends React.Component {
-  state = {id: "", password: "", component: null};
+  state = { id: "", password: "", component: null };
   handleChange = this.handleChange.bind(this);
   handleSubmit = this.handleSubmit.bind(this);
   handleChange(event) {
-    this.setState({[event.target.name]: event.target.value});
+    this.setState({ [event.target.name]: event.target.value });
   }
   handleSubmit(event) {
     event.preventDefault();
@@ -20,13 +21,28 @@ class SignIn extends React.Component {
       .post("/login", user)
       .then(function (response) {
         if (response.data.success) {
-          window.location.href = "/cand";
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Welcome',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          setTimeout(() => {
+            window.location.href = "/candidates";
+          }, 1100)
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Wrong ID or password',
+            text: 'Please enter a valid ID and a correct password',
+          })
         }
       })
       .catch(function (error) {
         console.log("Error Get request on sign in compoenet", error);
       });
-    this.setState({id: "", password: ""});
+    this.setState({ id: "", password: "" });
   }
   showSignupForm() {
     this.setState({
@@ -81,18 +97,18 @@ class SignIn extends React.Component {
         </div>
       </div>
     ) : (
-      this.state.component
-    );
+        this.state.component
+      );
   }
 }
 
 class SignUp extends React.Component {
-  state = {id: "", signIn: null};
+  state = { id: "", signIn: null };
   // , first_name: '', last_name: '', email: '', phoneNumber: '', dateOfBirth: '', gender: '', motherName: '', signIn: null };
   // handleChange = this.handleChange.bind(this);
   handleSubmit = this.handleSubmit.bind(this);
   handleChange(event) {
-    this.setState({[event.target.name]: event.target.value});
+    this.setState({ [event.target.name]: event.target.value });
 
     // <CreatePassword idd={this.state.id} />
   }
@@ -110,13 +126,18 @@ class SignUp extends React.Component {
         // dateOfBirth: this.state.dateOfBirth
       })
       .then((response) => {
-        console.log("Data of sign up request nfdfd ", response.data);
+        console.log("Data of sign up request ", response.data);
 
         if (response.data.success) {
           this.setState({
             signIn: <CreatePassword id={idd} />,
           });
         } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Please fill all fields with accurate and valid info.',
+          })
           console.log("Can't redierect to create password");
         }
       })
@@ -254,8 +275,8 @@ class SignUp extends React.Component {
         </div>
       </div>
     ) : (
-      this.state.signIn
-    );
+        this.state.signIn
+      );
   }
 }
 

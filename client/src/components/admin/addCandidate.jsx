@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
-import swal from "sweetalert";
+import Footer from "../footer.jsx";
+import Swal from "sweetalert2";
 export class AddCandidate extends Component {
   state = {
     name: "",
@@ -17,9 +18,11 @@ export class AddCandidate extends Component {
       img: this.state.img,
       description: this.state.description,
     };
-
-    axios
-      .post("/admn", {candidate})
+    axios({
+      method: "post",
+      url: "/admn",
+      data: candidate,
+    })
       .then((res) => {
         alert("done");
       })
@@ -30,7 +33,9 @@ export class AddCandidate extends Component {
 
   render() {
     return (
-      <div>
+      <div
+        style={{backgroundColor: "rgba(10, 125, 255, 0.659)", padding: "100px"}}
+      >
         <div id="addCandidate">
           <div className="container">
             <div className="col-md-8">
@@ -95,6 +100,7 @@ export class AddCandidate extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
