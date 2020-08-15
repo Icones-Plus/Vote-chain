@@ -74,7 +74,7 @@ class SignIn extends React.Component {
                 className="button"
                 onClick={this.showSignupForm.bind(this)}
               >
-                Sign up888888888888888
+                Sign up
               </button>
             </p>
             ;
