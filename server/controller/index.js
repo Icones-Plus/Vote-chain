@@ -67,7 +67,7 @@ router.post("/delete", function (req, res) {
 });
 router.post("/createPassword/:id", createPassword.createPassword);
 router.get("/logout", logout.get);
-// router.use(auth);
+ router.use(auth);
 router.get("/admn", admin.get);
 router.get("/cand", candidates.get);
 router.get("/res", result.get);
