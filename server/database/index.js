@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+require("mongoose-type-url");
 const bcrypt = require("bcrypt");
 
 let connection = mongoose
@@ -24,13 +25,33 @@ let userSchema = new mongoose.Schema({
   password: String,
   dateOfBirth: Date,
   voted: Boolean,
-  password: String,
   admin: Boolean,
 });
 userSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 let userModel = mongoose.model("newUser", userSchema);
+const newUser = new userModel({
+  id: "5773380633",
+  mother_name: "Lucias",
+  mobile: 655513768,
+  email: "obarracks1d@prnewswire.com",
+  gender: "Male",
+  voted: false,
+  dateOfBirth: "2/6/2020",
+  password: null,
+  first_name: "Olivier",
+  last_name: "Barracks",
+});
+// newUser.save().then(result => {
+//   console.log('saved', result);
+// }).catch(err => {
+//   console.log(err, 'Err');
+// })
+
+userSchema.methods.comparePassword = function (password) {
+  return bcrypt.compareSync(password, this.password);
+};
 
 // const newUser = new userModel({
 //   id: "5773380633",
@@ -55,10 +76,6 @@ let userModel = mongoose.model("newUser", userSchema);
 //     console.log(err, "err in save");
 //   });
 
-// userSchema.methods.comparePassword = function (password) {
-//   return bcrypt.compareSync(password, this.password);
-// };
-
 let candidateSchema = mongoose.Schema({
   name: {
     type: String,
@@ -80,7 +97,7 @@ let candidateModel = mongoose.model("Candidate", candidateSchema);
 //   description: "Cool guy",
 //   img: "https://i.ibb.co/C73t72L/02.jpg"
 // })
-
+//
 // cand.save()
 //   .then(success => {
 //   console.log("success", success)
@@ -97,6 +114,36 @@ let feedbackSchema = mongoose.Schema({
 
 let feedbackModel = mongoose.model("feedback", feedbackSchema);
 
+let analystSchema = mongoose.Schema({
+  first_Name: {
+    type: String,
+  },
+  last_Name: {
+    type: String,
+  },
+  picture: {
+    type: String,
+  },
+  cv: {
+    type: String,
+  },
+  linkedIn: {
+    type: String,
+  },
+  bio: {
+    type: String,
+  },
+  articles: {
+    type: Array,
+  },
+  id: {
+    type: Number,
+  },
+});
+
+let analystModel = mongoose.model("analyst", analystSchema);
+
 module.exports.userModel = userModel;
 module.exports.candidateModel = candidateModel;
 module.exports.feedbackModel = feedbackModel;
+module.exports.analystModel = analystModel;
