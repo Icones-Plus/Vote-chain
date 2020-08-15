@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 function CreatePassword(props) {
   const id = props.id;
   console.log(id, "id mohkrgnjghggjjgndfsjvb555555555testtesttest");
@@ -20,25 +20,14 @@ function CreatePassword(props) {
       axios
         .post(`/createPassword/${id}`, {password})
         .then((res) => {
-          window.location.href = "/cand";
+          window.location.href = "/candidates";
         })
         .catch((err) => {
           console.log(err, "err hereeeeeeee");
         });
     } else {
-      alert("the password not matched");
+      Swal.fire("the password not matched");
     }
-
-    // if (password === password2) {
-    //   console.log(id, 'idyasmin');
-    //     axios.post('/createPassword', { password, id }).then(res => {
-    //         console.log('submited', res);
-    //     }).catch(err => {
-    //         console.log('err: ', err);
-    //     })
-    // } else {
-    //     alert('passwords are not matching')
-    // }
   };
   return (
     <div
@@ -49,7 +38,7 @@ function CreatePassword(props) {
         alignItems: "center",
       }}
     >
-      <form className="component" onSubmit={onSubmit.bind(this)}>
+      <form className="component" onSubmit={onSubmit}>
         <div className="col-md-6">
           <label>Enter your password</label>{" "}
           <div className="form-group">
@@ -58,7 +47,7 @@ function CreatePassword(props) {
               className="form-control"
               type="password"
               name="pass"
-              onChange={onChange}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <br /> <br />
             <label>Confirm password</label>
@@ -66,7 +55,7 @@ function CreatePassword(props) {
             <input
               type="password"
               name="pass1"
-              onChange={onChange}
+              onChange={(e) => setPassword2(e.target.value)}
               className="form-control"
             />
             <br /> <br />

@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 // import React, {Component} from "react";
 import "./style.css";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-function Candidate() {
+
+function Candidate(props) {
   const [value, setValue] = useState(false);
   const [code, setCode] = useState("");
   const isVoted = () => {
@@ -73,24 +74,9 @@ function Candidate() {
     sendCodeToMobile();
     setTimeout(confirm(), 1000);
   };
-  const handlleClick = () => {
-    axios
-      .get("/logout")
-      .then(() => {
-        window.location.href = "/";
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
   return (
-    <div>
-      <button type="submit" className="btn-custom" onClick={handlleClick}>
-        Log out
-      </button>
-      <h1 style={{color: "black", textAlign: "left"}}> Hello, there!</h1>
-      <div className="divv">
-        <div class="thumbnail">
+    <div className="div">
+        {/* <div class="thumbnail">
           <img src="https://i.ibb.co/88ZFzYC/01.jpg" alt="cand"></img>
           <h1>Ayman</h1>
           <button data-target="modal1" className="button" onClick={combine}>
@@ -124,8 +110,24 @@ function Candidate() {
           <button type="button" className="button" onClick={combine}>
             Vote
           </button>
-        </div>
-      </div>
+        </div> */}
+      {
+        props.data.map(item => {
+          return (
+            <div className="thumbnail" style={{ backgroundColor: "rgba(240, 230, 140, 0.5)", padding: "70px"}}>
+              <img src={item.img} alt="image"></img>
+              <h1 style={{ color: "black" }}>{item.name || "Loading"}</h1>
+              <p style={{ color:"green", fontSize: "20px"}}>
+                {item.description}
+              </p>
+              <button type="button" className="button" onClick={combine}>
+                Vote
+                </button>
+            </div>
+          )
+        })
+      }
+
     </div>
   );
 }

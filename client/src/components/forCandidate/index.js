@@ -1,23 +1,18 @@
 import React, {useState} from "react";
 import "./style.css";
 import Axios from "axios";
+import TextareaAutosize from "@material-ui/core/TextField";
 
-function ForCandidate() {
+function ForCandidate(props) {
   const [slogan, setSlogan] = useState("");
   const [campaign, setCampaign] = useState("");
+  const id = props.id;
 
-  // const hundleChange = (e) => {
-  //   setSlogan(e.target.value);
-  //   setCampaign(e.target.value);
-  //   console.log(slogan, "handleChange slooooooooooooo");
-  //   console.log(campaign, "handleChange caaaaaaaaaaaaaaaaap");
-  // };
-
-  const onSubmit = (e) => {
-    // e.preventDefault();
+  const hundelSubmit = (e) => {
+    e.preventDefault();
     const addToCandidate = {slogan, campaign};
     console.log("I am reach hereeeeeeeeeeeeeee dont worry");
-    Axios.post("/forCandidate", addToCandidate)
+    Axios.post(`/forCandidate/${id}`, addToCandidate)
       .then((res) => {
         console.log(res, "resss hereeeeee yala");
       })
@@ -28,27 +23,33 @@ function ForCandidate() {
 
   return (
     <div>
-      <form onSubmit={onSubmit.bind(this)}>
+      <form className="forcandy" onSubmit={hundelSubmit}>
         <label>enter your slogan</label>
         <div class="slogan">
-          <input
-            type="text"
-            placeholder="Add your slogn"
+          <textarea
             name="slogan"
-            value={slogan}
+            id="descriptionCan"
+            className="form-control"
+            rows="4"
+            placeholder="Add your slogn"
+            required
             onChange={(e) => setSlogan(e.target.value)}
-          ></input>
+          ></textarea>
         </div>
-        <label>enter your compaign</label>
+        <label></label>
         <div class="campaign">
-          <input
-            type="text"
-            placeholder="Add your campaign"
-            value={campaign}
+          <textarea
             name="campaign"
-            onChange={(e) => e.target.value}
-          ></input>
+            id="descriptionCan"
+            className="form-control"
+            rows="4"
+            placeholder="Add your campaign"
+            required
+            onChange={(e) => setCampaign(e.target.value)}
+          ></textarea>
         </div>
+
+        <button class="btn">submit</button>
       </form>
     </div>
   );

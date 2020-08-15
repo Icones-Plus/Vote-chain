@@ -2,19 +2,20 @@ const model = require("../database/index");
 const CandidateModel = model.candidateModel;
 
 exports.forCandidate = (req, res) => {
-  const id = req.params.id;
+  console.log("I am hereeeeeeeeee");
+  const { id } = req.params;
   const { body } = req;
   const { slogan, campaign } = body;
+  console.log(id, "idddddddddd");
 
-  const slogn = slogan;
-  const campagn = campaign;
   CandidateModel.findOneAndUpdate(
     { id: id },
-    { slogan: slogn },
-    { campaign: campagn }
+    { slogan: slogan, campaign: campaign }
+    // { campaign: campaign }
   )
-    .then((res) => {
+    .then((result) => {
       res.send("updateeeeeeeeeeeeee");
+      console.log(result, "hereeeeeeeeee");
     })
     .catch((err) => {
       res.send(err);
