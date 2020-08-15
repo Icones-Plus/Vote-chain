@@ -115,16 +115,14 @@ class SignUp extends React.Component {
     motherName: "",
     signIn: null,
   };
+  handleChange = this.handleChange.bind(this);
 
   // handleChange = this.handleChange.bind(this);
   handleSubmit = this.handleSubmit.bind(this);
   handleChange(event) {
     console.log(this.state);
     this.setState({[event.target.name]: event.target.value});
-
-    // <CreatePassword idd={this.state.id} />
   }
-  // console.log('id line 88 ', this.state.id)
   handleSubmit(event) {
     event.preventDefault();
     const idd = this.state.id;

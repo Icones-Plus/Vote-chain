@@ -36,23 +36,28 @@ function Candidate(props) {
       showLoaderOnConfirm: true,
       preConfirm: (code) => {
         setCode(code);
-        axios({
-          method: "post",
-          url: "/confirm",
-          data: {
-            code,
-          },
-        })
-          .then((response) => {
-            if (response.data.succses) {
-              isVoted();
-            }
-            // return response.json();
-            else Swal.fire("You intered wrong code");
+        if (code !== "") {
+          axios({
+            method: "post",
+            url: "/confirm",
+            data: {
+              code,
+            },
           })
-          .catch((error) => {
-            Swal.showValidationMessage(`Request failed: ${error}`);
-          });
+            .then((response) => {
+              if (response.data.succses) {
+                isVoted();
+                alert("done");
+              }
+              // return response.json();
+              else Swal.fire("You intered wrong code");
+            })
+            .catch((error) => {
+              Swal.showValidationMessage(`Request failed: ${error}`);
+            });
+        } else {
+          alert("you intered wrong code");
+        }
       },
       allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
