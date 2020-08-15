@@ -19,18 +19,18 @@ class Candidates extends React.Component {
             });
     };
 
-    componentDidMount() {
-        axios.get("/getCands")
-            .then(success => {
-                console.log("Candidates recieved", success)
-                this.setState({
-                    data: success.data
-                })
-            })
-            .catch(err => {
-                console.log("Error in retrieving candidates", err)
-            })
-    }
+    // componentDidMount() {
+    //     axios.get("/getCands")
+    //         .then(success => {
+    //             console.log("Candidates recieved", success)
+    //             this.setState({
+    //                 data: success.data
+    //             })
+    //         })
+    //         .catch(err => {
+    //             console.log("Error in retrieving candidates", err)
+    //         })
+    // }
     render() {
         return (
             <div>

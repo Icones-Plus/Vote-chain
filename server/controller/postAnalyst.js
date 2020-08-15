@@ -9,13 +9,12 @@ exports.postAnalyst = function(req, res){
     cv,
     linkedIn,
     bio,
-    articles,
-    id
+    articles
   } = body;
 
   let newAnalyst = new analystModel();
 
-  newAnalyst.id = id;
+  // newAnalyst.id = id;
   newAnalyst.first_Name = first_Name;
   newAnalyst.last_Name = last_Name;
   newAnalyst.picture = picture;
@@ -61,6 +60,7 @@ exports.postAnalyst = function(req, res){
   // }
 
   newAnalyst.save().then(result => {
+    console.log(result, 'result');
     return res.send({
       success: true,
       message: 'successfully saves'
