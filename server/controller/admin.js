@@ -1,14 +1,17 @@
 var { decode } = require("jsonwebtoken");
 var model = require("../database/index");
 exports.add = function (req, res) {
-  var {candidate} = req.body;
+  var candidate = req.body;
+  console.log('entered', req.body);
   var newEntity = new model.candidateModel(candidate);
-  newEntity.save(function (err) {
-    if (err) throw new Error(err);
-    else {
-      res.redirect("/admin");
-    }
-  });
+  newEntity.save().then((result) => {
+    console.log('ssss');
+    res.send("addes sucess");
+  }).catch((err) => {
+    console.log('sssssddd');
+    res.status(500).send("Error");
+
+  })
 };
 
 exports.get = function (req, res) {

@@ -2,7 +2,6 @@ import React from 'react';
 import JwtDecode from "jwt-decode";
 import Candidate from '../../components/candidate/index'
 import axios from 'axios'
-import Footer from './../../components/footer'
 
 
 class Candidates extends React.Component {
