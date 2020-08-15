@@ -21,7 +21,7 @@ class SignIn extends React.Component {
       .post("/login", user)
       .then(function (response) {
         if (response.data.success) {
-          window.location.href = "/candidates";
+          window.location.href = "/cand";
         }
       })
       .catch(function (error) {
