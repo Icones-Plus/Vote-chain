@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-
+import Footer from "../footer.jsx";
 class Feedback extends React.Component {
   state = {
     data: null,
@@ -52,27 +52,27 @@ class Feedback extends React.Component {
 
           <tbody>
             {data.map((elem) => {
-            this.state.count++;
-            return (
-              <tr>
-                <td className="count">{this.state.count}</td>
-                <td className="name">{elem.name}</td>
-                <td className="email">{elem.email}</td>
-                <td className="msg">{elem.message}</td>
-                <td
-                  style={{cursor: "pointer"}}
-                  headers={elem.message}
-                  className="finish"
-                  onClick={this.toDelete.bind(this)}
-                >
-                  Done
-                </td>
-              </tr>
-            );
-          })}
+              this.state.count++;
+              return (
+                <tr>
+                  <td className="count">{this.state.count}</td>
+                  <td className="name">{elem.name}</td>
+                  <td className="email">{elem.email}</td>
+                  <td className="msg">{elem.message}</td>
+                  <td
+                    style={{cursor: "pointer"}}
+                    headers={elem.message}
+                    className="finish"
+                    onClick={this.toDelete.bind(this)}
+                  >
+                    Done
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
-          
         </table>
+        <Footer />
       </div>
     );
   }

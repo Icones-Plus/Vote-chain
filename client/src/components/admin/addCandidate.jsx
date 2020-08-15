@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
-
+import Footer from "../footer.jsx";
+import Swal from "sweetalert2";
 export class AddCandidate extends Component {
   state = {
     name: "",
@@ -17,20 +18,30 @@ export class AddCandidate extends Component {
       img: this.state.img,
       description: this.state.description,
     };
-
-    axios
-      .post("/admn", {candidate})
+    axios({
+      method: "post",
+      url: "/admn",
+      data: candidate,
+    })
       .then((res) => {
-        alert("success");
+        //   Swal.fire({
+        //     title: "Your work has been saved",
+        //   });
+        alert("dfghjkl");
       })
-      .catch((err) => {
-        console.log(("Error", err));
+      .catch(() => {
+        // Swal.fire({
+        //   title: "Oops...",
+        // });
+        alert("gdgf");
       });
   };
 
   render() {
     return (
-      <div>
+      <div
+        style={{backgroundColor: "rgba(10, 125, 255, 0.659)", padding: "100px"}}
+      >
         <div id="addCandidate">
           <div className="container">
             <div className="col-md-8">
@@ -95,6 +106,7 @@ export class AddCandidate extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
