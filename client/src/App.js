@@ -6,6 +6,7 @@ import Candidates from "./pages/candidates/candidates";
 import {BrowserRouter, Router, Switch, Route} from "react-router-dom";
 import AdminPanel from "./pages/adminPanel/adminPanel.js";
 import NotFound from "./pages/error/error";
+import Analyst from "./pages/analyst/analyst";
 import jwtDecode from "jwt-decode";
 import CandidateProfile from "./components/CandidateProfile/index";
 import ForCandidate from "./components/forCandidate/index";
@@ -28,6 +29,7 @@ function App() {
             <Route path="/candidates" component={Candidates} />
             <CandidateProfile path="/CandidateProfile" />
             <ForCandidate path="/forCandidate" />
+            <Route path="/analyst" exact={true} component={Analyst} />
             <Route path="*" exact={true} component={NotFound} />
           </Switch>
         )}

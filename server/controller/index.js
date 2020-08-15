@@ -10,6 +10,8 @@ const { feedbackModel } = require("./../database/index");
 const { candidateModel } = require("./../database/index");
 const candidates = require("./candidates");
 const result = require("./result");
+const getAnalyst = require("./getAnalyst.js");
+const postAnalyst = require("./postAnalyst.js");
 const logout = require("./logout");
 const forCandidate = require("./forCandidate");
 const candidateProfile = require("./candidateProfile");
@@ -45,11 +47,9 @@ router.get("/contact", function (req, res) {
   feedbackModel
     .find({})
     .then((output) => {
-      console.log("Here goes your data", output);
       res.send(output);
     })
     .catch((error) => {
-      console.log("Not well", error);
       res.send("Something went wrong");
     });
 });
@@ -84,6 +84,9 @@ router.get("/getCands", function (req, res) {
       console.log("Error in retrieving data from database", error);
     });
 });
+
+router.get("/analyst", getAnalyst.getAnalyst);
+router.post("/analyst", postAnalyst.postAnalyst);
 // router.use((req, response, next) => {
 //   req.headers.cookie = {
 //     jwt:

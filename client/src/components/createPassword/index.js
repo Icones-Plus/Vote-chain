@@ -1,32 +1,45 @@
 import React, {useState} from "react";
 import axios from "axios";
+
 import Swal from "sweetalert2";
+
 function CreatePassword(props) {
   const id = props.id;
-  console.log(id, "id mohkrgnjghggjjgndfsjvb555555555testtesttest");
-  console.log("heyhey");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  console.log(password);
+  console.log(password2);
 
-  const onChange = function (e) {
-    setPassword(e.target.value);
-    setPassword2(e.target.value);
-  };
+  // const onChange = function (e) {
+  //   setPassword(e.target.value);
+  //   setPassword2(e.target.value);
+  // };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     if (password === password2) {
       axios
-        .post(`/createPassword/${id}`, {password})
-        .then((res) => {
-          window.location.href = "/candidates";
+        .post(`/createPassword/${id}`, {password, password2})
+        .then((result) => {
+          console.log(result, "res3433222212sddsdfrewdfrewdweds");
+          if (result.data.message === "passwords do not match") {
+            Swal.fire("passwords do not match");
+          } else if (result.data === "signup cookie set") {
+            Swal.fire("your password is set up successfully");
+            window.location.href = "/cand";
+          }
         })
         .catch((err) => {
           console.log(err, "err hereeeeeeee");
         });
     } else {
-      Swal.fire("the password not matched");
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Passwords don't matched!",
+        showConfirmButton: true,
+      });
     }
   };
   return (

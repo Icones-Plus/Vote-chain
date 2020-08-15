@@ -22,12 +22,10 @@ class Candidates extends React.Component {
     axios
       .get("/getCands")
       .then((success) => {
-        console.log(this.state.data, "hereeeeeeeeeee");
         console.log("Candidates recieved", success);
         this.setState({
           data: success.data,
         });
-        console.log(this.state.data, "hereeeeeeeeeee22222222222");
       })
       .catch((err) => {
         console.log("Error in retrieving candidates", err);
@@ -35,12 +33,13 @@ class Candidates extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div style={{backgroundColor: "rgba(10, 125, 255, 0.7)"}}>
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
-            boxShadow: "0px 3px 10px #888888",
+            boxShadow: "0px 3px 10px rgb(135, 206, 250)",
+            background: "white",
           }}
         >
           <h1
@@ -67,6 +66,14 @@ class Candidates extends React.Component {
         </div>
         <div>
           <Candidate data={this.state.data} />
+        </div>
+        <div style={{backgroundColor: "white", padding: "13px"}}>
+          <div className="container text-center">
+            <p>
+              &copy; 2020 ElecChian Design by Icones Team
+              <a href="https://github.com/Icones-Plus"> Icones</a>
+            </p>
+          </div>
         </div>
       </div>
     );

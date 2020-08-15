@@ -9,7 +9,7 @@
 // });
 
 const faker = require("faker");
-const { userModel, candidateModel } = require("./index");
+const { userModel, candidateModel, analystModel } = require("./index");
 let genders = ["male", "female"];
 for (let i = 0; i < 10; i++) {
   const user = new userModel({
@@ -37,5 +37,18 @@ for (let i = 0; i < 10; i++) {
     candidate.save().then((addressRef) => {
       console.log(`${addressRef.name} saved successfully`);
     });
+
+    const analyst = new analystModel({
+      first_Name: faker.name.firstName(),
+      last_Name: faker.name.lastName(),
+      picture: faker.image.avatar(),
+      bio: faker.lorem.paragraph(),
+      linkedIn: faker.internet.url(),
+      cv: faker.internet.url()
+    })
+
+    analyst.save().then((analystRef) => {
+      console.log(`${analystRef.first_Name} saved successfully`);
+    })
   });
 }
