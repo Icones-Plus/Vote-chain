@@ -1,13 +1,16 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
+
 import Swal from "sweetalert2";
+
 
 function CreatePassword(props) {
   const id = props.id;
-  console.log(id, "id mohkrgnjghggjjgndfsjvb555555555testtesttest");
-  console.log("heyhey");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  console.log(password)
+  console.log(password2)
+
 
   const onChange = function (e) {
     setPassword(e.target.value);
@@ -19,6 +22,7 @@ function CreatePassword(props) {
 
     if (password === password2) {
       axios
+
         .post(`/createPassword/${id}`, {password, password2})
         .then(result => {
           console.log(result, 'res3433222212sddsdfrewdfrewdweds');
@@ -26,32 +30,31 @@ function CreatePassword(props) {
             Swal.fire("passwords do not match");
           } else if(result.data === 'signup cookie set'){
             Swal.fire("your password is set up successfully");
-            // window.location.href = "/candidates";
+             window.location.href = "/candidates";
           }
-          // window.location.href = "/candidates";
+     
+
         })
         .catch((err) => {
           console.log(err, "err hereeeeeeee");
         });
+    } else {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: "Passwords don't matched!",
+        showConfirmButton: true,
+      })
     }
 
-    // if (password === password2) {
-    //   console.log(id, 'idyasmin');
-    //     axios.post('/createPassword', { password, id }).then(res => {
-    //         console.log('submited', res);
-    //     }).catch(err => {
-    //         console.log('err: ', err);
-    //     })
-    // } else {
-    //     alert('passwords are not matching')
-    // }
   };
   return (
     <div style={{
       padding: "20px",
       display: "flex",
       flexDirection: "column",
-      alignItems: "center"}}>
+      alignItems: "center"
+    }}>
       <form className="component" onSubmit={onSubmit.bind(this)}>
         <div className="col-md-6">
           <label>Enter your password</label>{" "}

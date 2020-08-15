@@ -83,9 +83,18 @@ userSchema.methods.comparePassword = function (password) {
 
 
 let candidateSchema = mongoose.Schema({
-  name: String,
-  description: String,
-  img: String,
+  name: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  img: {
+    type: String,
+    required: true
+  }
 });
 
 let candidateModel = mongoose.model("Candidate", candidateSchema);

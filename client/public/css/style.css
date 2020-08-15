@@ -58,8 +58,6 @@ ol {
 ul,
 ol {
   padding: 0;
-  /* webkit-padding: 0;
-  moz-padding: 0; */
 }
 hr {
   height: 2px;
@@ -72,6 +70,7 @@ hr {
 }
 /* Navigation */
 #menu {
+  margin-bottom: 0px;
   padding: 15px;
   transition: all 0.8s;
 }
@@ -171,7 +170,7 @@ hr {
   text-transform: uppercase;
   color: #fff;
   background-color: #5ca9fb;
-  background-image: linear-gradient(to right, #5ca9fb 0%, #6372ff 100%);
+  background-image: linear-gradient(to right, #4f7eb1 0%, #266eda 100%);
   padding: 14px 34px;
   letter-spacing: 1px;
   margin: 0;
@@ -188,7 +187,7 @@ hr {
 .btn-custom.active {
   color: #fff;
   background-image: none;
-  background-color: #6372ff;
+  background-color: #2791bb;
 }
 .btn:active,
 .btn.active {
@@ -241,7 +240,7 @@ a:focus,
   font-weight: 300;
   line-height: 30px;
   margin: 0 auto;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   background-image: radial-gradient(#0000004f 78%, transparent);
   border-radius: 30px;
 }
@@ -593,7 +592,12 @@ label {
 /* Footer Section*/
 #footer {
   background: #f6f6f6;
-  padding: 30px 0;
+  padding: 15px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
 #footer p {
   color: #888;
