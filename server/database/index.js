@@ -32,7 +32,6 @@ userSchema.methods.comparePassword = function (password) {
 };
 let userModel = mongoose.model("newUser", userSchema);
 
-
 // const newUser = new userModel({
 //   id: "5773380633",
 //   mother_name: "Lucias",
@@ -60,13 +59,20 @@ let userModel = mongoose.model("newUser", userSchema);
 //   return bcrypt.compareSync(password, this.password);
 // };
 
-
 let candidateSchema = mongoose.Schema({
-  name: String,
-  description: String,
-  img: String,
+  name: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  img: {
+    type: String,
+    required: true,
+  },
 });
-
 let candidateModel = mongoose.model("Candidate", candidateSchema);
 
 // let cand = new candidateModel({
@@ -90,7 +96,6 @@ let feedbackSchema = mongoose.Schema({
 });
 
 let feedbackModel = mongoose.model("feedback", feedbackSchema);
-
 
 module.exports.userModel = userModel;
 module.exports.candidateModel = candidateModel;
