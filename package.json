@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon ./server",
-    "client": "npm start --prefix client",
+    "client": "cd client && npm run build && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
@@ -33,6 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "mongoose": "^5.9.27",
+    "mongoose-type-url": "^2.0.0",
     "react-chartjs-2": "^2.10.0",
     "telesignsdk": "^2.2.1",
     "web3": "^1.2.11"
