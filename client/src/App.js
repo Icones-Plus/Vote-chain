@@ -11,7 +11,6 @@ import jwtDecode from "jwt-decode";
 import CandidateProfile from "./components/CandidateProfile/index";
 import ForCandidate from "./components/forCandidate/index";
 function App() {
-  // console.log(jwtDecode(document.cookie).admin, "admin hereeeeeeeee");
   return (
     <div className="App">
       <BrowserRouter>
