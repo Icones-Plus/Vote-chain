@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-require('mongoose-type-url')
+require("mongoose-type-url");
 const bcrypt = require("bcrypt");
-
 
 let connection = mongoose
   .connect("mongodb://localhost:27017/votedb", {
@@ -42,8 +41,8 @@ const newUser = new userModel({
   dateOfBirth: "2/6/2020",
   password: null,
   first_name: "Olivier",
-  last_name: "Barracks"
-})
+  last_name: "Barracks",
+});
 // newUser.save().then(result => {
 //   console.log('saved', result);
 // }).catch(err => {
@@ -51,8 +50,8 @@ const newUser = new userModel({
 // })
 
 userSchema.methods.comparePassword = function (password) {
-  return bcrypt.compareSync(password, this.password)
-}
+  return bcrypt.compareSync(password, this.password);
+};
 
 // const newUser = new userModel({
 //   id: "5773380633",
@@ -77,26 +76,20 @@ userSchema.methods.comparePassword = function (password) {
 //     console.log(err, "err in save");
 //   });
 
-// userSchema.methods.comparePassword = function (password) {
-//   return bcrypt.compareSync(password, this.password);
-// };
-
-
 let candidateSchema = mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    required: true
+    required: true,
   },
   img: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 });
-
 let candidateModel = mongoose.model("Candidate", candidateSchema);
 
 // let cand = new candidateModel({
@@ -123,34 +116,32 @@ let feedbackModel = mongoose.model("feedback", feedbackSchema);
 
 let analystSchema = mongoose.Schema({
   first_Name: {
-    type: String
+    type: String,
   },
   last_Name: {
-    type: String
+    type: String,
   },
   picture: {
-    type: String
+    type: String,
   },
   cv: {
-    type: String
+    type: String,
   },
   linkedIn: {
-    type: String
+    type: String,
   },
   bio: {
-    type: String
+    type: String,
   },
   articles: {
-    type: Array
+    type: Array,
   },
   id: {
-    type: Number
-  }
+    type: Number,
+  },
+});
 
-})
-
-let analystModel = mongoose.model('analyst', analystSchema)
-
+let analystModel = mongoose.model("analyst", analystSchema);
 
 module.exports.userModel = userModel;
 module.exports.candidateModel = candidateModel;

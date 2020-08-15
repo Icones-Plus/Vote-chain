@@ -24,16 +24,10 @@ export class AddCandidate extends Component {
       data: candidate,
     })
       .then((res) => {
-        //   Swal.fire({
-        //     title: "Your work has been saved",
-        //   });
-        alert("dfghjkl");
+        alert("done");
       })
-      .catch(() => {
-        // Swal.fire({
-        //   title: "Oops...",
-        // });
-        alert("gdgf");
+      .catch((err) => {
+        alert("fail");
       });
   };
 
