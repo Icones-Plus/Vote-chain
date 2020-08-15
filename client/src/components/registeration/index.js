@@ -213,11 +213,11 @@ class SignUp extends React.Component {
             signIn: <CreatePassword id={idd} />,
           });
         } else {
-          Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "Please fill all fields with accurate and valid info.",
-          });
+          // Swal.fire({
+          //   icon: "error",
+          //   title: "Error",
+          //   text: "Please fill all fields with accurate and valid info.",
+          // });
           console.log("Can't redierect to create password");
         }
       })
