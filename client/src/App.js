@@ -26,8 +26,8 @@ function App() {
             <Route exact path="/" render={() => <LandingPage />} />
             <Route path="/result" component={Result} />
             <Route path="/candidates" component={Candidates} />
-            <CandidateProfile path="/CandidateProfile" />
-            <ForCandidate path="/forCandidate" />
+            {/* <CandidateProfile path="/CandidateProfile" />
+            <ForCandidate path="/forCandidate" /> */}
             <Route path="/analyst" exact={true} component={Analyst} />
             <Route path="*" exact={true} component={NotFound} />
           </Switch>
