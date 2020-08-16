@@ -34,14 +34,13 @@ exports.verfiy = function (req, res) {
       console.error("Unable to send message. " + error);
     }
   }
-  console.log("tmam ,,,,,,,,,,", jwt_decode(jwt));
   var { id } = jwt_decode(jwt);
-  sign(id, process.env.SECRET, (err, token) => {
+  sign(String(id), process.env.SECRET, (err, token) => {
     if (err) {
       res.status(401).json("Error: server error");
     } else {
       var code = token.slice(29, 36);
-      console.log("hello....", code);
+      console.log("My generated code ...........", code);
       client.sms.message(
         messageCallback,
         process.env.phoneNumber,

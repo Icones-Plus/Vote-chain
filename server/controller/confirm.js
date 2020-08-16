@@ -1,24 +1,26 @@
 var jwt_decode = require("jwt-decode");
 const { sign } = require("jsonwebtoken");
-const userModel = require("../database/index");
+const { userModel } = require("../database/index");
 exports.done = (request, response) => {
-  console.log("lllllllllllllll");
   var incomingCode = request.body.code;
+  candidateId = request.body.id;
   var jwt = request.headers.cookie;
   var { id } = jwt_decode(jwt);
-  sign(id, process.env.SECRET, (err, token) => {
+  sign(String(id), process.env.SECRET, (err, token) => {
     if (err) {
       res.status(401).json("Error: server error");
     } else {
       var originalCode = token.slice(29, 36);
-      console.log("incoming......", originalCode, incomingCode);
       if (originalCode === incomingCode) {
-        UserModel.findOneAndUpdate({ id: id }, { voted: true }).then(
-          (result) => {
+        userModel
+          .findOneAndUpdate({ id }, { voted: true })
+          .then((result) => {
             var result = { succses: true };
             response.send(result);
-          }
-        );
+          })
+          .catch((err) => {
+            console.log("EEERRRROOOOORRRR", err);
+          });
       } else {
         var result = { succses: false };
         response.send(result);

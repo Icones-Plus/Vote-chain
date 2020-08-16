@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 // import React, {Component} from "react";
 import "./style.css";
 import Swal from "sweetalert2";
@@ -17,14 +17,14 @@ function Candidate(props) {
     return axios
       .get("/verfiy")
       .then((res) => {
-        console.log("code is sent", res);
+        console.log("code is sent");
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const confirm = () => {
+  const confirm = (id) => {
     Swal.fire({
       title: "Submit your code",
       input: "text",
@@ -36,27 +36,30 @@ function Candidate(props) {
       showLoaderOnConfirm: true,
       preConfirm: (code) => {
         setCode(code);
+
         if (code !== "") {
           axios({
             method: "post",
             url: "/confirm",
             data: {
-              code,
+              code: code,
+              id: id,
             },
           })
             .then((response) => {
+              console.log("in the line 50 on candidates.js", response.data);
               if (response.data.succses) {
                 isVoted();
                 alert("done");
               }
               // return response.json();
-              else Swal.fire("You intered wrong code");
+              else Swal.fire("You intered wrong code!");
             })
             .catch((error) => {
-              Swal.showValidationMessage(`Request failed: ${error}`);
+              Swal.showValidationMessage(`Server failed`);
             });
         } else {
-          alert("you intered wrong code");
+          Swal.fire("you have to enter your code");
         }
       },
       allowOutsideClick: () => !Swal.isLoading(),
@@ -69,29 +72,46 @@ function Candidate(props) {
       }
     });
   };
-  const combine = () => {
+
+  function setter(id) {
+    return new Promise((resolve) => {
+      resolve(id);
+    });
+  }
+
+  const combine = (e) => {
     sendCodeToMobile();
-    setTimeout(confirm(), 1000);
+    setter(e.target.name).then((res) => {
+      if (res) {
+        confirm(res);
+      }
+    });
   };
   return (
     <div>
       <div className="div">
-        {
-          props.data.map(item => {
-            return (
-              <div className="thumbnail" style={{ backgroundColor: "rgb(255, 255, 255)", padding: "70px" }}>
-                <img src={item.img} alt="image"></img>
-                <h1 style={{ color: "black" }}>{item.name || "Loading"}</h1>
-                <p style={{ color: "black", fontSize: "20px" }}>
-                  {item.description}
-                </p>
-                <button type="button" className="button" onClick={combine}>
-                  Vote
-                </button>
-              </div>
-            )
-          })
-        }
+        {props.data.map((item) => {
+          return (
+            <div
+              className="thumbnail"
+              style={{backgroundColor: "rgb(255, 255, 255)", padding: "70px"}}
+            >
+              <img src={item.img} alt="image"></img>
+              <h1 style={{color: "black"}}>{item.name || "Loading"}</h1>
+              <p style={{color: "black", fontSize: "20px"}}>
+                {item.description}
+              </p>
+              <button
+                type="button"
+                className="button"
+                name={item.id}
+                onClick={combine}
+              >
+                Vote
+              </button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
