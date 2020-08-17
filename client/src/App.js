@@ -9,6 +9,8 @@ import NotFound from "./pages/error/error";
 import Analyst from "./pages/analyst/analyst";
 import AnalystProfile from "./pages/analystProfile/analystProfile";
 import jwtDecode from "jwt-decode";
+import CandidateProfile from "./components/CandidateProfile/index";
+import ForCandidate from "./components/forCandidate/index";
 function App() {
   return (
     <div className="App">
@@ -26,9 +28,8 @@ function App() {
             <Route path="/result" component={Result} />
             <Route path="/candidates" component={Candidates} />
             <Route path="/analyst" exact component={Analyst} />
-            <Route path="/analyst-profile" exact component={AnalystProfile}/> 
+            <Route path="/analyst-profile" exact component={AnalystProfile}/>
             <Route path="*" exact={true} component={NotFound} />
-
           </Switch>
         )}
       </BrowserRouter>

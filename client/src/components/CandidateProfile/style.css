@@ -1,0 +1,49 @@
+.div1 {
+  text-align: center;
+  position: absolute;
+  display: grid;
+  bottom: 45%;
+  top: 8%;
+  left: 9%;
+  width: 226px;
+  padding: 10px;
+  border: 1px solid #948acf;
+  margin: 0;
+}
+
+.div2 {
+  text-align: center;
+  position: absolute;
+  display: grid;
+  bottom: 45%;
+  top: 8%;
+  left: 80%;
+  width: 226px;
+  padding: 10px;
+  border: 1px solid #948acf;
+  margin: 0;
+}
+.cv {
+  text-align: center;
+  position: absolute;
+  display: grid;
+  bottom: 45%;
+  top: 8%;
+  left: 40%;
+  width: 226px;
+  padding: 10px;
+  border: 1px solid #948acf;
+  margin: 0;
+}
+.camp {
+  text-align: center;
+  position: absolute;
+  display: grid;
+  bottom: 45%;
+  top: 8%;
+  padding: 10px;
+  border: 1px solid #948acf;
+  margin: 0;
+  left: 372px;
+  width: 833px;
+}

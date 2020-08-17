@@ -10,8 +10,8 @@ const { feedbackModel } = require("./../database/index");
 const { candidateModel } = require("./../database/index");
 const candidates = require("./candidates");
 const result = require("./result");
-const getAnalyst = require('./getAnalyst.js');
-const postAnalyst = require('./postAnalyst.js');
+const getAnalyst = require("./getAnalyst.js");
+const postAnalyst = require("./postAnalyst.js");
 const logout = require("./logout");
 const uploasCV = require('./addCv.js')
 
@@ -33,11 +33,9 @@ router.post("/contact", function (req, res) {
   feedback
     .save()
     .then((result) => {
-      console.log("Feedback saved to database", result);
       res.send("RECIEVED");
     })
     .catch((err) => {
-      console.log("ERROR in saving feedback to database", err);
       res.send("Not recieved");
     });
 });
@@ -46,37 +44,36 @@ router.get("/contact", function (req, res) {
   feedbackModel
     .find({})
     .then((output) => {
-      console.log("Here goes your data", output);
       res.send(output);
     })
     .catch((error) => {
-      console.log("Not well", error);
       res.send("Something went wrong");
     });
 });
 router.post("/delete", function (req, res) {
-    feedbackModel.deleteOne({ message: req.body.message }).then(success => {
-        console.log("Succesfully deleted", success)
-        res.send(success)
-    }).catch(error => {
-        console.log("Error in deleting from feedback!", error)
-        res.send(error)
+  feedbackModel
+    .deleteOne({ message: req.body.message })
+    .then((success) => {
+      res.send(success);
     })
-})
+    .catch((error) => {
+      res.send(error);
+    });
+});
 router.post("/createPassword/:id", createPassword.createPassword);
 router.get("/logout", logout.get);
 router.use(auth);
 router.get("/admn", admin.get);
 router.get("/cand", candidates.get);
 router.get("/res", result.get);
+router.post("/forCandidate/:id", forCandidate.forCandidate);
+router.get("/candidateProfile/:id", candidateProfile.candidateProfile);
 router.get("/getCands", function (req, res) {
-  candidateModel.find({})
-    .then(success => {
-      console.log("Here are your candidates", success)
-    res.status(200).send(success)
-  })
-  .catch (error => {
-      console.log("Error in retrieving data from database", error)
+  candidateModel
+    .find({})
+    .then((success) => {
+      console.log("Here are your candidates", success);
+      res.status(200).send(success);
     })
 })
 router.get('/analyze', getAnalyst.getAnalyst);

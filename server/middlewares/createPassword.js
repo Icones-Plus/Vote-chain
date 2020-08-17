@@ -9,13 +9,22 @@ exports.createPassword = function (req, res) {
   let { body } = req;
   const { params } = req;
   const { id } = params;
+<<<<<<< HEAD
   let { password, password2 } = body;
 
   if(password !== password2){
+||||||| merged common ancestors
+  let { password1, password2 } = body;
+
+  if(password1 !== password2){
+=======
+  let { password, password2 } = body;
+  if (password !== password2) {
+>>>>>>> a55119c7b8726a2ef92a527cc88edb5b828baa19
     return res.send({
       success: false,
-      message: 'passwords do not match'
-    })
+      message: "passwords do not match",
+    });
   } else {
     function generateHash(password) {
       return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
@@ -50,7 +59,11 @@ exports.createPassword = function (req, res) {
       .catch((err) => {
         console.log(err, "Err");
       });
-
   }
+<<<<<<< HEAD
 
+||||||| merged common ancestors
+    
+=======
+>>>>>>> a55119c7b8726a2ef92a527cc88edb5b828baa19
 };

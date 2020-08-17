@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 // import React, {Component} from "react";
 import "./style.css";
 import Swal from "sweetalert2";
 import axios from "axios";
-
 
 function Candidate(props) {
   const [value, setValue] = useState(false);
@@ -18,14 +17,14 @@ function Candidate(props) {
     return axios
       .get("/verfiy")
       .then((res) => {
-        console.log("code is sent", res);
+        console.log("code is sent");
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const confirm = () => {
+  const confirm = (id) => {
     Swal.fire({
       title: "Submit your code",
       input: "text",
@@ -37,23 +36,31 @@ function Candidate(props) {
       showLoaderOnConfirm: true,
       preConfirm: (code) => {
         setCode(code);
-        axios({
-          method: "post",
-          url: "/confirm",
-          data: {
-            code,
-          },
-        })
-          .then((response) => {
-            if (response.data.succses) {
-              isVoted();
-            }
-            // return response.json();
-            else Swal.fire("You intered wrong code");
+
+        if (code !== "") {
+          axios({
+            method: "post",
+            url: "/confirm",
+            data: {
+              code: code,
+              id: id,
+            },
           })
-          .catch((error) => {
-            Swal.showValidationMessage(`Request failed: ${error}`);
-          });
+            .then((response) => {
+              console.log("in the line 50 on candidates.js", response.data);
+              if (response.data.succses) {
+                isVoted();
+                alert("done");
+              }
+              // return response.json();
+              else Swal.fire("You intered wrong code!");
+            })
+            .catch((error) => {
+              Swal.showValidationMessage(`Server failed`);
+            });
+        } else {
+          Swal.fire("you have to enter your code");
+        }
       },
       allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
@@ -65,64 +72,47 @@ function Candidate(props) {
       }
     });
   };
-  const combine = () => {
+
+  function setter(id) {
+    return new Promise((resolve) => {
+      resolve(id);
+    });
+  }
+
+  const combine = (e) => {
     sendCodeToMobile();
-    setTimeout(confirm(), 1000);
+    setter(e.target.name).then((res) => {
+      if (res) {
+        confirm(res);
+      }
+    });
   };
   return (
-    <div className="div">
-        {/* <div class="thumbnail">
-          <img src="https://i.ibb.co/88ZFzYC/01.jpg" alt="cand"></img>
-          <h1>Ayman</h1>
-          <button data-target="modal1" className="button" onClick={combine}>
-            Vote
-          </button>
-        </div>
-        <div class="thumbnail">
-          <img src="https://i.ibb.co/C73t72L/02.jpg" alt="cand"></img>
-          <h1>Ahmad</h1>
-          <button type="button" className="button" onClick={combine}>
-            Vote
-          </button>
-        </div>
-        <div class="thumbnail">
-          <img src="https://i.ibb.co/LJ5xyhR/05.jpg" alt="cand"></img>
-          <h1>Yasmin</h1>
-          <button type="button" className="button" onClick={combine}>
-            Vote
-          </button>
-        </div>
-        <div class="thumbnail">
-          <img src="https://i.ibb.co/5nY7tbp/03.jpg" alt="cand"></img>
-          <h1>Karam</h1>
-          <button type="button" className="button" onClick={combine}>
-            Vote
-          </button>
-        </div>
-        <div class="thumbnail">
-          <img src="https://i.ibb.co/PChQrmX/04.jpg" alt="cand"></img>
-          <h1>Mohammad</h1>
-          <button type="button" className="button" onClick={combine}>
-            Vote
-          </button>
-        </div> */}
-      {
-        props.data.map(item => {
+    <div>
+      <div className="div">
+        {props.data.map((item) => {
           return (
-            <div className="thumbnail" style={{ backgroundColor: "rgba(240, 230, 140, 0.5)", padding: "70px"}}>
+            <div
+              className="thumbnail"
+              style={{backgroundColor: "rgb(255, 255, 255)", padding: "70px"}}
+            >
               <img src={item.img} alt="image"></img>
-              <h1 style={{ color: "black" }}>{item.name || "Loading"}</h1>
-              <p style={{ color:"green", fontSize: "20px"}}>
+              <h1 style={{color: "black"}}>{item.name || "Loading"}</h1>
+              <p style={{color: "black", fontSize: "20px"}}>
                 {item.description}
               </p>
-              <button type="button" className="button" onClick={combine}>
+              <button
+                type="button"
+                className="button"
+                name={item.id}
+                onClick={combine}
+              >
                 Vote
-                </button>
+              </button>
             </div>
-          )
-        })
-      }
-
+          );
+        })}
+      </div>
     </div>
   );
 }

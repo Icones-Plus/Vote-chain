@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-require('mongoose-type-url')
+require("mongoose-type-url");
 const bcrypt = require("bcrypt");
-
+mongoose.set("useFindAndModify", false);
 
 let connection = mongoose
   .connect("mongodb://localhost:27017/votedb", {
@@ -34,25 +34,21 @@ userSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 let userModel = mongoose.model("newUser", userSchema);
-// const newUser = new userModel({
-//   id: "5773380633",
-//   mother_name: "Lucias",
-//   mobile: 655513768,
-//   email: "obarracks1d@prnewswire.com",
-//   gender: "Male",
-//   voted: false,
-//   dateOfBirth: "2/6/2020",
-//   password: null,
-//   first_name: "Olivier",
-//   last_name: "Barracks",
-//   role: 'user'
-// })
-// newUser.save().then(result => {
-//   console.log('saved', result);
-// }).catch(err => {
-//   console.log(err, 'Err');
-// })
 
+<<<<<<< HEAD
+||||||| merged common ancestors
+userSchema.methods.comparePassword = function (password) {
+  return bcrypt.compareSync(password, this.password)
+}
+
+=======
+let feedbackSchema = mongoose.Schema({
+  name: String,
+  email: String,
+  message: String,
+});
+
+>>>>>>> a55119c7b8726a2ef92a527cc88edb5b828baa19
 // const newUser = new userModel({
 //   id: "5773380633",
 //   mother_name: "Lucias",
@@ -76,11 +72,6 @@ let userModel = mongoose.model("newUser", userSchema);
 //     console.log(err, "err in save");
 //   });
 
-// userSchema.methods.comparePassword = function (password) {
-//   return bcrypt.compareSync(password, this.password);
-// };
-
-
 let candidateSchema = mongoose.Schema({
   id: Number,
   description: String,
@@ -88,28 +79,7 @@ let candidateSchema = mongoose.Schema({
   slogan: String,
   campaign: String
 });
-
 let candidateModel = mongoose.model("Candidate", candidateSchema);
-
-// let cand = new candidateModel({
-//   name: "Karam",
-//   description: "Cool guy",
-//   img: "https://i.ibb.co/C73t72L/02.jpg"
-// })
-//
-// cand.save()
-//   .then(success => {
-//   console.log("success", success)
-//   })
-//   .catch(err => {
-//   console.log("Error in saving cand", err)
-// })
-
-let feedbackSchema = mongoose.Schema({
-  name: String,
-  email: String,
-  message: String,
-});
 
 let feedbackModel = mongoose.model("feedback", feedbackSchema);
 
@@ -117,16 +87,16 @@ let analystSchema = mongoose.Schema({
   id: Number,
 
   picture: {
-    type: String
+    type: String,
   },
   cv: {
-    type: String
+    type: String,
   },
   // linkedIn: {
   //   type: String
   // },
   bio: {
-    type: String
+    type: String,
   },
   articles: {
     type: Array
@@ -135,6 +105,7 @@ let analystSchema = mongoose.Schema({
 
 let analystModel = mongoose.model('analyst', analystSchema)
 
+let analystModel = mongoose.model("analyst", analystSchema);
 
 module.exports.userModel = userModel;
 module.exports.candidateModel = candidateModel;
