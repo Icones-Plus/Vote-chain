@@ -26,33 +26,32 @@ let userSchema = new mongoose.Schema({
   password: String,
   dateOfBirth: Date,
   voted: Boolean,
-  admin: Boolean,
+  role: String,
+  admin: Boolean
+
 });
 userSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 let userModel = mongoose.model("newUser", userSchema);
-const newUser = new userModel({
-  id: "5773380633",
-  mother_name: "Lucias",
-  mobile: 655513768,
-  email: "obarracks1d@prnewswire.com",
-  gender: "Male",
-  voted: false,
-  dateOfBirth: "2/6/2020",
-  password: null,
-  first_name: "Olivier",
-  last_name: "Barracks"
-})
+// const newUser = new userModel({
+//   id: "5773380633",
+//   mother_name: "Lucias",
+//   mobile: 655513768,
+//   email: "obarracks1d@prnewswire.com",
+//   gender: "Male",
+//   voted: false,
+//   dateOfBirth: "2/6/2020",
+//   password: null,
+//   first_name: "Olivier",
+//   last_name: "Barracks",
+//   role: 'user'
+// })
 // newUser.save().then(result => {
 //   console.log('saved', result);
 // }).catch(err => {
 //   console.log(err, 'Err');
 // })
-
-userSchema.methods.comparePassword = function (password) {
-  return bcrypt.compareSync(password, this.password)
-}
 
 // const newUser = new userModel({
 //   id: "5773380633",
@@ -83,9 +82,11 @@ userSchema.methods.comparePassword = function (password) {
 
 
 let candidateSchema = mongoose.Schema({
-  name: String,
+  id: Number,
   description: String,
   img: String,
+  slogan: String,
+  campaign: String
 });
 
 let candidateModel = mongoose.model("Candidate", candidateSchema);
@@ -113,31 +114,23 @@ let feedbackSchema = mongoose.Schema({
 let feedbackModel = mongoose.model("feedback", feedbackSchema);
 
 let analystSchema = mongoose.Schema({
-  first_Name: {
-    type: String
-  },
-  last_Name: {
-    type: String
-  },
+  id: Number,
+
   picture: {
     type: String
   },
   cv: {
     type: String
   },
-  linkedIn: {
-    type: String
-  },
+  // linkedIn: {
+  //   type: String
+  // },
   bio: {
     type: String
   },
   articles: {
     type: Array
-  },
-  id: {
-    type: Number
   }
-
 })
 
 let analystModel = mongoose.model('analyst', analystSchema)
