@@ -22,6 +22,7 @@ exports.login = function (req, res) {
   })
     .then((result) => {
       let user = result[0];
+      console.log(user[0], "useeeeeeeeeeeerrr hereeee");
       if (!user.comparePassword(password)) {
         return res.send({
           success: false,
@@ -44,6 +45,7 @@ exports.login = function (req, res) {
           res.send({
             success: true,
             message: "done",
+            role: payload.role,
           });
         }
       });
