@@ -27,28 +27,19 @@ let userSchema = new mongoose.Schema({
   dateOfBirth: Date,
   voted: Boolean,
   role: String,
-  admin: Boolean
-
+  admin: Boolean,
 });
 userSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 let userModel = mongoose.model("newUser", userSchema);
 
-<<<<<<< HEAD
-||||||| merged common ancestors
-userSchema.methods.comparePassword = function (password) {
-  return bcrypt.compareSync(password, this.password)
-}
-
-=======
 let feedbackSchema = mongoose.Schema({
   name: String,
   email: String,
   message: String,
 });
 
->>>>>>> a55119c7b8726a2ef92a527cc88edb5b828baa19
 // const newUser = new userModel({
 //   id: "5773380633",
 //   mother_name: "Lucias",
@@ -75,9 +66,9 @@ let feedbackSchema = mongoose.Schema({
 let candidateSchema = mongoose.Schema({
   id: Number,
   description: String,
-  img: String,
+  // img: URL,
   slogan: String,
-  campaign: String
+  campaign: String,
 });
 let candidateModel = mongoose.model("Candidate", candidateSchema);
 
@@ -99,11 +90,9 @@ let analystSchema = mongoose.Schema({
     type: String,
   },
   articles: {
-    type: Array
-  }
-})
-
-let analystModel = mongoose.model('analyst', analystSchema)
+    type: Array,
+  },
+});
 
 let analystModel = mongoose.model("analyst", analystSchema);
 

@@ -23,7 +23,7 @@ function CreatePassword(props) {
             Swal.fire("passwords do not match");
           } else if (result.data === "signup cookie set") {
             Swal.fire("your password is set up successfully");
-            window.location.href = "/cands";
+            window.location.href = "/cand";
           }
         })
         .catch((err) => {

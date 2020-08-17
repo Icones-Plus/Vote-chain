@@ -10,7 +10,7 @@ import Analyst from "./pages/analyst/analyst";
 import AnalystProfile from "./pages/analystProfile/analystProfile";
 import jwtDecode from "jwt-decode";
 import CandidateProfile from "./components/CandidateProfile/index";
-import ForCandidate from "./components/forCandidate/index";
+import ForCandidate from "./components/forCandid/index";
 function App() {
   return (
     <div className="App">
@@ -22,15 +22,24 @@ function App() {
           </Switch>
         ) : jwtDecode(document.cookie).admin ? (
           <AdminPanel />
+        ) : jwtDecode(document.cookie).role.trim() === "candidate" ? (
+          <ForCandidate path="/forCandidate" />
         ) : (
-          <Switch>
-            <Route exact path="/" render={() => <LandingPage />} />
-            <Route path="/result" component={Result} />
-            <Route path="/candidates" component={Candidates} />
+          (jwtDecode(document.cookie).role.trim() === "analyst" ? (
             <Route path="/analyst" exact component={Analyst} />
-            <Route path="/analyst-profile" exact component={AnalystProfile}/>
-            <Route path="*" exact={true} component={NotFound} />
-          </Switch>
+          ) : (
+            <Switch>
+              <Route exact path="/" render={() => <LandingPage />} />
+              <Route path="/result" component={Result} />
+              <Route path="/candidates" component={Candidates} />
+              <CandidateProfile path="/CandidateProfile" />
+              <Route path="/analyst" exact={true} component={Analyst} />
+
+              <Route path="/analyst-profile" exact component={AnalystProfile} />
+              <Route path="*" exact={true} component={NotFound} />
+            </Switch>
+          ),
+          console.log(jwtDecode(document.cookie).role, "cookie"))
         )}
       </BrowserRouter>
     </div>
