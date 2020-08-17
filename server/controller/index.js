@@ -11,6 +11,10 @@ const { candidateModel } = require("./../database/index");
 const candidates = require("./candidates");
 const result = require("./result");
 const logout = require("./logout");
+const axios = require('axios');
+const request = require('request');
+
+
 
 // const { sign } = require("jsonwebtoken");
 // var jwt_decode = require("jwt-decode");
@@ -62,7 +66,7 @@ router.post("/delete", function (req, res) {
 })
 router.post("/createPassword/:id", createPassword.createPassword);
 router.get("/logout", logout.get);
-router.use(auth);
+// router.use(auth);
 router.get("/admn", admin.get);
 router.get("/cand", candidates.get);
 router.get("/res", result.get);
@@ -76,6 +80,42 @@ router.get("/getCands", function (req, res) {
       console.log("Error in retrieving data from database", error)
     })
 })
+
+
+router.post("/webcam", function (req, res) {
+
+  request.post({
+    url: 'https://api-us.faceplusplus.com/facepp/v3/compare', formData: {
+      api_key: 'FavnHOrlAbZ3TcgYxhPIdXy5Xb-SA3vJ',
+      api_secret: 'nMjgy48bWF3WaVovNllv-EgWV2CsnFqP',
+      image_url1: req.body.image_url1,
+      image_url2: req.body.image_url2
+    }
+  }, (err, httpResponse, body) => {
+    if (err) {
+      console.error('error', err);
+      res.status(500).send("Error");
+    } else if (JSON.parse(body).confidence === undefined) {
+      res.status(200).send("Invalid image url");
+    } else {
+      console.log('success ', JSON.parse(body).confidence);
+      res.status(200).send((JSON.parse(body).confidence).toString());
+    }
+  });
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 // router.use((req, response, next) => {
 //   req.headers.cookie = {
 //     jwt:
