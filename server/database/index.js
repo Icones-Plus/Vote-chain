@@ -27,46 +27,18 @@ let userSchema = new mongoose.Schema({
   dateOfBirth: Date,
   voted: Boolean,
   role: String,
+  admin: Boolean,
 });
 userSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 let userModel = mongoose.model("newUser", userSchema);
-// const newUser = new userModel({
-//   id: "5773380633",
-//   mother_name: "Lucias",
-//   mobile: 655513768,
-//   email: "obarracks1d@prnewswire.com",
-//   gender: "Male",
-//   voted: false,
-//   dateOfBirth: "2/6/2020",
-//   password: null,
-//   first_name: "Olivier",
-//   last_name: "Barracks",
-// });
-// newUser.save().then(result => {
-//   console.log('saved', result);
-// }).catch(err => {
-//   console.log(err, 'Err');
-// })
-
-// let candidateSchema = mongoose.Schema({
-//   name: String,
-//   description: String,
-//   img: String,
-//   id: Number,
-//   slogan: String,
-//   campaign: String,
-// });
 
 let feedbackSchema = mongoose.Schema({
   name: String,
   email: String,
   message: String,
 });
-// userSchema.methods.comparePassword = function (password) {
-//   return bcrypt.compareSync(password, this.password);
-// };
 
 // const newUser = new userModel({
 //   id: "5773380633",
@@ -92,64 +64,33 @@ let feedbackSchema = mongoose.Schema({
 //   });
 
 let candidateSchema = mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  img: {
-    type: String,
-    // required: true,
-  },
   id: Number,
+  description: String,
+  // img: URL,
   slogan: String,
   campaign: String,
 });
 let candidateModel = mongoose.model("Candidate", candidateSchema);
 
-// let cand = new candidateModel({
-//   name: "Karam",
-//   description: "Cool guy",
-//   img: "https://i.ibb.co/C73t72L/02.jpg"
-// })
-//
-// cand.save()
-//   .then(success => {
-//   console.log("success", success)
-//   })
-//   .catch((err) => {
-//     console.log("Error in saving cand", err);
-//   });
-
 let feedbackModel = mongoose.model("feedback", feedbackSchema);
 
 let analystSchema = mongoose.Schema({
-  first_Name: {
-    type: String,
-  },
-  last_Name: {
-    type: String,
-  },
+  id: Number,
+
   picture: {
     type: String,
   },
   cv: {
     type: String,
   },
-  linkedIn: {
-    type: String,
-  },
+  // linkedIn: {
+  //   type: String
+  // },
   bio: {
     type: String,
   },
   articles: {
     type: Array,
-  },
-  id: {
-    type: Number,
   },
 });
 

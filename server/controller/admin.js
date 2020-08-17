@@ -1,9 +1,21 @@
 var { decode } = require("jsonwebtoken");
 var model = require("../database/index");
+const candidateModel = model.candidateModel;
+const userModel = model.userModel;
 exports.add = function (req, res) {
   var candidate = req.body;
+  const { id, role } = candidate;
   console.log("entered", candidate);
-  var newEntity = new model.candidateModel(candidate);
+  userModel
+    .findOneAndUpdate({ id: id }, { role: role })
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err, "errrrrrrrrrrrr ");
+    });
+
+  var newEntity = new candidateModel(candidate);
   newEntity
     .save()
     .then((result) => {

@@ -22,7 +22,6 @@ class Candidates extends React.Component {
     axios
       .get("/getCands")
       .then((success) => {
-        console.log("Candidates recieved", success);
         this.setState({
           data: success.data,
         });

@@ -14,6 +14,7 @@ function CreatePassword(props) {
     e.preventDefault();
 
     if (password === password2) {
+      console.log(password, password2, "passsssssssssssssssss");
       axios
         .post(`/createPassword/${id}`, {password, password2})
         .then((result) => {

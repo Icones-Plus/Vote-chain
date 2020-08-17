@@ -24,14 +24,18 @@ for (let i = 0; i < 10; i++) {
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
     admin: false,
+    role: faker.name.jobType()
   });
 
   user.save().then((userRef) => {
     console.log(`${userRef.admin} saved successfully`);
     const candidate = new candidateModel({
-      name: faker.name.findName(),
+      id: faker.random.number(),
       description: faker.lorem.paragraph(),
       img: faker.image.avatar(),
+      slogan: faker.lorem.paragraph(),
+      campaign: faker.lorem.paragraph(),
+
     });
 
     candidate.save().then((addressRef) => {
@@ -39,16 +43,14 @@ for (let i = 0; i < 10; i++) {
     });
 
     const analyst = new analystModel({
-      first_Name: faker.name.firstName(),
-      last_Name: faker.name.lastName(),
       picture: faker.image.avatar(),
       bio: faker.lorem.paragraph(),
       linkedIn: faker.internet.url(),
-      cv: faker.internet.url()
-    })
+      cv: faker.internet.url(),
+    });
 
     analyst.save().then((analystRef) => {
       console.log(`${analystRef.first_Name} saved successfully`);
-    })
+    });
   });
 }

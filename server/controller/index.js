@@ -13,6 +13,7 @@ const result = require("./result");
 const getAnalyst = require("./getAnalyst.js");
 const postAnalyst = require("./postAnalyst.js");
 const logout = require("./logout");
+const uploasCV = require("./addCv.js");
 const forCandidate = require("./forCandidate");
 const candidateProfile = require("./candidateProfile");
 
@@ -34,11 +35,9 @@ router.post("/contact", function (req, res) {
   feedback
     .save()
     .then((result) => {
-      console.log("Feedback saved to database", result);
       res.send("RECIEVED");
     })
     .catch((err) => {
-      console.log("ERROR in saving feedback to database", err);
       res.send("Not recieved");
     });
 });
@@ -57,36 +56,29 @@ router.post("/delete", function (req, res) {
   feedbackModel
     .deleteOne({ message: req.body.message })
     .then((success) => {
-      console.log("Succesfully deleted", success);
       res.send(success);
     })
     .catch((error) => {
-      console.log("Error in deleting from feedback!", error);
       res.send(error);
     });
 });
 router.post("/createPassword/:id", createPassword.createPassword);
 router.get("/logout", logout.get);
-// router.use(auth);
+router.use(auth);
 router.get("/admn", admin.get);
 router.get("/cand", candidates.get);
 router.get("/res", result.get);
 router.post("/forCandidate/:id", forCandidate.forCandidate);
 router.get("/candidateProfile/:id", candidateProfile.candidateProfile);
 router.get("/getCands", function (req, res) {
-  candidateModel
-    .find({})
-    .then((success) => {
-      console.log("Here are your candidates", success);
-      res.status(200).send(success);
-    })
-    .catch((error) => {
-      console.log("Error in retrieving data from database", error);
-    });
+  candidateModel.find({}).then((success) => {
+    console.log("Here are your candidates", success);
+    res.status(200).send(success);
+  });
 });
-
-router.get("/analyst", getAnalyst.getAnalyst);
-router.post("/analyst", postAnalyst.postAnalyst);
+router.get("/analyze", getAnalyst.getAnalyst);
+router.post("/analyze", postAnalyst.postAnalyst);
+router.post("/uploadCV/:id", uploasCV.cv);
 // router.use((req, response, next) => {
 //   req.headers.cookie = {
 //     jwt:

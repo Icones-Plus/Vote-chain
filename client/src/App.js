@@ -7,11 +7,11 @@ import {BrowserRouter, Router, Switch, Route} from "react-router-dom";
 import AdminPanel from "./pages/adminPanel/adminPanel.js";
 import NotFound from "./pages/error/error";
 import Analyst from "./pages/analyst/analyst";
+import AnalystProfile from "./pages/analystProfile/analystProfile";
 import jwtDecode from "jwt-decode";
 import CandidateProfile from "./components/CandidateProfile/index";
 import ForCandidate from "./components/forCandid/index";
 function App() {
-  // console.log(jwtDecode(document.cookie).admin, "admin hereeeeeeeee");
   return (
     <div className="App">
       <BrowserRouter>
@@ -22,17 +22,24 @@ function App() {
           </Switch>
         ) : jwtDecode(document.cookie).admin ? (
           <AdminPanel />
+        ) : jwtDecode(document.cookie).role.trim() === "candidate" ? (
+          <ForCandidate path="/forCandidate" />
         ) : (
-          <Switch>
-            <Route exact path="/" render={() => <LandingPage />} />
-            <Route path="/result" component={Result} />
-            <Route path="/candidates" component={Candidates} />
-            <CandidateProfile path="/CandidateProfile" />
-            <ForCandidate path="/forCandidate" />
-            {/* <Khaled path="/khald1" /> */}
-            <Route path="/analyst" exact={true} component={Analyst} />
-            <Route path="*" exact={true} component={NotFound} />
-          </Switch>
+          (jwtDecode(document.cookie).role.trim() === "analyst" ? (
+            <Route path="/analyst" exact component={Analyst} />
+          ) : (
+            <Switch>
+              <Route exact path="/" render={() => <LandingPage />} />
+              <Route path="/result" component={Result} />
+              <Route path="/candidates" component={Candidates} />
+              <CandidateProfile path="/CandidateProfile" />
+              <Route path="/analyst" exact={true} component={Analyst} />
+
+              <Route path="/analyst-profile" exact component={AnalystProfile} />
+              <Route path="*" exact={true} component={NotFound} />
+            </Switch>
+          ),
+          console.log(jwtDecode(document.cookie).role, "cookie"))
         )}
       </BrowserRouter>
     </div>
