@@ -1,13 +1,14 @@
-.div1 {
+.bor {
   text-align: center;
   position: absolute;
   display: grid;
-  bottom: 45%;
+  bottom: 62%;
   top: 8%;
-  left: 9%;
-  width: 226px;
+  width: 180px;
   padding: 10px;
+  left: 233px;
   border: 1px solid #948acf;
+  border-radius: 1.25rem;
   margin: 0;
 }
 
@@ -15,35 +16,38 @@
   text-align: center;
   position: absolute;
   display: grid;
-  bottom: 45%;
+  bottom: 78%;
   top: 8%;
-  left: 80%;
-  width: 226px;
+  width: 583px;
   padding: 10px;
+  left: 505px;
   border: 1px solid #948acf;
+  border-radius: 1.25rem;
   margin: 0;
 }
-.cv {
+.div3 {
   text-align: center;
   position: absolute;
   display: grid;
-  bottom: 45%;
-  top: 8%;
-  left: 40%;
-  width: 226px;
-  padding: 10px;
+  bottom: 3%;
+  top: 45%;
+  width: 401px;
+  left: 230px;
   border: 1px solid #948acf;
+  border-radius: 1.25rem;
+  padding: 10px;
   margin: 0;
 }
-.camp {
+.div4 {
   text-align: center;
   position: absolute;
   display: grid;
-  bottom: 45%;
-  top: 8%;
-  padding: 10px;
+  bottom: 3%;
+  top: 45%;
+  width: 401px;
+  left: 710px;
   border: 1px solid #948acf;
+  border-radius: 1.25rem;
+  padding: 10px;
   margin: 0;
-  left: 372px;
-  width: 833px;
 }

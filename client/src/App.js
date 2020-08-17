@@ -9,7 +9,7 @@ import NotFound from "./pages/error/error";
 import Analyst from "./pages/analyst/analyst";
 import jwtDecode from "jwt-decode";
 import CandidateProfile from "./components/CandidateProfile/index";
-import ForCandidate from "./components/forCandidate/index";
+import ForCandidate from "./components/forCandid/index";
 function App() {
   // console.log(jwtDecode(document.cookie).admin, "admin hereeeeeeeee");
   return (
@@ -29,6 +29,7 @@ function App() {
             <Route path="/candidates" component={Candidates} />
             <CandidateProfile path="/CandidateProfile" />
             <ForCandidate path="/forCandidate" />
+            {/* <Khaled path="/khald1" /> */}
             <Route path="/analyst" exact={true} component={Analyst} />
             <Route path="*" exact={true} component={NotFound} />
           </Switch>

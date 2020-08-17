@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import CreatePassword from "../createPassword";
+import CandidateProfile from "../CandidateProfile";
 
 import Swal from "sweetalert2";
 
@@ -208,7 +209,7 @@ class SignUp extends React.Component {
         ) {
           Swal.fire("you successfully signed up. set a password to continue");
           this.setState({
-            signIn: <CreatePassword id={idd} />,
+            signIn: <CandidateProfile id={idd} />,
           });
         } else {
           // Swal.fire({

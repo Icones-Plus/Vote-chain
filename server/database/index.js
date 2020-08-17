@@ -26,7 +26,7 @@ let userSchema = new mongoose.Schema({
   password: String,
   dateOfBirth: Date,
   voted: Boolean,
-  admin: Boolean,
+  role: String,
 });
 userSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.password);
@@ -102,8 +102,11 @@ let candidateSchema = mongoose.Schema({
   },
   img: {
     type: String,
-    required: true,
+    // required: true,
   },
+  id: Number,
+  slogan: String,
+  campaign: String,
 });
 let candidateModel = mongoose.model("Candidate", candidateSchema);
 

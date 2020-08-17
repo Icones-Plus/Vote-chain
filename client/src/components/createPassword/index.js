@@ -10,11 +10,6 @@ function CreatePassword(props) {
   console.log(password);
   console.log(password2);
 
-  // const onChange = function (e) {
-  //   setPassword(e.target.value);
-  //   setPassword2(e.target.value);
-  // };
-
   const onSubmit = (e) => {
     e.preventDefault();
 

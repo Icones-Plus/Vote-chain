@@ -3,7 +3,7 @@ const candidateModel = model.candidateModel;
 
 exports.candidateProfile = (req, res) => {
   const { id } = req.params;
-
+  console.log("hiii in mongooos");
   candidateModel
     .find({ id: id })
     .then((result) => {
