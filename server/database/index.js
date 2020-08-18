@@ -66,7 +66,7 @@ let feedbackSchema = mongoose.Schema({
 let candidateSchema = mongoose.Schema({
   id: Number,
   description: String,
-  img: URL,
+  img: String,
   slogan: String,
   campaign: String,
 });
