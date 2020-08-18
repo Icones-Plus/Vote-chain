@@ -42,3 +42,14 @@ exports.done = (request, response) => {
     });
   });
 };
+// userModel
+//   .find({ id })
+//   .then((result) => {
+//     if (result.voted) {
+//       res.send({ succses: false, msg: "this voter is votesd before" });
+//     } else {
+//     }
+//   })
+//   .catch((err) => {
+//     res.status(500).send({ succses: false, msg: "error on the server" });
+//   });

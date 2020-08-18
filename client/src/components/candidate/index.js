@@ -97,7 +97,7 @@ function Candidate(props) {
               style={{backgroundColor: "rgb(255, 255, 255)", padding: "70px"}}
             >
               <img src={item.img} alt="image"></img>
-              <h1 style={{color: "black"}}>{item.first_name || "Loading"}</h1>
+              <h1 style={{color: "black"}}>{item.name || "Loading.."}</h1>
               <p style={{color: "black", fontSize: "20px"}}>
                 {item.description}
               </p>
