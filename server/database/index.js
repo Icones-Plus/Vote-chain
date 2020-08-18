@@ -26,6 +26,7 @@ let userSchema = new mongoose.Schema({
   password: String,
   dateOfBirth: Date,
   voted: Boolean,
+  role: String,
   admin: Boolean,
 });
 userSchema.methods.comparePassword = function (password) {
@@ -63,51 +64,33 @@ let feedbackSchema = mongoose.Schema({
 //   });
 
 let candidateSchema = mongoose.Schema({
-  id: {
-    type: Number,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  img: {
-    type: String,
-    required: true,
-  },
+  id: Number,
+  description: String,
+  // img: URL,
+  slogan: String,
+  campaign: String,
 });
 let candidateModel = mongoose.model("Candidate", candidateSchema);
 
 let feedbackModel = mongoose.model("feedback", feedbackSchema);
 
 let analystSchema = mongoose.Schema({
-  first_Name: {
-    type: String,
-  },
-  last_Name: {
-    type: String,
-  },
+  id: Number,
+
   picture: {
     type: String,
   },
   cv: {
     type: String,
   },
-  linkedIn: {
-    type: String,
-  },
+  // linkedIn: {
+  //   type: String
+  // },
   bio: {
     type: String,
   },
   articles: {
     type: Array,
-  },
-  id: {
-    type: Number,
   },
 });
 

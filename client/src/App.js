@@ -7,9 +7,10 @@ import {BrowserRouter, Router, Switch, Route} from "react-router-dom";
 import AdminPanel from "./pages/adminPanel/adminPanel.js";
 import NotFound from "./pages/error/error";
 import Analyst from "./pages/analyst/analyst";
+import AnalystProfile from "./pages/analystProfile/analystProfile";
 import jwtDecode from "jwt-decode";
 import CandidateProfile from "./components/CandidateProfile/index";
-import ForCandidate from "./components/forCandidate/index";
+import ForCandidate from "./components/forCandid/index";
 function App() {
   return (
     <div className="App">
@@ -26,9 +27,10 @@ function App() {
             <Route exact path="/" render={() => <LandingPage />} />
             <Route path="/result" component={Result} />
             <Route path="/candidates" component={Candidates} />
-            {/* <CandidateProfile path="/CandidateProfile" />
-            <ForCandidate path="/forCandidate" /> */}
+            <CandidateProfile path="/CandidateProfile" />
             <Route path="/analyst" exact={true} component={Analyst} />
+            <ForCandidate path="/forCandidate" />
+            <Route path="/analyst-profile" exact component={AnalystProfile} />
             <Route path="*" exact={true} component={NotFound} />
           </Switch>
         )}

@@ -24,14 +24,24 @@ for (let i = 0; i < 10; i++) {
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
     admin: false,
+    role: faker.name.jobType(),
   });
 
   user.save().then((userRef) => {
     console.log(`${userRef.admin} saved successfully`);
+    const candidate = new candidateModel({
+      id: faker.random.number(),
+      description: faker.lorem.paragraph(),
+      img: faker.image.avatar(),
+      slogan: faker.lorem.paragraph(),
+      campaign: faker.lorem.paragraph(),
+    });
+
+    candidate.save().then((addressRef) => {
+      console.log(`${addressRef.name} saved successfully`);
+    });
 
     const analyst = new analystModel({
-      first_Name: faker.name.firstName(),
-      last_Name: faker.name.lastName(),
       picture: faker.image.avatar(),
       bio: faker.lorem.paragraph(),
       linkedIn: faker.internet.url(),
@@ -41,17 +51,5 @@ for (let i = 0; i < 10; i++) {
     analyst.save().then((analystRef) => {
       console.log(`${analystRef.first_Name} saved successfully`);
     });
-  });
-}
-for (let i = 0; i < 6; i++) {
-  const candidate = new candidateModel({
-    id: faker.random.number(),
-    name: faker.name.findName(),
-    description: faker.lorem.paragraph(),
-    img: faker.image.avatar(),
-  });
-
-  candidate.save().then((addressRef) => {
-    console.log(`${addressRef.name} saved successfully`);
   });
 }

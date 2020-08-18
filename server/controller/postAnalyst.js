@@ -12,11 +12,103 @@ exports.postAnalyst = function(req, res){
     articles
   } = body;
 
+  // if(!first_Name){
+  //   return res.send({
+  //     success: false,
+  //     message: 'Please provide your first name'
+  //   })
+  // }
+  //
+  // if(!last_Name){
+  //   return res.send({
+  //     success: false,
+  //     message: 'Please provide your last name'
+  //   })
+  // }
+  //
+  // if(!picture){
+  //   return res.send({
+  //     success: false,
+  //     message: 'Please set your picture'
+  //   })
+  // }
+  //
+  // if(!cv){
+  //   return res.send({
+  //     success: false,
+  //     message: 'Please provide your cv'
+  //   })
+  // }
+  //
+  // if(!linkedIn){
+  //   return res.send({
+  //     success: false,
+  //     message: 'Please provide your linkedIn'
+  //   })
+  // }
+  //
+  // if(!bio){
+  //   return res.send({
+  //     success: false,
+  //     message: 'Please provide your bio'
+  //   })
+  // }
+  //
+  // if(!articles){
+  //   return res.send({
+  //     success: false,
+  //     message: 'Please provide links to your articles'
+  //   })
+  // }
+
+  if(picture){
+   return res.send({
+     success: true,
+     message: 'your picture has been updated'
+   })
+ }
+
+ if(picture && cv){
+   return res.send({
+     success: false,
+     message: 'your picture and cv has been updated'
+   })
+ }
+
+ if(picture && cv && linkedIn){
+   return res.send({
+     success: false,
+     message: 'your picture and cv and linkedIn has been updated'
+   })
+ }
+
+ if(bio){
+   return res.send({
+     success: false,
+     message: 'your bio has been updated'
+   })
+ }
+
+ if(articles){
+   return res.send({
+     success: false,
+     message: 'your articles have been updated'
+   })
+ }
+
+ if(picture && cv && linkedIn && articles && bio){
+   return res.send({
+     success: false,
+     message: 'your info is updated'
+   })
+ }
+
+
   let newAnalyst = new analystModel();
 
   // newAnalyst.id = id;
-  newAnalyst.first_Name = first_Name;
-  newAnalyst.last_Name = last_Name;
+  // newAnalyst.first_Name = first_Name;
+  // newAnalyst.last_Name = last_Name;
   newAnalyst.picture = picture;
   newAnalyst.cv = cv;
   newAnalyst.linkedIn = linkedIn;
