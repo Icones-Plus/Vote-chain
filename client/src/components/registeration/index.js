@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import CreatePassword from "../createPassword";
-
+import jwtDecode from "jwt-decode";
 import Swal from "sweetalert2";
 
 class SignIn extends React.Component {
@@ -18,6 +18,7 @@ class SignIn extends React.Component {
       id: this.state.id,
       password: this.state.password,
     };
+    // console.log(jwtDecode(document.cookie).role, "cookie");
     axios
       .post("/login", user)
       .then(function (response) {
@@ -30,7 +31,13 @@ class SignIn extends React.Component {
             timer: 1500,
           });
           setTimeout(() => {
-            window.location.href = "/cand";
+            if (response.data.role === "candidate") {
+              window.location.href = "/forCandidate";
+            } else if (response.data.role === "analyst") {
+              window.location.href = "/analyst";
+            } else {
+              window.location.href = "/cand";
+            }
           }, 1100);
         } else {
           Swal.fire({

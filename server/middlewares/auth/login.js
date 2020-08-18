@@ -44,6 +44,7 @@ exports.login = function (req, res) {
           res.send({
             success: true,
             message: "done",
+            role: payload.role,
           });
         }
       });
