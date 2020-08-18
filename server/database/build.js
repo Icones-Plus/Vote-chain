@@ -24,7 +24,7 @@ for (let i = 0; i < 10; i++) {
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
     admin: false,
-    role: faker.name.jobType()
+    role: faker.name.jobType(),
   });
 
   user.save().then((userRef) => {
@@ -35,7 +35,6 @@ for (let i = 0; i < 10; i++) {
       img: faker.image.avatar(),
       slogan: faker.lorem.paragraph(),
       campaign: faker.lorem.paragraph(),
-
     });
 
     candidate.save().then((addressRef) => {
