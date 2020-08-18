@@ -14,7 +14,8 @@ const getAnalyst = require("./getAnalyst.js");
 const postAnalyst = require("./postAnalyst.js");
 const logout = require("./logout");
 const uploasCV = require('./addCv.js')
-
+const forCandidate = require('./forCandidate');
+const candidateProfile = require('./candidateProfile')
 // const { sign } = require("jsonwebtoken");
 // var jwt_decode = require("jwt-decode");
 router.post("/signup", signup.signup);
@@ -77,7 +78,7 @@ router.get("/getCands", function (req, res) {
     })
 })
 router.get('/analyze', getAnalyst.getAnalyst);
-router.post('/analyze', postAnalyst.postAnalyst);
+router.post('/analyze/:id', postAnalyst.postAnalyst);
 router.post('/uploadCV/:id', uploasCV.cv);
 // router.use((req, response, next) => {
 //   req.headers.cookie = {

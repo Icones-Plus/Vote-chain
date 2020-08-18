@@ -35,20 +35,6 @@ userSchema.methods.comparePassword = function (password) {
 };
 let userModel = mongoose.model("newUser", userSchema);
 
-<<<<<<< HEAD
-||||||| merged common ancestors
-userSchema.methods.comparePassword = function (password) {
-  return bcrypt.compareSync(password, this.password)
-}
-
-=======
-let feedbackSchema = mongoose.Schema({
-  name: String,
-  email: String,
-  message: String,
-});
-
->>>>>>> a55119c7b8726a2ef92a527cc88edb5b828baa19
 // const newUser = new userModel({
 //   id: "5773380633",
 //   mother_name: "Lucias",
@@ -81,6 +67,12 @@ let candidateSchema = mongoose.Schema({
 });
 let candidateModel = mongoose.model("Candidate", candidateSchema);
 
+let feedbackSchema = mongoose.Schema({
+  name: String,
+  email: String,
+  message: String,
+});
+
 let feedbackModel = mongoose.model("feedback", feedbackSchema);
 
 let analystSchema = mongoose.Schema({
@@ -104,8 +96,6 @@ let analystSchema = mongoose.Schema({
 })
 
 let analystModel = mongoose.model('analyst', analystSchema)
-
-let analystModel = mongoose.model("analyst", analystSchema);
 
 module.exports.userModel = userModel;
 module.exports.candidateModel = candidateModel;

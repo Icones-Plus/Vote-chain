@@ -1,8 +1,24 @@
 var { decode } = require("jsonwebtoken");
 var model = require("../database/index");
+const userModel = model.userModel;
 exports.add = function (req, res) {
   var candidate = req.body;
-  console.log("entered", candidate);
+  console.log(candidate, 'candidate');
+
+  var analyst = req.body;
+  console.log(analyst, 'analyst');
+
+  const { id, role } = candidate;
+
+  // const { id, role } = analyst;
+  // console.log("entered", candidate);
+
+  userModel.findOneAndUpdate({ id: id }, { role: role }).then(result => {
+    console.log(result);
+  }).catch(err => {
+    console.log('Err', err);
+  })
+
   var newEntity = new model.candidateModel(candidate);
   newEntity
     .save()
@@ -12,7 +28,18 @@ exports.add = function (req, res) {
     .catch((err) => {
       res.status(500).send("Error");
     });
+
+    var newAnalystEntity = new model.analystModel(candidate);
+    newAnalystEntity
+      .save()
+      .then((result) => {
+        res.send("addes sucess");
+      })
+      .catch((err) => {
+        res.status(500).send("Error");
+      });
 };
+
 
 exports.get = function (req, res) {
   var jwt = req.headers.cookie ? req.headers.cookie.split("=")[1] : undefined;

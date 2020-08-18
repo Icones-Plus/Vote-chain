@@ -29,7 +29,7 @@ class Analyst extends Component {
       bio: this.state.bio,
       articles: this.state.articles,
     }
-    axios.post('/analyze', analyst).then(result => {
+    axios.post('/analyze/:id', analyst).then(result => {
       if(result.data.success){
         Swal.fire('your info has been updated')
       }

@@ -3,14 +3,26 @@ const analystModel = model.analystModel;
 exports.postAnalyst = function(req, res){
   let { body } = req;
   let {
-    first_Name,
-    last_Name,
     picture,
     cv,
     linkedIn,
     bio,
     articles
   } = body;
+
+  const { id } = req.params;
+// let newAnalyst = new analystModel;
+console.log("here in the requesttttttttttttttttt");
+
+analystModel.findOneAndUpdate(
+  {id: id},
+   {cv: cv, bio: bio, picture: picture})
+   .then(result => {
+  console.log(result, "hereeeeeee in the updateeeeeeeee");
+  res.send("it is okkkkkk ")
+}).catch(err => {
+  console.log('Err',err);
+})
 
   // if(!first_Name){
   //   return res.send({
@@ -61,59 +73,62 @@ exports.postAnalyst = function(req, res){
   //   })
   // }
 
-  if(picture){
-   return res.send({
-     success: true,
-     message: 'your picture has been updated'
-   })
- }
+ //  if(picture){
+ //   return res.send({
+ //     success: true,
+ //     message: 'your picture has been updated'
+ //   })
+ // }
+ //
+ // if(picture && cv){
+ //   return res.send({
+ //     success: false,
+ //     message: 'your picture and cv has been updated'
+ //   })
+ // }
+ //
+ // if(picture && cv && linkedIn){
+ //   return res.send({
+ //     success: false,
+ //     message: 'your picture and cv and linkedIn has been updated'
+ //   })
+ // }
+ //
+ // if(bio){
+ //   return res.send({
+ //     success: false,
+ //     message: 'your bio has been updated'
+ //   })
+ // }
+ //
+ // if(articles){
+ //   return res.send({
+ //     success: false,
+ //     message: 'your articles have been updated'
+ //   })
+ // }
+ //
+ // if(picture && cv && linkedIn && articles && bio){
+ //   return res.send({
+ //     success: false,
+ //     message: 'your info is updated'
+ //   })
+ // }
 
- if(picture && cv){
-   return res.send({
-     success: false,
-     message: 'your picture and cv has been updated'
-   })
- }
-
- if(picture && cv && linkedIn){
-   return res.send({
-     success: false,
-     message: 'your picture and cv and linkedIn has been updated'
-   })
- }
-
- if(bio){
-   return res.send({
-     success: false,
-     message: 'your bio has been updated'
-   })
- }
-
- if(articles){
-   return res.send({
-     success: false,
-     message: 'your articles have been updated'
-   })
- }
-
- if(picture && cv && linkedIn && articles && bio){
-   return res.send({
-     success: false,
-     message: 'your info is updated'
-   })
- }
 
 
-  let newAnalyst = new analystModel();
 
   // newAnalyst.id = id;
   // newAnalyst.first_Name = first_Name;
   // newAnalyst.last_Name = last_Name;
-  newAnalyst.picture = picture;
-  newAnalyst.cv = cv;
-  newAnalyst.linkedIn = linkedIn;
-  newAnalyst.bio = bio;
-  newAnalyst.articles = articles;
+
+  // newAnalyst.picture = picture;
+  // newAnalyst.cv = cv;
+  // newAnalyst.linkedIn = linkedIn;
+  // newAnalyst.bio = bio;
+  // newAnalyst.articles = articles;
+
+
 
 
    //
@@ -151,13 +166,13 @@ exports.postAnalyst = function(req, res){
   //   console.log('hey');
   // }
 
-  newAnalyst.save().then(result => {
-    console.log(result, 'result');
-    return res.send({
-      success: true,
-      message: 'successfully saves'
-    })
-  }).catch(err => {
-    console.log('Err in saving analyst to db', err);
-  })
+  // newAnalyst.save().then(result => {
+  //   console.log(result, 'result');
+  //   return res.send({
+  //     success: true,
+  //     message: 'successfully saves'
+  //   })
+  // }).catch(err => {
+  //   console.log('Err in saving analyst to db', err);
+  // })
 }
