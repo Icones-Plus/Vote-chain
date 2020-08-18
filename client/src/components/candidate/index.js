@@ -47,9 +47,9 @@ function Candidate(props) {
             },
           })
             .then((response) => {
-              console.log("in the line 50 on candidates.js", response.data);
               if (response.data.succses) {
                 isVoted();
+                console.log("_-__--____--_---_----____--___--", response.data);
                 alert("done");
               }
               // return response.json();
@@ -97,7 +97,7 @@ function Candidate(props) {
               style={{backgroundColor: "rgb(255, 255, 255)", padding: "70px"}}
             >
               <img src={item.img} alt="image"></img>
-              <h1 style={{color: "black"}}>{item.name || "Loading"}</h1>
+              <h1 style={{color: "black"}}>{item.first_name || "Loading"}</h1>
               <p style={{color: "black", fontSize: "20px"}}>
                 {item.description}
               </p>

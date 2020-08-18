@@ -34,6 +34,7 @@ for (let i = 0; i < 10; i++) {
 for (let i = 0; i < 5; i++) {
   const candidate = new candidateModel({
     id: faker.random.number(),
+    name: faker.name.findName(),
     description: faker.lorem.paragraph(),
     img: faker.image.avatar(),
     slogan: faker.lorem.paragraph(),
