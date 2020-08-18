@@ -50,10 +50,10 @@ function Candidate(props) {
               if (response.data.succses) {
                 isVoted();
                 console.log("_-__--____--_---_----____--___--", response.data);
-                alert("done");
+                Swal.fire(response.data.msg);
               }
               // return response.json();
-              else Swal.fire("You intered wrong code!");
+              else Swal.fire(response.data.msg);
             })
             .catch((error) => {
               Swal.showValidationMessage(`Server failed`);
