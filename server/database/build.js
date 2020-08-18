@@ -28,16 +28,6 @@ for (let i = 0; i < 10; i++) {
 
   user.save().then((userRef) => {
     console.log(`${userRef.admin} saved successfully`);
-    const candidate = new candidateModel({
-      id: faker.random.number(),
-      name: faker.name.findName(),
-      description: faker.lorem.paragraph(),
-      img: faker.image.avatar(),
-    });
-
-    candidate.save().then((addressRef) => {
-      console.log(`${addressRef.name} saved successfully`);
-    });
 
     const analyst = new analystModel({
       first_Name: faker.name.firstName(),
@@ -51,5 +41,17 @@ for (let i = 0; i < 10; i++) {
     analyst.save().then((analystRef) => {
       console.log(`${analystRef.first_Name} saved successfully`);
     });
+  });
+}
+for (let i = 0; i < 6; i++) {
+  const candidate = new candidateModel({
+    id: faker.random.number(),
+    name: faker.name.findName(),
+    description: faker.lorem.paragraph(),
+    img: faker.image.avatar(),
+  });
+
+  candidate.save().then((addressRef) => {
+    console.log(`${addressRef.name} saved successfully`);
   });
 }
