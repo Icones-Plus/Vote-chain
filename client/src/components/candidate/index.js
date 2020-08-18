@@ -47,13 +47,13 @@ function Candidate(props) {
             },
           })
             .then((response) => {
-              console.log("in the line 50 on candidates.js", response.data);
               if (response.data.succses) {
                 isVoted();
-                alert("done");
+                console.log("_-__--____--_---_----____--___--", response.data);
+                Swal.fire(response.data.msg);
               }
               // return response.json();
-              else Swal.fire("You intered wrong code!");
+              else Swal.fire(response.data.msg);
             })
             .catch((error) => {
               Swal.showValidationMessage(`Server failed`);
@@ -97,7 +97,7 @@ function Candidate(props) {
               style={{backgroundColor: "rgb(255, 255, 255)", padding: "70px"}}
             >
               <img src={item.img} alt="image"></img>
-              <h1 style={{color: "black"}}>{item.name || "Loading"}</h1>
+              <h1 style={{color: "black"}}>{item.name || "Loading.."}</h1>
               <p style={{color: "black", fontSize: "20px"}}>
                 {item.description}
               </p>
