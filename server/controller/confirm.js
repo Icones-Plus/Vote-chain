@@ -1,11 +1,11 @@
 var jwt_decode = require("jwt-decode");
 const { sign } = require("jsonwebtoken");
 const { userModel, candidateModel } = require("../database/index");
-const {
-  voteForCandidate,
-  retrieveVotes,
-  retriveOne,
-} = require("../../blockchian");
+// const {
+//   voteForCandidate,
+//   retrieveVotes,
+//   retriveOne,
+// } = require("../../blockchian");
 exports.done = (request, response) => {
   var incomingCode = request.body.code;
   candidateId = request.body.id;
