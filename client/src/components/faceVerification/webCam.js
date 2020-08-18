@@ -1,49 +1,25 @@
 import React from 'react';
 import Webcam from 'react-webcam';
 import axios from 'axios';
-// import cors from 'cors'
-// import { response } from '../../../../server/server';
-// This should already be declared in your API file
-
-
+import decode from 'jwt-decode'
 
 const WebcamCapture = () => {
+    const imageURL2 = decode(document.cookie).img_url;
+    console.log("Second image", imageURL2)
     const webcamRef = React.useRef(null);
     const [imgSrc, setImgSrc] = React.useState(null);
-
-
     const capture = React.useCallback(() => {
         const imageSrc = webcamRef.current.getScreenshot();
         setImgSrc(imageSrc);
-
-
-
-        console.log(imageSrc);
-
-
-
-
-
-
-
-
-
         axios.post("/webcam", {
             image_base64_1: imageSrc.toString(),
-            image_url2: 'https://ca.slack-edge.com/TTW205AAU-U011K4W1CBY-c316cefdce24-512'
+            image_url2: imageURL2
         }).then(success => {
             console.log("Success : Request sent to local server", success)
         }).catch(err => {
             console.log("Error in sending request to local server", err)
         });
-
-
-
     }, [webcamRef, setImgSrc]);
-
-
-
-
 
 
 
@@ -67,7 +43,6 @@ const WebcamCapture = () => {
                     src={imgSrc}
                 />
             )}
-            {/* {console.log(imgSrc)} */}
         </>
     );
 };

@@ -48,7 +48,7 @@ function Candidate(props) {
               isVoted();
             }
             // return response.json();
-            else Swal.fire("You intered wrong code");
+            else Swal.fire("You entered wrong code");
           })
           .catch((error) => {
             Swal.showValidationMessage(`Request failed: ${error}`);

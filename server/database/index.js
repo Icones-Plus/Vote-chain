@@ -19,6 +19,7 @@ let userSchema = new mongoose.Schema({
   gender: String,
   id: Number,
   email: String,
+  img_url: String,
   first_name: String,
   last_name: String,
   password: String,
