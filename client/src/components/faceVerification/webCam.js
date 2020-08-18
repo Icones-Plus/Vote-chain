@@ -17,9 +17,20 @@ const WebcamCapture = () => {
         setImgSrc(imageSrc);
 
 
+
+        console.log(imageSrc);
+
+
+
+
+
+
+
+
+
         axios.post("/webcam", {
-            image_url1: 'https://cdn.faceplusplus.com/mc-official/scripts/demoScript/images/demo-pic39.jpg',
-            image_url2: 'https://cdn.faceplusplus.com/mc-official/scripts/demoScript/images/demo-pic33.jpg'
+            image_base64_1: imageSrc.toString(),
+            image_url2: 'https://ca.slack-edge.com/TTW205AAU-U011K4W1CBY-c316cefdce24-512'
         }).then(success => {
             console.log("Success : Request sent to local server", success)
         }).catch(err => {
@@ -55,14 +66,8 @@ const WebcamCapture = () => {
                 <img
                     src={imgSrc}
                 />
-                // <div>
-                //     <a download="userPhoto.jpg" href={imgSrc} title="userImage">
-                //         <img alt="userPhoto" src={imgSrc} />
-                //     </a>
-                // </div>
             )}
-
-            {console.log(imgSrc)}
+            {/* {console.log(imgSrc)} */}
         </>
     );
 };

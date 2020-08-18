@@ -88,7 +88,7 @@ router.post("/webcam", function (req, res) {
     url: 'https://api-us.faceplusplus.com/facepp/v3/compare', formData: {
       api_key: 'FavnHOrlAbZ3TcgYxhPIdXy5Xb-SA3vJ',
       api_secret: 'nMjgy48bWF3WaVovNllv-EgWV2CsnFqP',
-      image_url1: req.body.image_url1,
+      image_base64_1: req.body.image_base64_1,
       image_url2: req.body.image_url2
     }
   }, (err, httpResponse, body) => {
