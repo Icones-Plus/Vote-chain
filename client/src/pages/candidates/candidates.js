@@ -67,12 +67,7 @@ class Candidates extends React.Component {
           <Candidate data={this.state.data} />
         </div>
         <div style={{backgroundColor: "white", padding: "13px"}}>
-          <div className="container text-center">
-            <p>
-              &copy; 2020 ElecChian Design by Icones Team
-              <a href="https://github.com/Icones-Plus"> Icones</a>
-            </p>
-          </div>
+          <div className="container text-center"></div>
         </div>
       </div>
     );
