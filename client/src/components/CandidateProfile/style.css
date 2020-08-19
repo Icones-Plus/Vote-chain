@@ -1,53 +1,150 @@
 .bor {
-  text-align: center;
+  /* text-align: left; */
   position: absolute;
   display: grid;
-  bottom: 62%;
-  top: 8%;
+  bottom: 53%;
+  top: 20%;
   width: 180px;
   padding: 10px;
   left: 233px;
-  border: 1px solid #948acf;
+  /* border: 1px solid; */
   border-radius: 1.25rem;
   margin: 0;
 }
 
 .div2 {
-  text-align: center;
+  text-align: left;
+  background-color: rgb(240, 248, 255);
   position: absolute;
   display: grid;
-  bottom: 78%;
-  top: 8%;
+  bottom: 60%;
+  top: 20%;
   width: 583px;
   padding: 10px;
   left: 505px;
-  border: 1px solid #948acf;
+  /* border: 1px solid; */
   border-radius: 1.25rem;
   margin: 0;
 }
+#img {
+  position: absolute;
+  width: 173px;
+  border-radius: 1.25rem;
+}
 .div3 {
-  text-align: center;
+  text-align: left;
+  background-color: rgb(240, 248, 255);
   position: absolute;
   display: grid;
-  bottom: 3%;
-  top: 45%;
+  bottom: -3%;
+  top: 53%;
   width: 401px;
   left: 230px;
-  border: 1px solid #948acf;
+  /* border: 1px solid; */
   border-radius: 1.25rem;
   padding: 10px;
   margin: 0;
 }
 .div4 {
-  text-align: center;
+  text-align: left;
+  background-color: rgb(240, 248, 255);
   position: absolute;
   display: grid;
-  bottom: 3%;
-  top: 45%;
-  width: 401px;
-  left: 710px;
-  border: 1px solid #948acf;
+  bottom: -3%;
+  top: 53%;
+  left: 509px;
+  width: 583px;
+  /* border: 1px solid; */
   border-radius: 1.25rem;
   padding: 10px;
   margin: 0;
+}
+
+.test-parent {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 1200px;
+  margin: 90px auto;
+}
+
+.test-parent .sidebar {
+  float: left;
+  width: 20%;
+  margin-right: 5%;
+  background: #080;
+}
+.test-parent .content {
+  float: left;
+  width: 75%;
+  background: #f00;
+}
+
+#packages {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.box {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background: #000000;
+  margin: 10px;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  align-items: center;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+.content a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: 1px solid #008fff;
+  text-decoration: none;
+  color: #ffffff;
+  transition: 0.5s;
+  border-radius: 2px;
+}
+
+.content a:hover {
+  color: #ffffff;
+  background: #008fff;
+  text-decoration: none;
+}
+
+.box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  transition: 0.8s;
+}
+
+.box:hover img {
+  -webkit-clip-path: polygon(0 0, 100% 0, 0 0, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 0 0, 0% 100%);
+}
+
+.pack {
+  text-align: center;
+  margin-bottom: 40px;
 }
