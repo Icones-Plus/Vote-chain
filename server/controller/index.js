@@ -30,10 +30,10 @@ router.get("/verfiy", verfication.verfiy);
 router.post("/contact", contact.contact);
 
 router.get("/contact", contact.contact1);
-router.post("/delete");
+router.post("/delete", contact.delete);
 router.post("/createPassword/:id", createPassword.createPassword);
 router.get("/logout", logout.get);
-// router.use(auth);
+router.use(auth);
 router.get("/admn", admin.get);
 router.get("/cand", candidates.get);
 router.get("/res", result.get);
