@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 mongoose.set("useFindAndModify", false);
 
 let connection = mongoose
-  .connect("mongodb://localhost:27017/votedb", {
+  .connect("mongodb+srv://Ayman:Aa&987123&@cluster0.qomli.mongodb.net/votedb?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
