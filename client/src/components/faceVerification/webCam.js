@@ -1,12 +1,16 @@
 import React from 'react';
 import Webcam from 'react-webcam';
 import axios from 'axios';
-import decode from 'jwt-decode'
-import Swal from 'sweetalert2'
+import decode from 'jwt-decode';
+import Swal from 'sweetalert2';
+import combine from './../candidate/index'
 
-const WebcamCapture = () => {
+
+
+
+const WebcamCapture = (props) => {
+
     const imageURL2 = decode(document.cookie).img_url;
-    console.log("Second image", imageURL2)
     const webcamRef = React.useRef(null);
     const [imgSrc, setImgSrc] = React.useState(null);
     const capture = React.useCallback(() => {
@@ -24,6 +28,8 @@ const WebcamCapture = () => {
                     title: 'Success',
                     showConfirmButton: false,
                     timer: 1500
+                }).then(() => {
+                    props.handleClick.combine()
                 })
             } else if (success.data >= 70 && success.data < 80) {
                 Swal.fire('Please take a clearer photo! \n Get close to camera if you are sitting far away')
@@ -35,7 +41,7 @@ const WebcamCapture = () => {
                 })
             } else if (success.data === "Invalid image url") {
                 Swal.fire('No face was detected!')
-            }else {
+            } else {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
@@ -68,10 +74,10 @@ const WebcamCapture = () => {
                     ref={webcamRef}
                     screenshotFormat="image/jpeg"
                     imageSmoothing="true"
-                /><br /><br/>
+                /><br /><br />
                 <button className="button" onClick={capture}>Capture photo</button>
                 <br /><br />
-                <h5 style={{ color: "black", textTransform: "capitalize"}}> Please enure that your face is uncovered, clear and close to the camera.</h5>
+                <p style={{ color: "black" }}> Please enure that your face is uncovered, clear and close to the camera.</p>
             </div>
 
         </>

@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-// import React, {Component} from "react";
 import "./style.css";
 import Swal from "sweetalert2";
 import axios from "axios";
 import WebcamCapture from './../faceVerification/webCam'
 import Popup from "reactjs-popup";
 
-function Candidate(props) {
+function Candidate(props) { 
   const [value, setValue] = useState(false);
   const [code, setCode] = useState("");
   const isVoted = () => {
@@ -72,15 +71,6 @@ function Candidate(props) {
   };
   return (
     <div>
-      <div>
-        <Popup
-          trigger={<button className="button"> Open Modal </button>}
-          modal
-          closeOnDocumentClick
-        >
-          <span> <WebcamCapture/> </span>
-        </Popup>
-      </div>
       <div className="div">
         {
           props.data.map(item => {
@@ -91,9 +81,15 @@ function Candidate(props) {
                 <p style={{ color: "black", fontSize: "20px" }}>
                   {item.description}
                 </p>
-                <button type="button" className="button" onClick={combine}>
-                  Vote
-                </button>
+                <div>
+                  <Popup
+                    trigger={<button className="button"> Vote </button>}
+                    modal
+                    closeOnDocumentClick
+                  >
+                    <span> <WebcamCapture handleClick={combine} /> </span>
+                  </Popup>
+                </div>
               </div>
             )
           })
