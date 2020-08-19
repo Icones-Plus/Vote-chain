@@ -2,13 +2,9 @@ import React from 'react';
 import Webcam from 'react-webcam';
 import axios from 'axios';
 import decode from 'jwt-decode'
-// import { Button, Modal } from 'react-bootstrap';
-import './style.css'
+import Swal from 'sweetalert2'
 
-
-
-
-const WebcamCap = () => {
+const WebcamCapture = () => {
     const imageURL2 = decode(document.cookie).img_url;
     console.log("Second image", imageURL2)
     const webcamRef = React.useRef(null);
@@ -21,8 +17,38 @@ const WebcamCap = () => {
             image_url2: imageURL2
         }).then(success => {
             console.log("Success : Request sent to local server", success)
+            if (success.data >= 80) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            } else if (success.data >= 70 && success.data < 80) {
+                Swal.fire('Please take a clearer photo! \n Get close to camera if you are sitting far away')
+            } else if (success.data < 70) {
+                let name = decode(document.cookie).firstName;
+                Swal.fire({
+                    icon: 'error',
+                    title: `Not ${name} !`
+                })
+            } else if (success.data === "Invalid image url") {
+                Swal.fire('No face was detected!')
+            }else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!'
+                })
+            }
         }).catch(err => {
             console.log("Error in sending request to local server", err)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            })
         });
     }, [webcamRef, setImgSrc]);
 
@@ -30,139 +56,30 @@ const WebcamCap = () => {
 
     return (
         <>
-            <h2>Hi cam</h2>
-            <Webcam style={{
-                width: "500px",
-                height: "375px",
-                border: "3px rgb(0, 0, 0) solid"
-            }}
-                audio={false}
-                ref={webcamRef}
-                screenshotFormat="image/jpeg"
-                imageSmoothing="true"
-            /><br /><br />
-            <button className="button" onClick={capture}>Capture photo</button>
-            <br /><br />
-            {imgSrc && (
-                <img
-                    src={imgSrc}
-                />
-            )}
+            <div>
+                <h2>Face Verification</h2>
+                <h4>Please take a moment to verify it's you</h4>
+                <Webcam style={{
+                    width: "500px",
+                    height: "375px",
+                    border: "3px rgb(0, 0, 0) solid"
+                }}
+                    audio={false}
+                    ref={webcamRef}
+                    screenshotFormat="image/jpeg"
+                    imageSmoothing="true"
+                /><br /><br/>
+                <button className="button" onClick={capture}>Capture photo</button>
+                <br /><br />
+                <h5 style={{ color: "black", textTransform: "capitalize"}}> Please enure that your face is uncovered, clear and close to the camera.</h5>
+            </div>
+
         </>
     );
 };
 
-// export default WebcamCapture;
-
-
-
-
-
-
-
-
-
-
-
-
-// const WebcamModal = props => {
-//     const imageURL2 = decode(document.cookie).img_url;
-//     const webcamRef = React.useRef(null);
-//     const [imgSrc, setImgSrc] = React.useState(null);
-//     const capture = React.useCallback(() => {
-//         const imageSrc = webcamRef.current.getScreenshot();
-//         setImgSrc(imageSrc);
-//         axios.post("/webcam", {
-//             image_base64_1: imageSrc.toString(),
-//             image_url2: imageURL2
-//         }).then(success => {
-//             console.log("Success : Request sent to local server", success)
-//         }).catch(err => {
-//             console.log("Error in sending request to local server", err)
-//         });
-//     }, [webcamRef, setImgSrc]);
-
-
-
-//     return (
-
-//         <div>
-
-//             <Modal
-//                 {...props}
-//                 size="lg"
-//                 aria-labelledby="contained-modal-title-vcenter"
-//                 centered
-//             >
-//                 <Modal.Header closeButton>
-//                     <Modal.Title id="contained-modal-title-vcenter">
-//                         Face Verification
-//                     </Modal.Title>
-//                 </Modal.Header>
-//                 <Modal.Body>
-//                     <h4>Please verify it's you</h4>
-
-//                     <>
-//                         <h2>Hi cam</h2>
-//                         <Webcam style={{
-//                             width: "500px",
-//                             height: "375px",
-//                             border: "3px rgb(0, 0, 0) solid",
-//                         }}
-//                             audio={false}
-//                             ref={webcamRef}
-//                             screenshotFormat="image/jpeg"
-//                             imageSmoothing="true"
-//                         /><br /><br />
-//                         <button className="button" onClick={capture}>Capture photo</button>
-//                         <br /><br />
-//                         {imgSrc && (
-//                             <img
-//                                 src={imgSrc}
-//                             />
-//                         )}
-//                     </>
-//                 </Modal.Body>
-//                 <Modal.Footer>
-//                     <Button onClick={props.onHide}>Close</Button>
-//                 </Modal.Footer>
-//             </Modal>
-//         </div>
-
-//     );
-// }
-
-// function WebcamCapture() {
-//     // const [modalShow, setModalShow] = React.useState(false);
-//     state = {
-//         showModal: false
-//     }
-
-//     return (
-//         <>
-//             <button variant="primary" >
-//                 Hi
-//             </button>
-//             <div id="myModal" class="modal" style={{ display: this.state.showStore ? 'block' : 'none' }}>
-
-//                 <div class="modal-content">
-//                     <div class="modal-header">
-//                         <span class="close" onClick={this.state.showModal = false}>&times;</span>
-//                         <h2>Modal Header</h2>
-//                     </div>
-//                     <div class="modal-body">
-//                         <WebcamCap/>
-//                     </div>
-//                     <div class="modal-footer">
-//                         <h3>Modal Footer</h3>
-//                     </div>
-//                 </div>
-
-//             </div>
-//         </>
-//     );
-// }
-
-
-
 export default WebcamCapture;
+
+
+
+

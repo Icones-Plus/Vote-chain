@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import "./style.css";
 import Swal from "sweetalert2";
 import axios from "axios";
+import WebcamCapture from './../faceVerification/webCam'
+import Popup from "reactjs-popup";
 
 function Candidate(props) {
   const [value, setValue] = useState(false);
@@ -70,6 +72,15 @@ function Candidate(props) {
   };
   return (
     <div>
+      <div>
+        <Popup
+          trigger={<button className="button"> Open Modal </button>}
+          modal
+          closeOnDocumentClick
+        >
+          <span> <WebcamCapture/> </span>
+        </Popup>
+      </div>
       <div className="div">
         {
           props.data.map(item => {
