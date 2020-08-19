@@ -8,7 +8,6 @@
     "client": "cd client && npm run build && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "ganache": "cd blockchian && node_modules/.bin/ganache-cli",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
