@@ -3,10 +3,12 @@ import React, {useState} from "react";
 import "./style.css";
 import Swal from "sweetalert2";
 import axios from "axios";
+import CandidateProfile from "../CandidateProfile";
 
 function Candidate(props) {
   const [value, setValue] = useState(false);
   const [code, setCode] = useState("");
+  const [page, setPage] = useState(null);
   const isVoted = () => {
     if (value === false) setValue(true);
     else {
@@ -78,6 +80,10 @@ function Candidate(props) {
       resolve(id);
     });
   }
+  const move = (e) => {
+    const id = e.target.name;
+    setPage(<CandidateProfile id={id} />);
+  };
 
   const combine = (e) => {
     sendCodeToMobile();
@@ -87,7 +93,7 @@ function Candidate(props) {
       }
     });
   };
-  return (
+  return page == null ? (
     <div>
       <div className="div">
         {props.data.map((item) => {
@@ -109,11 +115,21 @@ function Candidate(props) {
               >
                 Vote
               </button>
+              <button
+                type="button"
+                className="button"
+                name={item.id}
+                onClick={move}
+              >
+                Candidate Profile
+              </button>
             </div>
           );
         })}
       </div>
     </div>
+  ) : (
+    page
   );
 }
 

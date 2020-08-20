@@ -6,6 +6,11 @@ const { userModel, candidateModel } = require("../database/index");
 //   retrieveVotes,
 //   retriveOne,
 // } = require("../../blockchian");
+// retrieveVotes().then((e) => {
+//   e[4].then((w) => {
+//     console.log(w);
+//   });
+// });
 exports.done = (request, response) => {
   var incomingCode = request.body.code;
   candidateId = request.body.id;
@@ -23,7 +28,7 @@ exports.done = (request, response) => {
       } else {
         candidateModel.findOne({ id: candidateId }).then((res) => {
           name = res.name;
-
+          console.log("name", name);
           sign(String(id), process.env.SECRET, (err, token) => {
             if (err) {
               response.status(401).json("Error: server error");
@@ -33,8 +38,8 @@ exports.done = (request, response) => {
                 userModel
                   .findOneAndUpdate({ id }, { voted: true })
                   .then((result) => {
-                    // voteForCandidate("d");
-                    // retriveOne("a");
+                    // voteForCandidate(name);
+                    // retriveOne("Coleman Luettgen");
                     // retrieveVotes();
                     var result = {
                       succses: true,
