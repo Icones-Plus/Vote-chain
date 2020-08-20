@@ -4,9 +4,10 @@ import Footer from "../footer.jsx";
 import Swal from "sweetalert2";
 export class AddCandidate extends Component {
   state = {
-    name: "",
+    role: "",
     img: "",
     description: "",
+    id: "",
   };
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value});
@@ -14,9 +15,10 @@ export class AddCandidate extends Component {
 
   handleSubmit = () => {
     const candidate = {
-      name: this.state.name,
+      role: this.state.role,
       img: this.state.img,
       description: this.state.description,
+      id: this.state.id,
     };
     axios({
       method: "post",
@@ -24,16 +26,10 @@ export class AddCandidate extends Component {
       data: candidate,
     })
       .then((res) => {
-        //   Swal.fire({
-        //     title: "Your work has been saved",
-        //   });
-        alert("dfghjkl");
+        alert("done");
       })
-      .catch(() => {
-        // Swal.fire({
-        //   title: "Oops...",
-        // });
-        alert("gdgf");
+      .catch((err) => {
+        alert("fail");
       });
   };
 
@@ -62,9 +58,9 @@ export class AddCandidate extends Component {
                           type="text"
                           id="nameOfCan"
                           className="form-control"
-                          placeholder="Name of candidate"
+                          placeholder="role of candidate"
                           required="required"
-                          name="name"
+                          name="role"
                           onChange={this.handleChange}
                         />
                         <p className="help-block text-danger"></p>
@@ -96,6 +92,21 @@ export class AddCandidate extends Component {
                       onChange={this.handleChange}
                     ></textarea>
                     <p className="help-block text-danger"></p>
+                  </div>
+
+                  <div className="col-md-6">
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        id="idOfCan"
+                        className="form-control"
+                        placeholder="id of candidate"
+                        required="required"
+                        name="id"
+                        onChange={this.handleChange}
+                      />
+                      <p className="help-block text-danger"></p>
+                    </div>
                   </div>
                   <div id="success"></div>
                   <button type="submit" className="btn btn-custom btn-lg">

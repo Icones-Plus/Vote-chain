@@ -1,85 +1,73 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import axios from "axios";
-import Swal from 'sweetalert2'
 
+import Swal from "sweetalert2";
 
 function CreatePassword(props) {
   const id = props.id;
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
-  console.log(password)
-  console.log(password2)
-
-
-  const onChange = function (e) {
-    setPassword(e.target.value);
-    setPassword2(e.target.value);
-  };
+  console.log(password);
+  console.log(password2);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     if (password === password2) {
+      console.log(password, password2, "passsssssssssssssssss");
       axios
-        .post(`/createPassword/${id}`, { password })
-        .then((res) => {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Welcome',
-            showConfirmButton: false,
-            timer: 1500
-          })
-          setTimeout(() => {
-            window.location.href = "/candidates";
-          }, 1100)
+        .post(`/createPassword/${id}`, {password, password2})
+        .then((result) => {
+          console.log(result, "res3433222212sddsdfrewdfrewdweds");
+          if (result.data.message === "passwords do not match") {
+            Swal.fire("passwords do not match");
+          } else if (result.data === "signup cookie set") {
+            Swal.fire("your password is set up successfully");
+            window.location.href = "/cand";
+          }
         })
         .catch((err) => {
           console.log(err, "err hereeeeeeee");
         });
     } else {
       Swal.fire({
-        position: 'center',
-        icon: 'error',
+        position: "center",
+        icon: "error",
         title: "Passwords don't matched!",
         showConfirmButton: true,
-      })
+      });
     }
-
-    // if (password === password2) {
-    //   console.log(id, 'idyasmin');
-    //     axios.post('/createPassword', { password, id }).then(res => {
-    //         console.log('submited', res);
-    //     }).catch(err => {
-    //         console.log('err: ', err);
-    //     })
-    // } else {
-    //     alert('passwords are not matching')
-    // }
   };
   return (
-    <div style={{
-      padding: "20px",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center"
-    }}>
-      <form className="component" onSubmit={onSubmit.bind(this)}>
+    <div
+      style={{
+        padding: "20px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <form className="component" onSubmit={onSubmit}>
         <div className="col-md-6">
           <label>Enter your password</label>{" "}
-          <div className="form-group" >
+          <div className="form-group">
             <br /> <br />
             <input
               className="form-control"
               type="password"
-              onChange={onChange}
-            /><br /> <br />
-            <label>Confirm password</label><br /> <br />
+              name="pass"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <br /> <br />
+            <label>Confirm password</label>
+            <br /> <br />
             <input
               type="password"
-              onChange={onChange}
+              name="pass1"
+              onChange={(e) => setPassword2(e.target.value)}
               className="form-control"
-            /><br /> <br />
+            />
+            <br /> <br />
             <button className="btn-custom">submit</button>
           </div>
         </div>

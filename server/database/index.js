@@ -1,11 +1,16 @@
 const mongoose = require("mongoose");
+require("mongoose-type-url");
 const bcrypt = require("bcrypt");
+mongoose.set("useFindAndModify", false);
 
 let connection = mongoose
-  .connect("mongodb://localhost:27017/votedb", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb://localhost:27017/votedb",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     console.log("connected to dataBase");
   })
@@ -25,7 +30,7 @@ let userSchema = new mongoose.Schema({
   password: String,
   dateOfBirth: Date,
   voted: Boolean,
-  password: String,
+  role: String,
   admin: Boolean,
 });
 userSchema.methods.comparePassword = function (password) {
@@ -33,6 +38,11 @@ userSchema.methods.comparePassword = function (password) {
 };
 let userModel = mongoose.model("newUser", userSchema);
 
+let feedbackSchema = mongoose.Schema({
+  name: String,
+  email: String,
+  message: String,
+});
 
 // const newUser = new userModel({
 //   id: "5773380633",
@@ -57,51 +67,41 @@ let userModel = mongoose.model("newUser", userSchema);
 //     console.log(err, "err in save");
 //   });
 
-// userSchema.methods.comparePassword = function (password) {
-//   return bcrypt.compareSync(password, this.password);
-// };
-
-
 let candidateSchema = mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  description: {
-    type: String,
-    required: true
-  },
-  img: {
-    type: String,
-    required: true
-  }
-});
-
-let candidateModel = mongoose.model("Candidate", candidateSchema);
-
-// let cand = new candidateModel({
-//   name: "Karam",
-//   description: "Cool guy",
-//   img: "https://i.ibb.co/C73t72L/02.jpg"
-// })
-
-// cand.save()
-//   .then(success => {
-//   console.log("success", success)
-//   })
-//   .catch(err => {
-//   console.log("Error in saving cand", err)
-// })
-
-let feedbackSchema = mongoose.Schema({
+  id: Number,
   name: String,
-  email: String,
-  message: String,
+  description: String,
+  img: String,
+  slogan: String,
+  campaign: String,
 });
+let candidateModel = mongoose.model("Candidate", candidateSchema);
 
 let feedbackModel = mongoose.model("feedback", feedbackSchema);
 
+let analystSchema = mongoose.Schema({
+  id: Number,
+
+  picture: {
+    type: String,
+  },
+  cv: {
+    type: String,
+  },
+  // linkedIn: {
+  //   type: String
+  // },
+  bio: {
+    type: String,
+  },
+  articles: {
+    type: Array,
+  },
+});
+
+let analystModel = mongoose.model("analyst", analystSchema);
 
 module.exports.userModel = userModel;
 module.exports.candidateModel = candidateModel;
 module.exports.feedbackModel = feedbackModel;
+module.exports.analystModel = analystModel;

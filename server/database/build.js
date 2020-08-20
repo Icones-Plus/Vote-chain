@@ -9,15 +9,15 @@
 // });
 
 const faker = require("faker");
-const { userModel, candidateModel } = require("./index");
+const { userModel, candidateModel, analystModel } = require("./index");
 let genders = ["male", "female"];
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 100; i++) {
   const user = new userModel({
     id: faker.random.number(),
     mother_name: faker.name.findName(),
     mobile: faker.random.number(),
     email: faker.internet.email(),
-    img_url: faker.internet.avatar(),
+    img_url: faker.image.avatar(),
     gender: faker.random.arrayElement(genders),
     voted: false,
     dateOfBirth: faker.date.between("1940-01-01", "2002-12-31"),
@@ -25,18 +25,35 @@ for (let i = 0; i < 10; i++) {
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
     admin: false,
+    role: faker.name.jobType(),
   });
 
   user.save().then((userRef) => {
     console.log(`${userRef.admin} saved successfully`);
-    const candidate = new candidateModel({
-      name: faker.name.findName(),
-      description: faker.lorem.paragraph(),
-      img: faker.image.avatar(),
-    });
-
-    candidate.save().then((addressRef) => {
-      console.log(`${addressRef.name} saved successfully`);
-    });
   });
 }
+for (let i = 0; i < 5; i++) {
+  const candidate = new candidateModel({
+    id: faker.random.number(),
+    name: faker.name.findName(),
+    description: faker.lorem.paragraph(),
+    img: faker.image.avatar(),
+    slogan: faker.lorem.paragraph(),
+    campaign: faker.lorem.paragraph(),
+  });
+
+  candidate.save().then((addressRef) => {
+    console.log(`${addressRef.name} saved successfully`);
+  });
+}
+//   const analyst = new analystModel({
+//     picture: faker.image.avatar(),
+//     bio: faker.lorem.paragraph(),
+//     linkedIn: faker.internet.url(),
+//     cv: faker.internet.url(),
+//   });
+
+//   analyst.save().then((analystRef) => {
+//     console.log(`${analystRef.first_Name} saved successfully`);
+//   });
+// }

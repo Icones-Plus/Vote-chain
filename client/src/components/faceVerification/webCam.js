@@ -29,7 +29,8 @@ const WebcamCapture = (props) => {
                     showConfirmButton: false,
                     timer: 1500
                 }).then(() => {
-                    props.handleClick.combine()
+                    console.log(props.handleClick)
+                    props.handleClick.combine();
                 })
             } else if (success.data >= 70 && success.data < 80) {
                 Swal.fire('Please take a clearer photo! \n Get close to camera if you are sitting far away')
@@ -53,7 +54,7 @@ const WebcamCapture = (props) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Something went wrong!',
+                text: 'Something went wrong with the server!',
             })
         });
     }, [webcamRef, setImgSrc]);

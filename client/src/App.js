@@ -1,12 +1,16 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from "react";
 import "./App.css";
 import Result from "./pages/result/index";
 import LandingPage from "./pages/landingPage/index";
 import Candidates from "./pages/candidates/candidates";
-import { BrowserRouter, Router, Switch, Route } from "react-router-dom";
+import {BrowserRouter, Router, Switch, Route} from "react-router-dom";
 import AdminPanel from "./pages/adminPanel/adminPanel.js";
 import NotFound from "./pages/error/error";
+import Analyst from "./pages/analyst/analyst";
+import AnalystProfile from "./pages/analystProfile/analystProfile";
 import jwtDecode from "jwt-decode";
+import CandidateProfile from "./components/CandidateProfile/index";
+import ForCandidate from "./components/forCandidate/index";
 function App() {
   return (
     <div className="App">
@@ -19,16 +23,22 @@ function App() {
         ) : jwtDecode(document.cookie).admin ? (
           <AdminPanel />
         ) : (
-              <Switch>
-                <Route exact path="/" render={() => <LandingPage />} />
-                <Route path="/result" component={Result} />
-                <Route path="/candidates" component={Candidates} />
-                <Route path="*" exact={true} component={NotFound} />
-              </Switch>
-            )}
+          <Switch>
+            <Route exact path="/" render={() => <LandingPage />} />
+            <Route path="/result" component={Result} />
+            <Route path="/candidates" component={Candidates} />
+            <CandidateProfile path="/CandidateProfile" />
+            <Route path="/analyst" exact={true} component={Analyst} />
+            <ForCandidate path="/forCandidate" />
+            <Route path="/analyst-profile" exact component={AnalystProfile} />
+            <Route path="*" exact={true} component={NotFound} />
+          </Switch>
+        )}
       </BrowserRouter>
     </div>
   );
 }
 
 export default App;
+
+
