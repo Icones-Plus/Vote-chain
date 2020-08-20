@@ -1,3 +1,13 @@
+.ddiv {
+  position: absolute;
+  bottom: -1%;
+  top: 18%;
+  width: 771px;
+  left: 21%;
+  background-color: rgb(255, 245, 238);
+  border-radius: 1.25rem;
+}
+
 .bor {
   /* text-align: left; */
   position: absolute;
@@ -10,6 +20,8 @@
   /* border: 1px solid; */
   border-radius: 1.25rem;
   margin: 0;
+  /* width: 100%;
+  border-radius: 1.25rem; */
 }
 
 .div2 {
@@ -38,7 +50,7 @@
   display: grid;
   bottom: -3%;
   top: 53%;
-  width: 401px;
+  width: 179px;
   left: 230px;
   /* border: 1px solid; */
   border-radius: 1.25rem;

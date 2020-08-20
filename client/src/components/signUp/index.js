@@ -1,114 +1,8 @@
 import React from "react";
 import axios from "axios";
-import CreatePassword from "../createPassword";
-import jwtDecode from "jwt-decode";
 import Swal from "sweetalert2";
-
-class SignIn extends React.Component {
-  state = {id: "", password: "", component: null};
-  handleChange = this.handleChange.bind(this);
-  handleSubmit = this.handleSubmit.bind(this);
-  handleChange(event) {
-    this.setState({[event.target.name]: event.target.value});
-  }
-  handleSubmit(event) {
-    event.preventDefault();
-    //Axios request goes here
-    const user = {
-      id: this.state.id,
-      password: this.state.password,
-    };
-    // console.log(jwtDecode(document.cookie).role, "cookie");
-    axios
-      .post("/login", user)
-      .then(function (response) {
-        if (response.data.success) {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Welcome",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          setTimeout(() => {
-            if (response.data.role === "candidate") {
-              window.location.href = "/forCandidate";
-            } else if (response.data.role === "analyst") {
-              window.location.href = "/analyst";
-            } else {
-              window.location.href = "/cand";
-            }
-          }, 1100);
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Wrong ID or password",
-            text: "Please enter a valid ID and a correct password",
-          });
-        }
-      })
-      .catch(function (error) {
-        console.log("Error Get request on sign in compoenet", error);
-      });
-    this.setState({id: "", password: ""});
-  }
-  showSignupForm() {
-    this.setState({
-      component: <SignUp />,
-    });
-  }
-  render() {
-    return this.state.component == null ? (
-      <div id="SignIn">
-        <div className="component">
-          <form onSubmit={this.handleSubmit}>
-            <h1>Sign in</h1>
-            <label id="id">ID­­­</label>
-            <input
-              type="number"
-              name="id"
-              placeholder=" e.g. 403328682"
-              value={this.state.id}
-              onChange={this.handleChange}
-            />
-            <label id="password">
-              <br />
-              <br />
-              Password­­
-            </label>
-            <input
-              type="password"
-              name="password"
-              placeholder=""
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-            <br />
-            <br />
-            <button type="submit" value="Log in" className="btn-custom">
-              {" "}
-              Sign In{" "}
-            </button>
-            <br />
-            <br />
-            <p>
-              Don't have an account?{" "}
-              <button
-                className="button"
-                onClick={this.showSignupForm.bind(this)}
-              >
-                Sign up
-              </button>
-            </p>
-            ;
-          </form>
-        </div>
-      </div>
-    ) : (
-      this.state.component
-    );
-  }
-}
+import CreatePassword from "../createPassword";
+import SignIn from "../signIn";
 
 class SignUp extends React.Component {
   state = {
@@ -365,4 +259,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default SignIn;
+export default SignUp;
