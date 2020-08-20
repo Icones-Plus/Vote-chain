@@ -40,34 +40,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <BrowserRouter>
-  {!document.cookie ? (
-    <Switch>
-      <Route path="/" component={LandingPage} />
-      <Route path="*" exact={true} component={NotFound} />
-    </Switch>
-  ) : jwtDecode(document.cookie).admin ? (
-    <AdminPanel />
-  ) : jwtDecode(document.cookie).role.trim() === "candidate" ? (
-    <ForCandidate path="/forCandidate" />
-  ) : (
-    (jwtDecode(document.cookie).role.trim() === "analyst" ? (
-      <Route path="/analyst" exact component={Analyst} />
-    ) : (
-      <Switch>
-        <Route exact path="/" render={() => <LandingPage />} />
-        <Route path="/result" component={Result} />
-        <Route path="/candidates" component={Candidates} />
-        <CandidateProfile path="/CandidateProfile" />
-        <Route path="/analyst" exact={true} component={Analyst} />
-
-        <Route path="/analyst-profile" exact component={AnalystProfile} />
-        <Route path="*" exact={true} component={NotFound} />
-      </Switch>
-    ),
-    console.log(jwtDecode(document.cookie).role, "cookie"))
-  )}
-</BrowserRouter>; */
-}

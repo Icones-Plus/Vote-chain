@@ -83,6 +83,7 @@ function Candidate(props) {
   const move = (e) => {
     const id = e.target.name;
     setPage(<CandidateProfile id={id} />);
+    console.log("hihihihihihihihihi");
   };
 
   const combine = (e) => {
