@@ -1,58 +1,61 @@
-import React, {useState} from "react";
-import "./style.css";
-import Axios from "axios";
-import TextareaAutosize from "@material-ui/core/TextField";
-
-function ForCandidate(props) {
-  const [slogan, setSlogan] = useState("");
-  const [campaign, setCampaign] = useState("");
-  const id = props.id;
-
-  const hundelSubmit = (e) => {
-    e.preventDefault();
-    const addToCandidate = {slogan, campaign};
-    console.log("I am reach hereeeeeeeeeeeeeee dont worry");
-    Axios.post(`/forCandidate/${id}`, addToCandidate)
-      .then((res) => {
-        console.log(res, "resss hereeeeee yala");
-      })
-      .catch((err) => {
-        console.log(err, "err hereeeeee yala");
-      });
-  };
-
+import React from "react";
+import {
+  InputGroup,
+  Form,
+  FormControl,
+  Button,
+  Container,
+  Row,
+  Col,
+} from "react-bootstrap";
+function ForCandidate() {
   return (
     <div>
-      <form className="forcandy" onSubmit={hundelSubmit}>
-        <label>enter your slogan</label>
-        <div class="slogan">
-          <textarea
-            name="slogan"
-            id="descriptionCan"
-            className="form-control"
-            rows="4"
-            placeholder="Add your slogn"
-            required
-            onChange={(e) => setSlogan(e.target.value)}
-          ></textarea>
-        </div>
-        <label></label>
-        <div class="campaign">
-          <textarea
-            name="campaign"
-            id="descriptionCan"
-            className="form-control"
-            rows="4"
-            placeholder="Add your campaign"
-            required
-            onChange={(e) => setCampaign(e.target.value)}
-          ></textarea>
-        </div>
-
-        <button class="btn">submit</button>
-      </form>
+      <Container fluid>
+        <Row>
+          <Col md={{span: 6, offset: 3}}>
+            <Col>
+              <label htmlFor="basic-url">Your vanity URL</label>
+              <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Example textarea</Form.Label>
+                <Form.Control as="textarea" rows="3" />
+              </Form.Group>
+              <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Example textarea</Form.Label>
+                <Form.Control as="textarea" rows="3" />
+              </Form.Group>
+              <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Example textarea</Form.Label>
+                <Form.Control as="textarea" rows="3" />
+              </Form.Group>
+              <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Example textarea</Form.Label>
+                <Form.Control as="textarea" rows="3" />
+              </Form.Group>
+              <InputGroup className="mb-3">
+                <InputGroup.Prepend>
+                  <InputGroup.Text id="basic-addon3">
+                    https://example.com/users/
+                  </InputGroup.Text>
+                </InputGroup.Prepend>
+                <FormControl id="basic-url" aria-describedby="basic-addon3" />
+              </InputGroup>
+              <Form>
+                <Form.Group>
+                  <Form.File
+                    id="exampleFormControlFile1"
+                    label="Example file input"
+                  />
+                </Form.Group>
+              </Form>
+              <Button variant="primary" size="lg">
+                Large button
+              </Button>{" "}
+            </Col>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
-
 export default ForCandidate;

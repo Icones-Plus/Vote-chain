@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import CreatePassword from "../createPassword";
-
+import jwtDecode from "jwt-decode";
 import Swal from "sweetalert2";
 
 class SignIn extends React.Component {
@@ -18,9 +18,11 @@ class SignIn extends React.Component {
       id: this.state.id,
       password: this.state.password,
     };
+    // console.log(jwtDecode(document.cookie).role, "cookie");
     axios
       .post("/login", user)
       .then(function (response) {
+        console.log(response, 'response');
         if (response.data.success) {
           Swal.fire({
             position: "center",
@@ -30,7 +32,15 @@ class SignIn extends React.Component {
             timer: 1500,
           });
           setTimeout(() => {
-            window.location.href = "/cand";
+            if (response.data.role === "candidate") {
+              // window.location.href = "/forCandidate";
+              window.location.href = "/analyst-profile";
+            }
+            else if (response.data.role === "analyst") {
+              window.location.href = "/analyst";
+            } else {
+              window.location.href = "/cand";
+            }
           }, 1100);
         } else {
           Swal.fire({
@@ -139,7 +149,9 @@ class SignUp extends React.Component {
         gender: this.state.gender,
       })
       .then((response) => {
-        console.log("Data of sign up request nfdfd ", response.data);
+        // console.log(response, 'response');
+        // console.log(response.data.role === 'analyst', 'response');
+        // console.log("Data of sign up request nfdfd ", response.data);
         if (response.data.message === "id cannot be blank") {
           Swal.fire("id cannot be blank");
         }
@@ -211,11 +223,11 @@ class SignUp extends React.Component {
             signIn: <CreatePassword id={idd} />,
           });
         } else {
-          // Swal.fire({
-          //   icon: "error",
-          //   title: "Error",
-          //   text: "Please fill all fields with accurate and valid info.",
-          // });
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Please fill all fields with accurate and valid info.",
+          });
           console.log("Can't redierect to create password");
         }
       })

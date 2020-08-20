@@ -13,9 +13,10 @@ const result = require("./result");
 const getAnalyst = require("./getAnalyst.js");
 const postAnalyst = require("./postAnalyst.js");
 const logout = require("./logout");
-const uploasCV = require('./addCv.js')
-const forCandidate = require('./forCandidate');
-const candidateProfile = require('./candidateProfile')
+const uploasCV = require("./addCv.js");
+const forCandidate = require("./forCandidate");
+const candidateProfile = require("./candidateProfile");
+
 // const { sign } = require("jsonwebtoken");
 // var jwt_decode = require("jwt-decode");
 router.post("/signup", signup.signup);
@@ -63,9 +64,10 @@ router.post("/delete", function (req, res) {
 });
 router.post("/createPassword/:id", createPassword.createPassword);
 router.get("/logout", logout.get);
+router.get("/cand", candidates.get);
 router.use(auth);
 router.get("/admn", admin.get);
-router.get("/cand", candidates.get);
+
 router.get("/res", result.get);
 router.post("/forCandidate/:id", forCandidate.forCandidate);
 router.get("/candidateProfile/:id", candidateProfile.candidateProfile);

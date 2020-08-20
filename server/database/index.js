@@ -27,13 +27,19 @@ let userSchema = new mongoose.Schema({
   dateOfBirth: Date,
   voted: Boolean,
   role: String,
-  admin: Boolean
-
+  admin: Boolean,
 });
 userSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 let userModel = mongoose.model("newUser", userSchema);
+
+let feedbackSchema = mongoose.Schema({
+  name: String,
+  email: String,
+  message: String,
+});
+
 
 // const newUser = new userModel({
 //   id: "5773380633",
@@ -61,41 +67,49 @@ let userModel = mongoose.model("newUser", userSchema);
 let candidateSchema = mongoose.Schema({
   id: Number,
   description: String,
-  img: String,
+  // img: URL,
   slogan: String,
-  campaign: String
+  campaign: String,
 });
 let candidateModel = mongoose.model("Candidate", candidateSchema);
 
-let feedbackSchema = mongoose.Schema({
-  name: String,
-  email: String,
-  message: String,
-});
+// let feedbackSchema = mongoose.Schema({
+//   name: String,
+//   email: String,
+//   message: String,
+// });
 
 let feedbackModel = mongoose.model("feedback", feedbackSchema);
 
 let analystSchema = mongoose.Schema({
-  id: Number,
-
+  id: {
+    type: Number
+  },
+  first_Name: {
+    type: String
+  },
+  last_Name: {
+    type: String
+  },
   picture: {
     type: String,
   },
   cv: {
     type: String,
   },
-  // linkedIn: {
-  //   type: String
-  // },
+  linkedIn: {
+    type: String
+  },
   bio: {
     type: String,
   },
   articles: {
-    type: Array
-  }
-})
+    type: Array,
+  },
+});
 
-let analystModel = mongoose.model('analyst', analystSchema)
+let analystModel = mongoose.model("analyst", analystSchema);
+
 
 module.exports.userModel = userModel;
 module.exports.candidateModel = candidateModel;

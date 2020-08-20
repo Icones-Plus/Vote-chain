@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 
 function CreatePassword(props) {
   const id = props.id;
+  console.log(id, 'id');
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   console.log(password);
@@ -18,12 +19,22 @@ function CreatePassword(props) {
       axios
         .post(`/createPassword/${id}`, {password, password2})
         .then((result) => {
+          console.log(result.data, 'result.data');
           console.log(result, "res3433222212sddsdfrewdfrewdweds");
+          if(result.data.role === "candidate"){
+            window.location.href = '/forCandidate'
+          }
+
+          else if(result.data.role === "analyst"){
+            window.location.href = '/analyst'
+          } else {
+            window.location.href = '/cand'
+          }
           if (result.data.message === "passwords do not match") {
             Swal.fire("passwords do not match");
           } else if (result.data === "signup cookie set") {
             Swal.fire("your password is set up successfully");
-            window.location.href = "/cand";
+            // window.location.href = "/cand";
           }
         })
         .catch((err) => {

@@ -10,7 +10,7 @@ import Analyst from "./pages/analyst/analyst";
 import AnalystProfile from "./pages/analystProfile/analystProfile";
 import jwtDecode from "jwt-decode";
 import CandidateProfile from "./components/CandidateProfile/index";
-import ForCandidate from "./components/forCandidate/index";
+import ForCandidate from "./components/forCandid/index";
 function App() {
   return (
     <div className="App">
@@ -27,8 +27,11 @@ function App() {
             <Route exact path="/" render={() => <LandingPage />} />
             <Route path="/result" component={Result} />
             <Route path="/candidates" component={Candidates} />
-            <Route path="/analyst" exact component={Analyst} />
-            <Route path="/analyst-profile" exact component={AnalystProfile}/>
+            <CandidateProfile path="/CandidateProfile" />
+            <Route path="/analyst-profile" exact component={AnalystProfile} />
+            <Route path="/analyst" exact={true} component={Analyst} />
+            <ForCandidate path="/forCandidate" />
+
             <Route path="*" exact={true} component={NotFound} />
           </Switch>
         )}

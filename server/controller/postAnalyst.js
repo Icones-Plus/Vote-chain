@@ -13,10 +13,9 @@ exports.postAnalyst = function(req, res){
   const { id } = req.params;
 // let newAnalyst = new analystModel;
 console.log("here in the requesttttttttttttttttt");
-
 analystModel.findOneAndUpdate(
-  {id: id},
-   {cv: cv, bio: bio, picture: picture})
+  { id: id },
+   { cv: cv, bio: bio, picture: picture,  $push: { articles: articles } })
    .then(result => {
   console.log(result, "hereeeeeee in the updateeeeeeeee");
   res.send("it is okkkkkk ")

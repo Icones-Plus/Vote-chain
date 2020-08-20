@@ -4,7 +4,7 @@ import Footer from "../footer.jsx";
 import Swal from "sweetalert2";
 export class AddCandidate extends Component {
   state = {
-    name: "",
+    role: "",
     img: "",
     description: "",
     id: "",
@@ -58,7 +58,7 @@ export class AddCandidate extends Component {
                           type="text"
                           id="nameOfCan"
                           className="form-control"
-                          placeholder="Name of candidate"
+                          placeholder="role of candidate"
                           required="required"
                           name="role"
                           onChange={this.handleChange}

@@ -44,6 +44,8 @@ for (let i = 0; i < 10; i++) {
 
     const analyst = new analystModel({
       id: faker.random.number(),
+      first_Name: faker.name.firstName(),
+      last_Name: faker.name.lastName(),
       picture: faker.image.avatar(),
       bio: faker.lorem.paragraph(),
       linkedIn: faker.internet.url(),

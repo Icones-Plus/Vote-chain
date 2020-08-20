@@ -9,10 +9,8 @@ exports.createPassword = function (req, res) {
   let { body } = req;
   const { params } = req;
   const { id } = params;
-
   let { password, password2 } = body;
-
-  if(password !== password2){
+  if (password !== password2) {
     return res.send({
       success: false,
       message: "passwords do not match",
@@ -36,6 +34,7 @@ exports.createPassword = function (req, res) {
           id: result.id,
           firstName: result.first_name,
           admin: result.admin,
+          role: result.role
         };
         var token = sign(payload, process.env.SECRET, (err, token) => {
           if (err) {
@@ -44,7 +43,10 @@ exports.createPassword = function (req, res) {
             res.cookie("jwt", token, {
               maxAge: 6048000000,
             });
-            res.send("signup cookie set");
+            res.send({
+              message: "signup cookie set",
+              role: payload.role
+            });
           }
         });
       })

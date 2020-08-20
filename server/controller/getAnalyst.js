@@ -8,7 +8,7 @@ exports.getAnalyst = function(req, res){
       result: result
     })
 
-    return res.redirect('/analyst')
+     res.redirect('/analyst')
   }).catch(err => {
     console.log('Err', err);
   })
