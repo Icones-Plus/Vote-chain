@@ -7,7 +7,6 @@ function CandidateProfile(props) {
   const id = props.id;
   const [data, setData] = useState([]);
   const [component, setComponent] = useState(null);
-  console.log("helllllllllllllllllllllllllllllllllllllllllllllll");
   useEffect(() => {
     axios
       .get(`/candidateProfile/${id}`)
