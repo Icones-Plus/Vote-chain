@@ -29,8 +29,8 @@ const WebcamCapture = (props) => {
                     showConfirmButton: false,
                     timer: 1500
                 }).then(() => {
-                    console.log(props.handleClick)
-                    props.handleClick.combine();
+                    var id = props.name
+                    props.handleClick(id);
                 })
             } else if (success.data >= 70 && success.data < 80) {
                 Swal.fire('Please take a clearer photo! \n Get close to camera if you are sitting far away')

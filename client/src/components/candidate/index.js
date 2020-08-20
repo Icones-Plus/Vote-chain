@@ -17,6 +17,7 @@ function Candidate(props) {
     }
   };
   const sendCodeToMobile = () => {
+    console.log('inse sent to mobile');
     return axios
       .get("/verfiy")
       .then((res) => {
@@ -86,9 +87,10 @@ function Candidate(props) {
     setPage(<CandidateProfile id={id} />);
   };
 
-  const combine = (e) => {
+  const combine = (x) => {
+    console.log("In combine")
     sendCodeToMobile();
-    setter(e.target.name).then((res) => {
+    setter(x).then((res) => {
       if (res) {
         confirm(res);
       }
@@ -99,6 +101,7 @@ function Candidate(props) {
       <div className="div">
         {
           props.data.map(item => {
+
             return (
               <div className="thumbnail" style={{ backgroundColor: "rgb(255, 255, 255)", padding: "70px" }}>
                 <img src={item.img} alt="image"></img>
@@ -113,7 +116,7 @@ function Candidate(props) {
                   onClick={move}
                 >
                   Candidate Profile
-              </button><br/><br/><br/>
+              </button><br /><br /><br />
                 <div>
                   <Popup
                     trigger={<button className="button"> Vote </button>}
