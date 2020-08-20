@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import CreatePassword from "../createPassword";
-import SignIn from "../registeration";
+import SignIn from "../signIn";
 
 class SignUp extends React.Component {
   state = {
