@@ -8,7 +8,7 @@
     "client": "cd client && npm run build && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "ganache": "cd blockchian && node_modules/.bin/ganache-cli"
+    "ganache": "node_modules/.bin/ganache-cli"
   },
   "repository": {
     "type": "git",
