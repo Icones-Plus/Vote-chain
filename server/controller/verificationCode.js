@@ -13,7 +13,7 @@ exports.verfiy = function (req, res) {
   const rest_endpoint = "https://rest-api.telesign.com";
   const timeout = 10 * 1000;
   const saltRounds = 10;
-  const message = "you code is: ";
+  const message = "your code is: ";
   const messageType = "ARN";
 
   const client = new TeleSignSDK(

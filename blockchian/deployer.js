@@ -3,16 +3,10 @@ web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 const fs = require("fs");
 const { candidateModel } = require("../server/database/index");
 const bytecode = fs
-  .readFileSync(
-    "C:/Users/Anera/Desktop/Vote-chain/blockchian/voting_sol_Voting.bin"
-  )
+  .readFileSync(__dirname + "/voting_sol_Voting.bin")
   .toString();
 const abi = JSON.parse(
-  fs
-    .readFileSync(
-      "C:/Users/Anera/Desktop/Vote-chain/blockchian/voting_sol_Voting.abi"
-    )
-    .toString()
+  fs.readFileSync(__dirname + "/voting_sol_Voting.abi").toString()
 );
 const deployedContract = new web3.eth.Contract(abi);
 
