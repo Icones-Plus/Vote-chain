@@ -1,46 +1,71 @@
 Web3 = require("web3");
 web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+const fs = require("fs");
+const { candidateModel } = require("../server/database/index");
+const { resolve } = require("path");
 var account;
 web3.eth.getAccounts().then((f) => {
   account = f[0];
 });
-
-abi = JSON.parse(
-  '[{"constant":true,"inputs":[{"name":"candidate","type":"bytes32"}],"name":"totalVotesFor","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"candidate","type":"bytes32"}],"name":"validCandidate","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"votesReceived","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"candidateList","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"candidate","type":"bytes32"}],"name":"voteForCandidate","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"candidateNames","type":"bytes32[]"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]'
+const bytecode = fs
+  .readFileSync(
+    "C:/Users/Anera/Desktop/Vote-chain/blockchian/voting_sol_Voting.bin"
+  )
+  .toString();
+const abi = JSON.parse(
+  fs
+    .readFileSync(
+      "C:/Users/Anera/Desktop/Vote-chain/blockchian/voting_sol_Voting.abi"
+    )
+    .toString()
 );
-var listOfCandidates = ["a", "b", "c", "d"];
-contract = new web3.eth.Contract(abi);
-contract.options.address = "0xeFb651FF7d6e05eDE02B30857f814B5B140449F1";
-var listOfCandidatesIds = [65042, 4277, 3206, 71782, 66871, 81803];
 
+contract = new web3.eth.Contract(abi);
+
+contract.options.address = "0x82865e3A5F2226Ef7C9640F20BbFA3ce08d69752";
 function voteForCandidate(candidate) {
+  console.log("inside the chain...", candidate);
+
   contract.methods
     .voteForCandidate(web3.utils.asciiToHex(candidate))
     .send({ from: account })
-    .then((f) => {
-      console.log("added///////////", candidate, f);
+    .then((res) => {
+      console.log("added///////////", candidate, res);
       contract.methods
         .totalVotesFor(web3.utils.asciiToHex(candidate))
         .call()
-        .then((m) => {
-          console.log("back///////////", candidate, m);
+        .then((result) => {
+          console.log("back///////////", candidate, result);
         });
     });
 }
-var result = [];
-function retrieveVotes() {
-  listOfCandidates.map((e) => {
-    contract.methods
-      .totalVotesFor(web3.utils.asciiToHex(e))
-      .call()
-      .then((f) => {
-        console.log("name", e, "votes:", f);
-        result.push(f);
-      });
-  });
 
-  return result;
+function retrieveVotes() {
+  return candidateModel
+    .find({})
+    .then((listOfCandidates) => {
+      var rr = {};
+      return listOfCandidates.map((cand) => {
+        return contract.methods
+          .totalVotesFor(web3.utils.asciiToHex(cand.name))
+          .call()
+          .then((candVotes) => {
+            console.log(`Candidtaes: ${cand.name},Votes:${candVotes}`);
+            rr[cand.name] = candVotes;
+            if (Object.keys(rr).length === 5) {
+              return rr;
+            }
+          });
+      });
+    })
+    .catch((error) => {
+      console.log(
+        "Error in retrieving data from database in the blockchain index",
+        error
+      );
+    });
 }
+
 function retriveOne(name) {
   contract.methods
     .totalVotesFor(web3.utils.asciiToHex(name))

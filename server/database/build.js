@@ -44,15 +44,15 @@ for (let i = 0; i < 5; i++) {
   candidate.save().then((addressRef) => {
     console.log(`${addressRef.name} saved successfully`);
   });
-}
-//   const analyst = new analystModel({
-//     picture: faker.image.avatar(),
-//     bio: faker.lorem.paragraph(),
-//     linkedIn: faker.internet.url(),
-//     cv: faker.internet.url(),
-//   });
 
-//   analyst.save().then((analystRef) => {
-//     console.log(`${analystRef.first_Name} saved successfully`);
-//   });
-// }
+  const analyst = new analystModel({
+    picture: faker.image.avatar(),
+    bio: faker.lorem.paragraph(),
+    linkedIn: faker.internet.url(),
+    cv: faker.internet.url(),
+  });
+
+  analyst.save().then((analystRef) => {
+    console.log(`${analystRef.first_Name} saved successfully`);
+  });
+}

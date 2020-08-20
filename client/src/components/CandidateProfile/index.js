@@ -9,13 +9,9 @@ function CandidateProfile(props) {
   const [component, setComponent] = useState(null);
   console.log("helllllllllllllllllllllllllllllllllllllllllllllll");
   useEffect(() => {
-    console.log("hellllllllllllllllllllll");
-    console.log(id, "idddddddddddddddddddddddd");
     axios
       .get(`/candidateProfile/${id}`)
       .then((res) => {
-        console.log("hiiiiiii from axsios");
-        console.log(res, "ressssssss hereeeeeeeeee");
         setData(res.data);
       })
       .catch((err) => {
