@@ -17,7 +17,6 @@ function Candidate(props) {
     }
   };
   const sendCodeToMobile = () => {
-    console.log('inse sent to mobile');
     return axios
       .get("/verfiy")
       .then((res) => {
@@ -88,7 +87,6 @@ function Candidate(props) {
   };
 
   const combine = (x) => {
-    console.log("In combine")
     sendCodeToMobile();
     setter(x).then((res) => {
       if (res) {
@@ -123,7 +121,7 @@ function Candidate(props) {
                     modal
                     closeOnDocumentClick
                   >
-                    <span> <WebcamCapture handleClick={combine} name={item.id} /> </span>
+                    <span> <WebcamCapture handleClick={combine} name={item.id}/> </span>
                   </Popup>
                 </div>
               </div>
