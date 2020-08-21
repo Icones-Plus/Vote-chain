@@ -1,8 +1,9 @@
-import React, {useState} from "react";
-// import React, {Component} from "react";
+import React, { useState } from "react";
 import "./style.css";
 import Swal from "sweetalert2";
 import axios from "axios";
+import WebcamCapture from './../faceVerification/webCam'
+import Popup from "reactjs-popup";
 import CandidateProfile from "../CandidateProfile";
 
 function Candidate(props) {
@@ -85,9 +86,9 @@ function Candidate(props) {
     setPage(<CandidateProfile id={id} />);
   };
 
-  const combine = (e) => {
+  const combine = (x) => {
     sendCodeToMobile();
-    setter(e.target.name).then((res) => {
+    setter(x).then((res) => {
       if (res) {
         confirm(res);
       }
@@ -96,41 +97,42 @@ function Candidate(props) {
   return page == null ? (
     <div>
       <div className="div">
-        {props.data.map((item) => {
-          return (
-            <div
-              className="thumbnail"
-              style={{backgroundColor: "rgb(255, 255, 255)", padding: "70px"}}
-            >
-              <img src={item.img} alt="image"></img>
-              <h1 style={{color: "black"}}>{item.name || "Loading.."}</h1>
-              <p style={{color: "black", fontSize: "20px"}}>
-                {item.description}
-              </p>
-              <button
-                type="button"
-                className="button"
-                name={item.id}
-                onClick={combine}
-              >
-                Vote
-              </button>
-              <button
-                type="button"
-                className="button"
-                name={item.id}
-                onClick={move}
-              >
-                Candidate Profile
-              </button>
-            </div>
-          );
-        })}
+        {
+          props.data.map(item => {
+
+            return (
+              <div className="thumbnail" style={{ backgroundColor: "rgb(255, 255, 255)", padding: "70px" }}>
+                <img src={item.img} alt="image"></img>
+                <h1 style={{ color: "black" }}>{item.name || "Loading"}</h1>
+                <p style={{ color: "black", fontSize: "20px" }}>
+                  {item.description}
+                </p>
+                <button
+                  type="button"
+                  className="button"
+                  name={item.id}
+                  onClick={move}
+                >
+                  Candidate Profile
+              </button><br /><br /><br />
+                <div>
+                  <Popup
+                    trigger={<button className="button"> Vote </button>}
+                    modal
+                    closeOnDocumentClick
+                  >
+                    <span> <WebcamCapture handleClick={combine} name={item.id}/> </span>
+                  </Popup>
+                </div>
+              </div>
+            )
+          })
+        }
       </div>
     </div>
   ) : (
-    page
-  );
+      page
+    );
 }
 
 export default Candidate;

@@ -9,13 +9,13 @@ web3.eth.getAccounts().then((f) => {
 });
 const bytecode = fs
   .readFileSync(
-    "C:/Users/Anera/Desktop/Vote-chain/blockchian/voting_sol_Voting.bin"
+    __dirname + "/voting_sol_Voting.bin"
   )
   .toString();
 const abi = JSON.parse(
   fs
     .readFileSync(
-      "C:/Users/Anera/Desktop/Vote-chain/blockchian/voting_sol_Voting.abi"
+      __dirname + "/voting_sol_Voting.abi"
     )
     .toString()
 );
