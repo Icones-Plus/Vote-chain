@@ -1,11 +1,11 @@
 var jwt_decode = require("jwt-decode");
 const { sign } = require("jsonwebtoken");
 const { userModel, candidateModel } = require("../database/index");
-const {
-  voteForCandidate,
-  retrieveVotes,
-  retriveOne,
-} = require("../../blockchian");
+// const {
+//   voteForCandidate,
+//   retrieveVotes,
+//   retriveOne,
+// } = require("../../blockchian");
 // retrieveVotes().then((e) => {
 //   e[4].then((w) => {
 //     console.log(w);
@@ -28,7 +28,7 @@ exports.done = (request, response) => {
       } else {
         candidateModel.findOne({ id: candidateId }).then((res) => {
           name = res.name;
-          console.log("name", name);
+
           sign(String(id), process.env.SECRET, (err, token) => {
             if (err) {
               response.status(401).json("Error: server error");
