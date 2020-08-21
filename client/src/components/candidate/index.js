@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+
 // import React, {Component} from "react";
+
 import "./style.css";
 import Swal from "sweetalert2";
 import axios from "axios";
+import WebcamCapture from './../faceVerification/webCam'
+import Popup from "reactjs-popup";
 import CandidateProfile from "../CandidateProfile";
 
 function Candidate(props) {
@@ -85,9 +89,9 @@ function Candidate(props) {
     setPage(<CandidateProfile id={id} />);
   };
 
-  const combine = (e) => {
+  const combine = (x) => {
     sendCodeToMobile();
-    setter(e.target.name).then((res) => {
+    setter(x).then((res) => {
       if (res) {
         confirm(res);
       }
@@ -96,6 +100,7 @@ function Candidate(props) {
   return page == null ? (
     <div>
       <div className="div">
+
         {/* {props.data.map((item) => {
           return (
             <div
@@ -147,10 +152,12 @@ function Candidate(props) {
                   name={item.id}
                   onClick={combine}>Vote</button>
                  <hr />
+
                 <button
                   type="button"
                   className="button"
                   name={item.id}
+
                   onClick={move}>Candidate Profile</button>
               </div>
             </div>
@@ -180,6 +187,7 @@ function Candidate(props) {
             </div>
           </div>
         </a> */}
+
       </div>
     </div>
   ) : (

@@ -17,6 +17,7 @@ for (let i = 0; i < 10; i++) {
     mother_name: faker.name.findName(),
     mobile: faker.random.number(),
     email: faker.internet.email(),
+    img_url: faker.image.avatar(),
     gender: faker.random.arrayElement(genders),
     voted: false,
     dateOfBirth: faker.date.between("1940-01-01", "2002-12-31"),
