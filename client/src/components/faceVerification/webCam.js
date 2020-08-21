@@ -3,7 +3,6 @@ import Webcam from 'react-webcam';
 import axios from 'axios';
 import decode from 'jwt-decode';
 import Swal from 'sweetalert2';
-import combine from './../candidate/index'
 
 
 
