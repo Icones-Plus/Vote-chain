@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 const WebcamCapture = (props) => {
   const imageURL2 = decode(document.cookie).img_url;
+  console.log("ifoemData", imageURL2);
   const webcamRef = React.useRef(null);
   const [imgSrc, setImgSrc] = React.useState(null);
   const capture = React.useCallback(() => {
