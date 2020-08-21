@@ -37,6 +37,7 @@
     "mongoose": "^5.9.27",
     "mongoose-type-url": "^2.0.0",
     "react-chartjs-2": "^2.10.0",
+    "react-webcam": "^5.2.0",
     "solc": "^0.6.4",
     "telesignsdk": "^2.2.1",
     "web3": "^1.2.6"

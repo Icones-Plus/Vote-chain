@@ -4,10 +4,13 @@ const bcrypt = require("bcrypt");
 mongoose.set("useFindAndModify", false);
 
 let connection = mongoose
-  .connect("mongodb://localhost:27017/votedb", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb://localhost:27017/votedb",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     console.log("connected to dataBase");
   })
@@ -21,6 +24,7 @@ let userSchema = new mongoose.Schema({
   gender: String,
   id: Number,
   email: String,
+  img_url: String,
   first_name: String,
   last_name: String,
   password: String,

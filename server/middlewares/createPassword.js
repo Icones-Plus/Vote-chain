@@ -34,6 +34,7 @@ exports.createPassword = function (req, res) {
           id: result.id,
           firstName: result.first_name,
           admin: result.admin,
+          img_url: result.img_url
         };
         var token = sign(payload, process.env.SECRET, (err, token) => {
           if (err) {
