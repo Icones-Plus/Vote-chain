@@ -7,7 +7,7 @@ exports.contact = (req, res) => {
     email: req.body.email,
     message: req.body.message,
   });
-  console.log(req.body);
+  
   feedback
     .save()
     .then((result) => {

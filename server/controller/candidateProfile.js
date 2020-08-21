@@ -8,7 +8,7 @@ exports.candidateProfile = (req, res) => {
     .find({ id: id })
     .then((result) => {
       res.send([result[0].slogan, result[0].campaign, result[0].img]);
-      console.log(result, "result is here");
+     
     })
     .catch((err) => {
       console.log(err, "errrr");

@@ -18,8 +18,7 @@ class SignIn extends React.Component {
       id: this.state.id,
       password: this.state.password,
     };
-    // console.log(jwtDecode(document.cookie).role, "cookie");
-    axios
+     axios
       .post("/login", user)
       .then(function (response) {
         if (response.data.success) {
@@ -127,8 +126,7 @@ class SignUp extends React.Component {
   // handleChange = this.handleChange.bind(this);
   handleSubmit = this.handleSubmit.bind(this);
   handleChange(event) {
-    console.log(this.state);
-    this.setState({[event.target.name]: event.target.value});
+     this.setState({[event.target.name]: event.target.value});
   }
   handleSubmit(event) {
     event.preventDefault();
@@ -146,8 +144,7 @@ class SignUp extends React.Component {
         gender: this.state.gender,
       })
       .then((response) => {
-        console.log("Data of sign up request nfdfd ", response.data);
-        if (response.data.message === "id cannot be blank") {
+         if (response.data.message === "id cannot be blank") {
           Swal.fire("id cannot be blank");
         }
 
