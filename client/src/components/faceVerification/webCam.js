@@ -3,7 +3,6 @@ import Webcam from "react-webcam";
 import axios from "axios";
 import decode from "jwt-decode";
 import Swal from "sweetalert2";
-import combine from "./../candidate/index";
 
 const WebcamCapture = (props) => {
   const imageURL2 = decode(document.cookie).img_url;

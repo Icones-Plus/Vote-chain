@@ -13,8 +13,11 @@ const result = require("./result");
 const getAnalyst = require("./getAnalyst.js");
 const postAnalyst = require("./postAnalyst.js");
 const logout = require("./logout");
+
+const uploasCV = require("./addCV");
+
 const request = require("request");
-const uploasCV = require("./addCv.js");
+
 const forCandidate = require("./forCandidate");
 const candidateProfile = require("./candidateProfile");
 const getCands = require("./getCands");

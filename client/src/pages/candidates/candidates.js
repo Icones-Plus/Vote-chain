@@ -66,9 +66,9 @@ class Candidates extends React.Component {
         <div>
           <Candidate data={this.state.data} />
         </div>
-        <div style={{backgroundColor: "white", padding: "13px"}}>
+        {/* <div style={{backgroundColor: "white", padding: "13px"}}>
           <div className="container text-center"></div>
-        </div>
+        </div> */}
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import axios from "axios";
 import Candidate from "../../pages/candidates/candidates";
@@ -29,8 +29,16 @@ function CandidateProfile(props) {
         </div>
         <div class="div2">{data[0]}</div>
         <div class="div3"></div>
-        <div class="div4">{data[1]}</div>
-        <button onClick={move}></button>
+        <div style={{ display: "flex" }}>
+
+          <div class="div4">
+            <div style={{ backgroundColor: "rgb(240, 248, 255)" }}>
+              {data[1]}
+            </div>
+            <br/><br/><br/><br/>
+            <button className="button" onClick={move}> Go back </button>
+          </div>
+        </div>
       </div>
     );
   } else {
