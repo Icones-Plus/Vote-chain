@@ -7,8 +7,6 @@ function CreatePassword(props) {
   const id = props.id;
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
-  console.log(password);
-  console.log(password2);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -17,7 +15,6 @@ function CreatePassword(props) {
       axios
         .post(`/createPassword/${id}`, {password, password2})
         .then((result) => {
-          console.log(result, "res3433222212sddsdfrewdfrewdweds");
           if (result.data.message === "passwords do not match") {
             Swal.fire("passwords do not match");
           } else if (result.data === "signup cookie set") {

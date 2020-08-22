@@ -5,8 +5,8 @@ mongoose.set("useFindAndModify", false);
 
 let connection = mongoose
 
-  .connect('mongodb+srv://Ayman:Aa&987123&@cluster0.qomli.mongodb.net/votedb?retryWrites=true&w=majority',
-
+  .connect(
+    "mongodb://localhost:27017/votedb",
 
     {
       useNewUrlParser: true,
@@ -14,7 +14,6 @@ let connection = mongoose
     }
   )
   .then(() => {
-
     console.log("connected to dataBase");
   })
   .catch((err) => {

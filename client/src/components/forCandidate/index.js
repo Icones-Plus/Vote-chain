@@ -7,8 +7,7 @@ function ForCandidate() {
   const [slogan, setSlogan] = useState("");
   const [campaign, setCampaign] = useState("");
   const id = JwtDecode(document.cookie).id;
-
-  console.log(id);
+ 
   const handlleClick = () => {
     Axios.get("/logout")
       .then(() => {
@@ -22,13 +21,11 @@ function ForCandidate() {
   const hundelSubmit = (e) => {
     e.preventDefault();
     const addToCandidate = {slogan, campaign};
-    console.log(id, "I am reach hereeeeeeeeeeeeeee dont worry");
-    Axios.post(`/forCandidate/${id}`, addToCandidate)
+     Axios.post(`/forCandidate/${id}`, addToCandidate)
       .then((res) => {
-        console.log(res, "resss hereeeeee yala");
-      })
+       })
       .catch((err) => {
-        console.log(err, "err hereeeeee yala");
+        console.log(err, "err");
       });
   };
 

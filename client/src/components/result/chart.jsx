@@ -2,14 +2,15 @@ import React, {Component} from "react";
 import {Polar} from "react-chartjs-2";
 class Chart extends React.Component {
   constructor(props) {
+    console.log("props ===", props);
     super(props);
     this.state = {
       chartData: {
-        labels: ["Ayman", "karam", "Moh", "Ahmed", "Yasmin"],
+        labels: Object.keys(props.data) || [],
         datasets: [
           {
             // label: 'Number of voters ',
-            data: [100, 200, 210, 218, 300],
+            data: Object.values(props.data) || [],
             backgroundColor: [
               "#57C5C8",
               "#ff0931",
@@ -24,10 +25,11 @@ class Chart extends React.Component {
     };
   }
 
-  componentDidMount() {
-    console.log(this.chartReference); // returns a Chart.js instance reference
-  }
+  // componentDidMount() {
+  //   console.log(this.chartReference); // returns a Chart.js instance reference
+  // }
   render() {
+    console.log("props.data", this.props.data);
     return (
       <div className="Chart">
         <hr />

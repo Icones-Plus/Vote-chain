@@ -8,34 +8,28 @@
 //   account = f[0];
 // });
 // const bytecode = fs
-//   .readFileSync(
-//     __dirname + "/voting_sol_Voting.bin"
-//   )
+//   .readFileSync(__dirname + "/voting_sol_Voting.bin")
 //   .toString();
 // const abi = JSON.parse(
-//   fs
-//     .readFileSync(
-//       __dirname + "/voting_sol_Voting.abi"
-//     )
-//     .toString()
+//   fs.readFileSync(__dirname + "/voting_sol_Voting.abi").toString()
 // );
 
-// contract = new web3.eth.Contract(abi);
+// // contract = new web3.eth.Contract(abi);
 
-// contract.options.address = "0x82865e3A5F2226Ef7C9640F20BbFA3ce08d69752";
+// contract.options.address = "0xd3d89BbB750E42DbA32330f7eA5D064Aaa13d640";
 // function voteForCandidate(candidate) {
 //   console.log("inside the chain...", candidate);
-
-//   contract.methods
+//   return contract.methods
 //     .voteForCandidate(web3.utils.asciiToHex(candidate))
 //     .send({ from: account })
 //     .then((res) => {
 //       console.log("added///////////", candidate, res);
-//       contract.methods
+//       return contract.methods
 //         .totalVotesFor(web3.utils.asciiToHex(candidate))
 //         .call()
 //         .then((result) => {
 //           console.log("back///////////", candidate, result);
+//           return result;
 //         });
 //     });
 // }
