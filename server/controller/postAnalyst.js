@@ -152,7 +152,7 @@ exports.postAnalyst = function(req, res){
   // }
 
   newAnalyst.save().then(result => {
-    console.log(result, 'result');
+    
     return res.send({
       success: true,
       message: 'successfully saves'

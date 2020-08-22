@@ -33,7 +33,7 @@ exports.login = function (req, res) {
         firstName: result[0].first_name,
         admin: result[0].admin,
         img_url: result[0].img_url,
-        role: result[0].role
+        role: result[0].role,
       };
       sign(payload, process.env.SECRET, (err, token) => {
         if (err) {
