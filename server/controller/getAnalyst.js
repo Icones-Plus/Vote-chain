@@ -6,7 +6,7 @@ exports.getAnalyst = function(req, res){
       success: true,
       message: 'retrieves the analysts successfully',
       result: result
-    }).redirect('/analyst')
+    })
   }).catch(err => {
     console.log('Err', err);
   })
