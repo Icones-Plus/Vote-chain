@@ -21,6 +21,7 @@ const request = require("request");
 const forCandidate = require("./forCandidate");
 const candidateProfile = require("./candidateProfile");
 const getCands = require("./getCands");
+const getResult = require("./getResult");
 const contact = require("./contact");
 
 // const { sign } = require("jsonwebtoken");
@@ -69,6 +70,7 @@ router.post("/webcam", function (req, res) {
 router.post("/forCandidate/:id", forCandidate.forCandidate);
 router.get("/candidateProfile/:id", candidateProfile.candidateProfile);
 router.get("/getCands", getCands.getCands);
+router.get("/getResult", getResult.getResult);
 router.get("/analyze", getAnalyst.getAnalyst);
 router.post("/analyze", postAnalyst.postAnalyst);
 router.post("/uploadCV/:id", uploasCV.cv);

@@ -1,11 +1,11 @@
 var jwt_decode = require("jwt-decode");
 const { sign } = require("jsonwebtoken");
 const { userModel, candidateModel } = require("../database/index");
-// const {
-//   voteForCandidate,
-//   retrieveVotes,
-//   retriveOne,
-// } = require("../../blockchian");
+const {
+  voteForCandidate,
+  retrieveVotes,
+  retriveOne,
+} = require("../../blockchian");
 // retrieveVotes().then((e) => {
 //   e[4].then((w) => {
 //     console.log(w);
@@ -38,7 +38,7 @@ exports.done = (request, response) => {
                 userModel
                   .findOneAndUpdate({ id }, { voted: true })
                   .then((result) => {
-                    // voteForCandidate(name);
+                    voteForCandidate(name).then((voting) => {});
                     // retriveOne("Coleman Luettgen");
                     // retrieveVotes();
                     var result = {
