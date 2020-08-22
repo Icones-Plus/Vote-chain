@@ -37,14 +37,24 @@ exports.done = (request, response) => {
                 userModel
                   .findOneAndUpdate({ id }, { voted: true })
                   .then((result) => {
-                    voteForCandidate(name).then((voting) => {});
+                    voteForCandidate(name).then((voting) => {
+                      console.log("voteddddd", voting);
+                      if (voting > 0) {
+                        var result = {
+                          succses: true,
+                          msg: "you voted succsessfully",
+                        };
+                        response.send(result);
+                      } else {
+                        var result = {
+                          succses: true,
+                          msg: "Error! try again later",
+                        };
+                        response.send(result);
+                      }
+                    });
                     // retriveOne("Coleman Luettgen");
                     // retrieveVotes();
-                    var result = {
-                      succses: true,
-                      msg: "you voted succsessfully",
-                    };
-                    response.send(result);
                   })
                   .catch((err) => {
                     console.log("EEERRRROOOOORRRR", err);
