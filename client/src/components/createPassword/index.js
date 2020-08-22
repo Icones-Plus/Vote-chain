@@ -5,12 +5,8 @@ import Swal from "sweetalert2";
 
 function CreatePassword(props) {
   const id = props.id;
-  console.log(id, 'id');
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
-  console.log(password);
-  console.log(password2);
-
   const onSubmit = (e) => {
     e.preventDefault();
 
