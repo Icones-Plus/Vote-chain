@@ -28,7 +28,6 @@ exports.done = (request, response) => {
       } else {
         candidateModel.findOne({ id: candidateId }).then((res) => {
           name = res.name;
-
           sign(String(id), process.env.SECRET, (err, token) => {
             if (err) {
               response.status(401).json("Error: server error");

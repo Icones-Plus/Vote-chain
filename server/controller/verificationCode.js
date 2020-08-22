@@ -40,7 +40,6 @@ exports.verfiy = function (req, res) {
       res.status(401).json("Error: server error");
     } else {
       var code = token.slice(29, 36);
-      console.log("My generated code ...........", code);
       client.sms.message(
         messageCallback,
         process.env.phoneNumber,

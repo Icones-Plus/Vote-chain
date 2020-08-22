@@ -21,7 +21,6 @@ class SignUp extends React.Component {
   // handleChange = this.handleChange.bind(this);
   handleSubmit = this.handleSubmit.bind(this);
   handleChange(event) {
-    console.log(this.state);
     this.setState({[event.target.name]: event.target.value});
   }
   handleSubmit(event) {
@@ -40,7 +39,6 @@ class SignUp extends React.Component {
         gender: this.state.gender,
       })
       .then((response) => {
-        console.log("Data of sign up request nfdfd ", response.data);
         if (response.data.message === "id cannot be blank") {
           Swal.fire("id cannot be blank");
         }
@@ -143,109 +141,86 @@ class SignUp extends React.Component {
     return this.state.signIn == null ? (
       <div id="SignIn">
         <div className="component">
-          <h1></h1>
           <form onSubmit={this.handleSubmit}>
             <h1>Sign Up</h1>
-            <label>
-              ID
-              <input
-                name="id"
-                placeholder=" e.g. 403328682"
-                value={this.state.id}
-                onChange={this.handleChange.bind(this)}
-              />
-            </label>
+            <label>ID:</label>
+            <input
+              name="id"
+              placeholder=" e.g. 403328682"
+              value={this.state.id}
+              onChange={this.handleChange.bind(this)}
+            />
             <br />
-            <br />{" "}
-            <label>
-              First Name{" "}
-              <input
-                type="text"
-                name="first_name"
-                placeholder=" John "
-                value={this.state.first_name}
-                onChange={this.handleChange.bind(this)}
-              />{" "}
-            </label>
+            <label>First Name:</label>{" "}
+            <input
+              type="text"
+              name="first_name"
+              placeholder=" John "
+              value={this.state.first_name}
+              onChange={this.handleChange.bind(this)}
+            />
             <br />
-            <br />{" "}
-            <label>
-              Last Name{" "}
-              <input
-                type="text"
-                name="last_name"
-                placeholder=" Smith "
-                value={this.state.last_name}
-                onChange={this.handleChange.bind(this)}
-              />{" "}
-            </label>{" "}
+            <label>Last Name:</label>
+            <input
+              type="text"
+              name="last_name"
+              placeholder=" Smith "
+              value={this.state.last_name}
+              onChange={this.handleChange.bind(this)}
+            />
             <label>
               <br />
-              <br />
-              Email{" "}
-              <input
-                type="email"
-                name="email"
-                placeholder=" e.g. jsmith@gmail.com"
-                value={this.state.email}
-                onChange={this.handleChange.bind(this)}
-              />{" "}
+              Email:
             </label>
+            <input
+              type="email"
+              name="email"
+              placeholder=" e.g. jsmith@gmail.com"
+              value={this.state.email}
+              onChange={this.handleChange.bind(this)}
+            />
             <br />
-            <br />{" "}
-            <label>
-              Phone Number{" "}
-              <input
-                type="number"
-                name="mobile"
-                placeholder=" 05********"
-                value={this.state.mobile}
-                onChange={this.handleChange.bind(this)}
-              />{" "}
-            </label>{" "}
-            <br /> <br />{" "}
-            <label>
-              Date Of Birth{" "}
-              <input
-                type="date"
-                name="dateOfBirth"
-                value={this.state.dateOfBirth}
-                onChange={this.handleChange.bind(this)}
-              />{" "}
-            </label>{" "}
+            <label>Phone Number:</label>{" "}
+            <input
+              type="number"
+              name="mobile"
+              placeholder=" 05********"
+              value={this.state.mobile}
+              onChange={this.handleChange.bind(this)}
+            />
             <br />
-            <br />{" "}
-            <label>
-              Gender{" "}
-              <select
-                name="gender"
-                value={this.state.gender}
-                onChange={this.handleChange.bind(this)}
-              >
-                <option value="none"> </option>
-                <option value="male"> Male </option>
-                <option value="female"> Female </option>{" "}
-              </select>{" "}
-            </label>{" "}
+            <label>Date Of Birth:</label>{" "}
+            <input
+              type="date"
+              name="dateOfBirth"
+              value={this.state.dateOfBirth}
+              onChange={this.handleChange.bind(this)}
+            />
             <br />
-            <br />{" "}
-            <label>
-              Mother Name{" "}
-              <input
-                type="text"
-                name="motherName"
-                placeholder=" e.g. Liza"
-                value={this.state.motherName}
-                onChange={this.handleChange.bind(this)}
-              />
-            </label>
+            <label>Gender:</label>{" "}
+            <select
+              name="gender"
+              value={this.state.gender}
+              onChange={this.handleChange.bind(this)}
+            >
+              <option value="none"> </option>
+              <option value="male"> Male </option>
+              <option value="female"> Female </option>
+            </select>
             <br />
+            <label>Mother Name:</label>
+            <input
+              type="text"
+              name="motherName"
+              placeholder=" e.g. Liza"
+              value={this.state.motherName}
+              onChange={this.handleChange.bind(this)}
+            />
             <br />
             <input type="submit" value="Next" />
             <br />
-            <br />
             <p>
-              Go bak to{" "}
+              Go bak to
               <button className="button" onClick={this.showSignin.bind(this)}>
                 Sign in
               </button>

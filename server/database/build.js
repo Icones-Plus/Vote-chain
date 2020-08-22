@@ -29,7 +29,7 @@ for (let i = 0; i < 10; i++) {
   });
 
   user.save().then((userRef) => {
-    console.log(`${userRef.admin} saved successfully`);
+    // console.log(`${userRef.admin} saved successfully`);
   });
 }
 for (let i = 0; i < 5; i++) {
@@ -54,6 +54,6 @@ for (let i = 0; i < 5; i++) {
   });
 
   analyst.save().then((analystRef) => {
-    console.log(`${analystRef.first_Name} saved successfully`);
+    // console.log(`${analystRef.first_Name} saved successfully`);
   });
 }
