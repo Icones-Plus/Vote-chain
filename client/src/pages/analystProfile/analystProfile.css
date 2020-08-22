@@ -1,54 +1,24 @@
-/* * {
-  background-color: red;
-} */
-
-
-.analystProfilePage__imgWrapper {
-  /* height: 600px;
-  background-color: #ccc;
-  width: 302px;
-  margin-left: 171px;
-  margin-top: 69px; */
-
-
-    height: 600px;
-    background-color: #9e9e9e3d;
-    FONT-WEIGHT: 100;
-    FONT-WEIGHT: 100;
-    width: 302px;
-    margin-left: 171px;
-    margin-top: 69px;
-    /* color: black; */
-    box-shadow: 5px 6px #ccc;
-
-}
-
 .analystProfilePage__img {
-    /* float: left; */
-    /* margin-left: 120px; */
-
-    /* margin-left: 174px;
-    margin-top: 84px;
-    height: 257px; */
-
-    /* float: left;
-    margin-left: 23px;
-    margin-top: 84px;
-    height: 257px; */
-
-    float: left;
-    margin-left: 23px;
-    margin-top: 84px;
-    height: 257px;
+  /* float: left; */
+  /* margin-left: 120px; */
+  /* margin-left: 174px;
+  margin-top: 84px;
+  height: 257px; */
+  /* float: left;
+  margin-left: 23px;
+  margin-top: 84px;
+  height: 257px; */
+  float: left;
+  margin-left: 23px;
+  margin-top: 84px;
+  height: 257px;
 }
-
-
 .analystProfilePage__bio {
   /* background-color: #ccc; */
-    width: 500px;
-    height: 260px;
-    float: right;
-    border: 1px solid #ccc;
-    margin-top: 55px;
-    margin-right: 350px;
+  width: 500px;
+  height: 260px;
+  float: right;
+  border: 1px solid #ccc;
+  margin-top: 55px;
+  margin-right: 350px;
 }

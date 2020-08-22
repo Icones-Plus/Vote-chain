@@ -67,21 +67,21 @@ router.post("/webcam", function (req, res) {
         console.log("success ", JSON.parse(body).confidence);
         res.status(200).send(JSON.parse(body).confidence.toString());
       }
-    }
+    },
 
-  }, (err, httpResponse, body) => {
-    if (err) {
-      console.error('error', err);
-      res.status(500).send("Error");
-    } else if (JSON.parse(body).confidence === undefined) {
-      res.status(200).send("Invalid image url");
-    } else {
-      console.log('success ', JSON.parse(body).confidence);
-      res.status(200).send((JSON.parse(body).confidence).toString());
+    (err, httpResponse, body) => {
+      if (err) {
+        console.error("error", err);
+        res.status(500).send("Error");
+      } else if (JSON.parse(body).confidence === undefined) {
+        res.status(200).send("Invalid image url");
+      } else {
+        console.log("success ", JSON.parse(body).confidence);
+        res.status(200).send(JSON.parse(body).confidence.toString());
+      }
     }
-  });
-})
-
+  );
+});
 
 router.post("/forCandidate/:id", forCandidate.forCandidate);
 router.get("/candidateProfile/:id", candidateProfile.candidateProfile);
