@@ -22,7 +22,6 @@ class Result extends Component {
   }
   render() {
     const data = this.state.data || {};
-    console.log("chata...", data);
     return (
       <div className="Result">
         <NavResult />
