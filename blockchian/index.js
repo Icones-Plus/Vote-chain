@@ -4,21 +4,21 @@
 // const { candidateModel } = require("../server/database/index");
 // const { resolve } = require("path");
 // var account;
-// // web3.eth.getAccounts().then((f) => {
-// //   account = f[0];
-// // });
-// // const bytecode = fs
-// //   .readFileSync(
-// //     "C:/Users/Anera/Desktop/Vote-chain/blockchian/voting_sol_Voting.bin"
-// //   )
-// //   .toString();
-// // const abi = JSON.parse(
-// //   fs
-// //     .readFileSync(
-// //       "C:/Users/Anera/Desktop/Vote-chain/blockchian/voting_sol_Voting.abi"
-// //     )
-// //     .toString()
-// // );
+// web3.eth.getAccounts().then((f) => {
+//   account = f[0];
+// });
+// const bytecode = fs
+//   .readFileSync(
+//     "C:/Users/Anera/Desktop/Vote-chain/blockchian/voting_sol_Voting.bin"
+//   )
+//   .toString();
+// const abi = JSON.parse(
+//   fs
+//     .readFileSync(
+//       "C:/Users/Anera/Desktop/Vote-chain/blockchian/voting_sol_Voting.abi"
+//     )
+//     .toString()
+// );
 //
 // contract = new web3.eth.Contract(abi);
 //

@@ -1,8 +1,12 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+
 // import React, {Component} from "react";
+
 import "./style.css";
 import Swal from "sweetalert2";
 import axios from "axios";
+import WebcamCapture from './../faceVerification/webCam'
+import Popup from "reactjs-popup";
 import CandidateProfile from "../CandidateProfile";
 
 function Candidate(props) {
@@ -85,9 +89,9 @@ function Candidate(props) {
     setPage(<CandidateProfile id={id} />);
   };
 
-  const combine = (e) => {
+  const combine = (x) => {
     sendCodeToMobile();
-    setter(e.target.name).then((res) => {
+    setter(x).then((res) => {
       if (res) {
         confirm(res);
       }
@@ -96,15 +100,16 @@ function Candidate(props) {
   return page == null ? (
     <div>
       <div className="div">
-        {props.data.map((item) => {
+
+        {/* {props.data.map((item) => {
           return (
             <div
               className="thumbnail"
-              style={{backgroundColor: "rgb(255, 255, 255)", padding: "70px"}}
+              style={{ backgroundColor: "rgb(255, 255, 255)", padding: "70px" }}
             >
               <img src={item.img} alt="image"></img>
-              <h1 style={{color: "black"}}>{item.name || "Loading.."}</h1>
-              <p style={{color: "black", fontSize: "20px"}}>
+              <h1 style={{ color: "black" }}>{item.name || "Loading.."}</h1>
+              <p style={{ color: "black", fontSize: "20px" }}>
                 {item.description}
               </p>
               <button
@@ -124,13 +129,70 @@ function Candidate(props) {
                 Candidate Profile
               </button>
             </div>
+
+          );
+        })} */}
+        {/* ************************************** */}
+        {props.data.map((item) => {
+          return (
+            <a className="card" >
+           <div className="front" style={{backgroundImage:"url("+item.img+")"}}>
+              <img src={item.img} ></img>
+              <hr />
+              <h1 style={{ color: "white" }}>{item.name || "Loading.."}</h1>
+            </div>
+            <div className="back">
+              <div>
+                <p style={{ color: "black", fontSize: "20px" }}>
+                  {item.description}
+                </p>
+                <button 
+                  type="button"
+                  className="button"
+                  name={item.id}
+                  onClick={combine}>Vote</button>
+                 <hr />
+
+                <button
+                  type="button"
+                  className="button"
+                  name={item.id}
+
+                  onClick={move}>Candidate Profile</button>
+              </div>
+            </div>
+          </a>
           );
         })}
+        {/* <a className="card" >
+          <div className="front" >
+     <div className="front" style={{backgroundImage{item.img}}}>
+            <h1 style={{ color: "black" }}>{item.name || "Loading.."}</h1>
+          </div>
+          <div className="back">
+            <div>
+              <p style={{ color: "black", fontSize: "20px" }}>
+                {item.description}
+              </p>
+              <button 
+                type="button"
+                className="button"
+                name={item.id}
+                onClick={combine}>Vote</button>
+              <button
+                type="button"
+                className="button"
+                name={item.id}
+                onClick={move}>Candidate Profile</button>
+            </div>
+          </div>
+        </a> */}
+
       </div>
     </div>
   ) : (
-    page
-  );
+      page
+    );
 }
 
 export default Candidate;

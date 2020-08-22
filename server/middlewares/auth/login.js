@@ -32,7 +32,8 @@ exports.login = function (req, res) {
         id: result[0].id,
         firstName: result[0].first_name,
         admin: result[0].admin,
-        role: result[0].role,
+        img_url: result[0].img_url,
+        role: result[0].role
       };
       sign(payload, process.env.SECRET, (err, token) => {
         if (err) {

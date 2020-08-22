@@ -59,14 +59,11 @@
 }
 .div4 {
   text-align: left;
-  background-color: rgb(240, 248, 255);
   position: absolute;
-  display: grid;
   bottom: -3%;
   top: 53%;
   left: 509px;
   width: 583px;
-  /* border: 1px solid; */
   border-radius: 1.25rem;
   padding: 10px;
   margin: 0;
