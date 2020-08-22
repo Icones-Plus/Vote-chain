@@ -18,8 +18,6 @@ function CreatePassword(props) {
       axios
         .post(`/createPassword/${id}`, {password, password2})
         .then((result) => {
-          console.log(result.data, 'result.data');
-          console.log(result, "res3433222212sddsdfrewdfrewdweds");
           if(result.data.role === "candidate"){
             window.location.href = '/forCandidate'
           }
