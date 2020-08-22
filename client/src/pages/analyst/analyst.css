@@ -35,7 +35,7 @@ width: 500px;
 }
 
 .input-container {
-
+  margin-right: 145px;
 }
 
 .logout-btn{
@@ -50,7 +50,7 @@ width: 500px;
 }
 
 .btn-custom {
-    margin-left: 611px;
+    /* margin-left: 611px; */
 }
 
 .analystPage__label {

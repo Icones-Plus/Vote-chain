@@ -10,7 +10,7 @@ import Analyst from "./pages/analyst/analyst";
 import AnalystProfile from "./pages/analystProfile/analystProfile";
 import jwtDecode from "jwt-decode";
 import CandidateProfile from "./components/CandidateProfile/index";
-import ForCandidate from "./components/forCandid/index";
+import ForCandidate from "./components/forCandidate/index";
 function App() {
   return (
     <div className="App">

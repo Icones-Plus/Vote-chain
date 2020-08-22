@@ -6,8 +6,8 @@ const auth = require("../middlewares/auth/auth");
 const confirm = require("./confirm");
 const admin = require("./admin");
 const createPassword = require("../middlewares/createPassword");
-const { feedbackModel } = require("./../database/index");
-const { candidateModel } = require("./../database/index");
+// const { feedbackModel } = require("./../database/index");
+// const { candidateModel } = require("./../database/index");
 const candidates = require("./candidates");
 const result = require("./result");
 const getAnalyst = require("./getAnalyst.js");
@@ -16,6 +16,8 @@ const logout = require("./logout");
 const uploasCV = require("./addCv.js");
 const forCandidate = require("./forCandidate");
 const candidateProfile = require("./candidateProfile");
+const getCands = require("./getCands");
+const contact = require("./contact");
 
 // const { sign } = require("jsonwebtoken");
 // var jwt_decode = require("jwt-decode");
@@ -25,43 +27,10 @@ router.post("/confirm", confirm.done);
 router.post("/login", login.login);
 router.post("/admn", admin.add);
 router.get("/verfiy", verfication.verfiy);
-router.post("/contact", function (req, res) {
-  const feedback = new feedbackModel({
-    name: req.body.name,
-    email: req.body.email,
-    message: req.body.message,
-  });
-  console.log(req.body);
-  feedback
-    .save()
-    .then((result) => {
-      res.send("RECIEVED");
-    })
-    .catch((err) => {
-      res.send("Not recieved");
-    });
-});
+router.post("/contact", contact.contact);
 
-router.get("/contact", function (req, res) {
-  feedbackModel
-    .find({})
-    .then((output) => {
-      res.send(output);
-    })
-    .catch((error) => {
-      res.send("Something went wrong");
-    });
-});
-router.post("/delete", function (req, res) {
-  feedbackModel
-    .deleteOne({ message: req.body.message })
-    .then((success) => {
-      res.send(success);
-    })
-    .catch((error) => {
-      res.send(error);
-    });
-});
+router.get("/contact", contact.contact1);
+router.post("/delete", contact.delete);
 router.post("/createPassword/:id", createPassword.createPassword);
 router.get("/logout", logout.get);
 router.get("/cand", candidates.get);
@@ -71,17 +40,10 @@ router.get("/admn", admin.get);
 router.get("/res", result.get);
 router.post("/forCandidate/:id", forCandidate.forCandidate);
 router.get("/candidateProfile/:id", candidateProfile.candidateProfile);
-router.get("/getCands", function (req, res) {
-  candidateModel
-    .find({})
-    .then((success) => {
-      console.log("Here are your candidates", success);
-      res.status(200).send(success);
-    })
-})
-router.get('/analyze', getAnalyst.getAnalyst);
-router.post('/analyze/:id', postAnalyst.postAnalyst);
-router.post('/uploadCV/:id', uploasCV.cv);
+router.get("/getCands", getCands.getCands);
+router.get("/analyze", getAnalyst.getAnalyst);
+router.post("/analyze", postAnalyst.postAnalyst);
+router.post("/uploadCV/:id", uploasCV.cv);
 // router.use((req, response, next) => {
 //   req.headers.cookie = {
 //     jwt:
@@ -103,4 +65,45 @@ router.post('/uploadCV/:id', uploasCV.cv);
 //   });
 //   next();
 // });
+
+// getCands candidateModel.find({}).then((success) => {
+//   console.log("Here are your candidates", success);
+//   res.status(200).send(success);
+// });
+// contact function (req, res) {
+//   const feedback = new feedbackModel({
+//     name: req.body.name,
+//     email: req.body.email,
+//     message: req.body.message,
+//   });
+//   console.log(req.body);
+//   feedback
+//     .save()
+//     .then((result) => {
+//       res.send("RECIEVED");
+//     })
+//     .catch((err) => {
+//       res.send("Not recieved");
+//     });
+// contact1 function (req, res) {
+//   feedbackModel
+//     .find({})
+//     .then((output) => {
+//       res.send(output);
+//     })
+//     .catch((error) => {
+//       res.send("Something went wrong");
+//     });
+
+//  delete function (req, res) {
+//   feedbackModel
+//     .deleteOne({ message: req.body.message })
+//     .then((success) => {
+//       res.send(success);
+//     })
+//     .catch((error) => {
+//       res.send(error);
+//     });
+// }
+
 module.exports = router;

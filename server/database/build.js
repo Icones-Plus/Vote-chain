@@ -24,23 +24,26 @@ for (let i = 0; i < 10; i++) {
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
     admin: false,
-    role: faker.name.jobType()
+    role: faker.name.jobType(),
   });
 
   user.save().then((userRef) => {
-    console.log(`${userRef.first_name} saved successfully`);
-    const candidate = new candidateModel({
-      id: faker.random.number(),
-      description: faker.lorem.paragraph(),
-      img: faker.image.avatar(),
-      slogan: faker.lorem.paragraph(),
-      campaign: faker.lorem.paragraph(),
+    console.log(`${userRef.admin} saved successfully`);
+  });
+}
+for (let i = 0; i < 5; i++) {
+  const candidate = new candidateModel({
+    id: faker.random.number(),
+    name: faker.name.findName(),
+    description: faker.lorem.paragraph(),
+    img: faker.image.avatar(),
+    slogan: faker.lorem.paragraph(),
+    campaign: faker.lorem.paragraph(),
+  });
 
-    });
-
-    candidate.save().then((addressRef) => {
-      console.log(`${addressRef.id} candidate id saved successfully`);
-    });
+  candidate.save().then((addressRef) => {
+    console.log(`${addressRef.name} saved successfully`);
+  });
 
     const analyst = new analystModel({
       id: faker.random.number(),

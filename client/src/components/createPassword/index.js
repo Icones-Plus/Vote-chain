@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
-
+import jwtDecode from "jwt-decode";
 import Swal from "sweetalert2";
 
 function CreatePassword(props) {
@@ -15,7 +15,6 @@ function CreatePassword(props) {
     e.preventDefault();
 
     if (password === password2) {
-      console.log(password, password2, "passsssssssssssssssss");
       axios
         .post(`/createPassword/${id}`, {password, password2})
         .then((result) => {
