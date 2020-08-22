@@ -16,7 +16,7 @@
 
 // // contract = new web3.eth.Contract(abi);
 
-// contract.options.address = "0xd3d89BbB750E42DbA32330f7eA5D064Aaa13d640";
+// contract.options.address = "0x173f138b8E2531cA74B5835685De8A62Be30Ad3c";
 // function voteForCandidate(candidate) {
 //   console.log("inside the chain...", candidate);
 //   return contract.methods
