@@ -191,6 +191,7 @@ exports.signup = function (req, res) {
                                                       success: true,
                                                       message:
                                                         "you successfully signed up. set a password to continue",
+                                                        role: result[0].role
                                                     });
                                                   }
                                                 })

@@ -38,9 +38,13 @@ router.get("/contact", contact.contact1);
 router.post("/delete", contact.delete);
 router.post("/createPassword/:id", createPassword.createPassword);
 router.get("/logout", logout.get);
+
 router.use(auth);
-router.get("/admn", admin.get);
+
 router.get("/cand", candidates.get);
+
+router.get("/admn", admin.get);
+
 router.get("/res", result.get);
 router.post("/webcam", function (req, res) {
   request.post(
@@ -53,6 +57,18 @@ router.post("/webcam", function (req, res) {
         image_url2: req.body.image_url2,
       },
     },
+    (err, httpResponse, body) => {
+      if (err) {
+        console.error("error", err);
+        res.status(500).send("Error");
+      } else if (JSON.parse(body).confidence === undefined) {
+        res.status(200).send("Invalid image url");
+      } else {
+        console.log("success ", JSON.parse(body).confidence);
+        res.status(200).send(JSON.parse(body).confidence.toString());
+      }
+    },
+
     (err, httpResponse, body) => {
       if (err) {
         console.error("error", err);

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import CreatePassword from "../createPassword";
+// import CreatePassword from "../createPassword";
 import jwtDecode from "jwt-decode";
 import Swal from "sweetalert2";
 import SignUp from "../signUp";

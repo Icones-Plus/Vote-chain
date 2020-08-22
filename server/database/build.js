@@ -46,14 +46,18 @@ for (let i = 0; i < 5; i++) {
     console.log(`${addressRef.name} saved successfully`);
   });
 
-  const analyst = new analystModel({
-    picture: faker.image.avatar(),
-    bio: faker.lorem.paragraph(),
-    linkedIn: faker.internet.url(),
-    cv: faker.internet.url(),
-  });
+    const analyst = new analystModel({
+      id: faker.random.number(),
+      first_Name: faker.name.firstName(),
+      last_Name: faker.name.lastName(),
+      picture: faker.image.avatar(),
+      bio: faker.lorem.paragraph(),
+      linkedIn: faker.internet.url(),
+      cv: faker.internet.url(),
+    });
+    analyst.save().then((analystRef) => {
+      console.log(`${analystRef.id} analyst id saved successfully`);
+    });
 
-  analyst.save().then((analystRef) => {
-    // console.log(`${analystRef.first_Name} saved successfully`);
   });
 }

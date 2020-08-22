@@ -4,3 +4,50 @@
   background-color: blue;
   font-size: 14px;
 }
+/* *{
+  background-color: red;
+} */
+.analystProfilePage__input {
+  outline: none;
+  font-family: "Raleway", sans-serif;
+  /* text-transform: uppercase; */
+  padding: 14px 34px;
+  letter-spacing: 1px;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 25px;
+  transition: all 0.5s linear;
+  border: 1px solid #ccc;
+}
+.form-wrapper {
+  margin-top: 40px;
+}
+.component input {
+  /* margin-left: 0px; */
+  /* border: 0; */
+  /* border-radius: 0px; */
+  /* font-size: large; */
+  /* height: 0px; */
+  width: 500px;
+  /* color: #000; */
+}
+.input-container {
+  margin-right: 145px;
+}
+.logout-btn {
+  background-color: red;
+  margin-left: 701px;
+}
+.analystProfilePage__btn {
+  /* margin-left: 611px; */
+  margin-left: 515px;
+}
+.btn-custom {
+  /* margin-left: 611px; */
+}
+.analystPage__label {
+  font-size: large;
+  width: 500px;
+  float: none;
+}

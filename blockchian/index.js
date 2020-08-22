@@ -16,7 +16,7 @@ const abi = JSON.parse(
 
 contract = new web3.eth.Contract(abi);
 
-contract.options.address = "0x173f138b8E2531cA74B5835685De8A62Be30Ad3c";
+contract.options.address = "0xb21C3734E01dce795206d0655CaCA44B64d5CaF9";
 function voteForCandidate(candidate) {
   console.log("inside the chain...", candidate);
   return contract.methods

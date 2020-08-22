@@ -5,8 +5,8 @@ mongoose.set("useFindAndModify", false);
 
 let connection = mongoose
 
-  .connect(
-    "mongodb://localhost:27017/votedb",
+  .connect('mongodb://localhost:27017/votedb',
+
 
     {
       useNewUrlParser: true,
@@ -46,6 +46,7 @@ let feedbackSchema = mongoose.Schema({
   message: String,
 });
 
+
 // const newUser = new userModel({
 //   id: "5773380633",
 //   mother_name: "Lucias",
@@ -79,20 +80,33 @@ let candidateSchema = mongoose.Schema({
 });
 let candidateModel = mongoose.model("Candidate", candidateSchema);
 
+// let feedbackSchema = mongoose.Schema({
+//   name: String,
+//   email: String,
+//   message: String,
+// });
+
 let feedbackModel = mongoose.model("feedback", feedbackSchema);
 
 let analystSchema = mongoose.Schema({
-  id: Number,
-
+  id: {
+    type: Number
+  },
+  first_Name: {
+    type: String
+  },
+  last_Name: {
+    type: String
+  },
   picture: {
     type: String,
   },
   cv: {
     type: String,
   },
-  // linkedIn: {
-  //   type: String
-  // },
+  linkedIn: {
+    type: String
+  },
   bio: {
     type: String,
   },
@@ -102,6 +116,7 @@ let analystSchema = mongoose.Schema({
 });
 
 let analystModel = mongoose.model("analyst", analystSchema);
+
 
 module.exports.userModel = userModel;
 module.exports.candidateModel = candidateModel;

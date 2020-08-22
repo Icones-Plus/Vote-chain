@@ -34,6 +34,7 @@ exports.createPassword = function (req, res) {
           id: result.id,
           firstName: result.first_name,
           admin: result.admin,
+          role: result.role,
           img_url: result.img_url
         };
         var token = sign(payload, process.env.SECRET, (err, token) => {
@@ -43,7 +44,10 @@ exports.createPassword = function (req, res) {
             res.cookie("jwt", token, {
               maxAge: 6048000000,
             });
-            res.send("signup cookie set");
+            res.send({
+              message: "signup cookie set",
+              role: payload.role
+            });
           }
         });
       })

@@ -28,9 +28,10 @@ function App() {
             <Route path="/result" component={Result} />
             <Route path="/candidates" component={Candidates} />
             <CandidateProfile path="/CandidateProfile" />
+            <Route path="/analyst-profile" exact component={AnalystProfile} />
             <Route path="/analyst" exact={true} component={Analyst} />
             <ForCandidate path="/forCandidate" />
-            <Route path="/analyst-profile" exact component={AnalystProfile} />
+
             <Route path="*" exact={true} component={NotFound} />
           </Switch>
         )}
