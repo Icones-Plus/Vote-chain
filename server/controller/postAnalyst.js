@@ -165,6 +165,7 @@ analystModel.findOneAndUpdate(
   //   console.log('hey');
   // }
 
+
   // newAnalyst.save().then(result => {
   //   console.log(result, 'result');
   //   return res.send({
@@ -174,4 +175,5 @@ analystModel.findOneAndUpdate(
   // }).catch(err => {
   //   console.log('Err in saving analyst to db', err);
   // })
+
 }

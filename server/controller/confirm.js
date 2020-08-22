@@ -1,11 +1,11 @@
 var jwt_decode = require("jwt-decode");
 const { sign } = require("jsonwebtoken");
 const { userModel, candidateModel } = require("../database/index");
-// const {
-//   voteForCandidate,
-//   retrieveVotes,
-//   retriveOne,
-// } = require("../../blockchian");
+const {
+  voteForCandidate,
+  retrieveVotes,
+  retriveOne,
+} = require("../../blockchian");
 // retrieveVotes().then((e) => {
 //   e[4].then((w) => {
 //     console.log(w);
@@ -28,7 +28,6 @@ exports.done = (request, response) => {
       } else {
         candidateModel.findOne({ id: candidateId }).then((res) => {
           name = res.name;
-          console.log("name", name);
           sign(String(id), process.env.SECRET, (err, token) => {
             if (err) {
               response.status(401).json("Error: server error");
@@ -38,14 +37,24 @@ exports.done = (request, response) => {
                 userModel
                   .findOneAndUpdate({ id }, { voted: true })
                   .then((result) => {
-                    // voteForCandidate(name);
+                    voteForCandidate(name).then((voting) => {
+                      console.log("voteddddd", voting);
+                      if (voting > 0) {
+                        var result = {
+                          succses: true,
+                          msg: "you voted succsessfully",
+                        };
+                        response.send(result);
+                      } else {
+                        var result = {
+                          succses: true,
+                          msg: "Error! try again later",
+                        };
+                        response.send(result);
+                      }
+                    });
                     // retriveOne("Coleman Luettgen");
                     // retrieveVotes();
-                    var result = {
-                      succses: true,
-                      msg: "you voted succsessfully",
-                    };
-                    response.send(result);
                   })
                   .catch((err) => {
                     console.log("EEERRRROOOOORRRR", err);

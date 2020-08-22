@@ -16,12 +16,12 @@ const logout = require("./logout");
 
 const uploasCV = require("./addCV");
 
-const request = require('request');
-
+const request = require("request");
 
 const forCandidate = require("./forCandidate");
 const candidateProfile = require("./candidateProfile");
 const getCands = require("./getCands");
+const getResult = require("./getResult");
 const contact = require("./contact");
 
 // const { sign } = require("jsonwebtoken");
@@ -38,20 +38,37 @@ router.get("/contact", contact.contact1);
 router.post("/delete", contact.delete);
 router.post("/createPassword/:id", createPassword.createPassword);
 router.get("/logout", logout.get);
-router.get("/cand", candidates.get);
+
 router.use(auth);
+
+router.get("/cand", candidates.get);
+
 router.get("/admn", admin.get);
 
 router.get("/res", result.get);
 router.post("/webcam", function (req, res) {
-
-  request.post({
-    url: 'https://api-us.faceplusplus.com/facepp/v3/compare', formData: {
-      api_key: 'FavnHOrlAbZ3TcgYxhPIdXy5Xb-SA3vJ',
-      api_secret: 'nMjgy48bWF3WaVovNllv-EgWV2CsnFqP',
-      image_base64_1: req.body.image_base64_1,
-      image_url2: req.body.image_url2
+  request.post(
+    {
+      url: "https://api-us.faceplusplus.com/facepp/v3/compare",
+      form: {
+        api_key: "FavnHOrlAbZ3TcgYxhPIdXy5Xb-SA3vJ",
+        api_secret: "nMjgy48bWF3WaVovNllv-EgWV2CsnFqP",
+        image_base64_1: req.body.image_base64_1,
+        image_url2: req.body.image_url2,
+      },
+    },
+    (err, httpResponse, body) => {
+      if (err) {
+        console.error("error", err);
+        res.status(500).send("Error");
+      } else if (JSON.parse(body).confidence === undefined) {
+        res.status(200).send("Invalid image url");
+      } else {
+        console.log("success ", JSON.parse(body).confidence);
+        res.status(200).send(JSON.parse(body).confidence.toString());
+      }
     }
+
   }, (err, httpResponse, body) => {
     if (err) {
       console.error('error', err);
@@ -65,9 +82,11 @@ router.post("/webcam", function (req, res) {
   });
 })
 
+
 router.post("/forCandidate/:id", forCandidate.forCandidate);
 router.get("/candidateProfile/:id", candidateProfile.candidateProfile);
 router.get("/getCands", getCands.getCands);
+router.get("/getResult", getResult.getResult);
 router.get("/analyze", getAnalyst.getAnalyst);
 router.post("/analyze", postAnalyst.postAnalyst);
 router.post("/uploadCV/:id", uploasCV.cv);

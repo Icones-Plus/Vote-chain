@@ -13,7 +13,7 @@ exports.verfiy = function (req, res) {
   const rest_endpoint = "https://rest-api.telesign.com";
   const timeout = 10 * 1000;
   const saltRounds = 10;
-  const message = "you code is: ";
+  const message = "your code is: ";
   const messageType = "ARN";
 
   const client = new TeleSignSDK(
@@ -40,7 +40,7 @@ exports.verfiy = function (req, res) {
       res.status(401).json("Error: server error");
     } else {
       var code = token.slice(29, 36);
-      console.log("My generated code ...........", code);
+      console.log("your code is....", code);
       client.sms.message(
         messageCallback,
         process.env.phoneNumber,

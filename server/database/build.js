@@ -29,7 +29,7 @@ for (let i = 0; i < 10; i++) {
   });
 
   user.save().then((userRef) => {
-    console.log(`${userRef.admin} saved successfully`);
+    // console.log(`${userRef.admin} saved successfully`);
   });
 }
 for (let i = 0; i < 5; i++) {
@@ -55,9 +55,9 @@ for (let i = 0; i < 5; i++) {
       linkedIn: faker.internet.url(),
       cv: faker.internet.url(),
     });
-
     analyst.save().then((analystRef) => {
       console.log(`${analystRef.id} analyst id saved successfully`);
     });
+
   });
 }

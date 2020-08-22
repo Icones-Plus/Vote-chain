@@ -7,6 +7,7 @@ function CreatePassword(props) {
   const id = props.id;
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+
   const onSubmit = (e) => {
     e.preventDefault();
 

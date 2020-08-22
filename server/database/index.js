@@ -4,7 +4,9 @@ const bcrypt = require("bcrypt");
 mongoose.set("useFindAndModify", false);
 
 let connection = mongoose
+
   .connect('mongodb://localhost:27017/votedb',
+
 
     {
       useNewUrlParser: true,
@@ -12,7 +14,6 @@ let connection = mongoose
     }
   )
   .then(() => {
-
     console.log("connected to dataBase");
   })
   .catch((err) => {
